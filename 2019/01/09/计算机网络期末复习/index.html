@@ -93,7 +93,12 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547025647017.png">
 <meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547032544337.png">
-<meta property="og:updated_time" content="2019-01-09T12:38:00.589Z">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547039690071.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547039548223.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547045867057.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547045821425.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547045687376.png">
+<meta property="og:updated_time" content="2019-01-09T14:59:23.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络期末复习">
 <meta name="twitter:description" content="期末复习，一起愉快地复习吧！待更新~">
@@ -347,8 +352,19 @@
 <p>解题思路：先将0–&gt;-1，1–&gt;1；再判断是否需要转化该码片序列的二进制反码。若发送比特 0，则发送该码片序列的二进制反码；最后将A、B、C、D竖列相加，即可求出总的发送信号。</p>
 <p>第二种：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">当总的信号是（-1 +1 -3 +3 +1 -1 -1 +1）时，且各站点码片序列为</span><br><span class="line">A：0 0 0 1 1 0 1 1</span><br><span class="line">B：0 0 1 0 1 1 1 0</span><br><span class="line">C：0 1 0 1 1 1 0 0</span><br><span class="line">D：0 1 0 0 0 0 1 0</span><br><span class="line">站点A、B、C发送信号是什么？</span><br></pre></td></tr></table></figure>
-<p>解题思路：先将0–&gt;-1，1–&gt;1；然后……</p>
-
+<p>解题思路：先将<code>0--&gt;-1</code>，<code>1--&gt;1</code>；然后……</p>
+<h3 id="P110-3-20"><a href="#P110-3-20" class="headerlink" title="P110-3-20"></a><code>P110-3-20</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">假定1KM长的CSMA/CD协议网络的数据率为1Gb/s。设信号在网络上的传播速率为200000KM/S。求能够使用此协议的最短帧长。</span><br></pre></td></tr></table></figure>
+<p>解题：</p>
+<p>对于 <code>1km</code> 电缆，单程传播时间为<code>1KM÷200000KM/s=5us</code>，来回路程传播时间为<code>10us</code>。为了能够按照<a href="https://baike.baidu.com/item/CSMA%2FCD" target="_blank" rel="noopener"><strong>CSMA/CD</strong></a>工作，最小帧的发射时间不能小于<code>10us</code>。以<code>1Gbit/s</code>速率工作，<code>10us</code>可以发送的比特数等于：<code>(10*10^-6)s*(1*10^9)bit/s=10000bit</code>，因此，最短帧是<code>10000</code> 位或 <code>1250</code> 字节长。  </p>
+<p>注意：<code>1s=1000000us</code>、<code>1Mbit/s=10^6bit/s</code>、<code>1Gbit/s=1*10^3Mbit/s=1*10^9bit/s</code>、<code>比特数（时延带宽积）=传播时延*带宽</code>。</p>
+<h3 id="P111-3-33"><a href="#P111-3-33" class="headerlink" title="P111-3-33"></a><code>P111-3-33</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">以太网交换机有6个接口,分别接到5台主机和一个路由器,在下面表的动作一栏中,表示先后发送了4个帧.</span><br><span class="line">假定在开始时,以太网交换机的交换表是空的.试把该表中其他的栏目都填写完。如图:</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/09/计算机网络期末复习/1547039690071.png" alt="1547039690071"></p>
+<p>网上一<a href="http://tieba.baidu.com/p/5107962548?traceid=#106960942164l" target="_blank" rel="noopener">大牛的解题过程</a>，如下</p>
+<p><img src="/2019/01/09/计算机网络期末复习/1547039548223.png" alt="1547039548223"></p>
+<h3 id="P198-4-29"><a href="#P198-4-29" class="headerlink" title="P198-4-29"></a><code>P198-4-29</code></h3><p><img src="/2019/01/09/计算机网络期末复习/1547045867057.png" alt="1547045867057"></p>
+<p><img src="/2019/01/09/计算机网络期末复习/1547045821425.png" alt="1547045821425"></p>
+<h3 id="P200-4-55"><a href="#P200-4-55" class="headerlink" title="P200-4-55"></a><code>P200-4-55</code></h3><p><img src="/2019/01/09/计算机网络期末复习/1547045687376.png" alt="1547045687376"></p>
+<h3 id="P245-5-22"><a href="#P245-5-22" class="headerlink" title="P245-5-22"></a><code>P245-5-22</code></h3><h3 id="P245-5-23"><a href="#P245-5-23" class="headerlink" title="P245-5-23"></a><code>P245-5-23</code></h3><h3 id="P246-5-38"><a href="#P246-5-38" class="headerlink" title="P246-5-38"></a><code>P246-5-38</code></h3><h3 id="P247-5-39"><a href="#P247-5-39" class="headerlink" title="P247-5-39"></a><code>P247-5-39</code></h3>
       
     </div>
     
@@ -520,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#名词解释"><span class="nav-number">1.</span> <span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大题"><span class="nav-number">2.</span> <span class="nav-text">大题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P67-2-07"><span class="nav-number">2.1.</span> <span class="nav-text">P67-2-07</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P67-2-13"><span class="nav-number">2.2.</span> <span class="nav-text">P67-2-13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P68-2-16"><span class="nav-number">2.3.</span> <span class="nav-text">P68-2-16</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#名词解释"><span class="nav-number">1.</span> <span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大题"><span class="nav-number">2.</span> <span class="nav-text">大题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P67-2-07"><span class="nav-number">2.1.</span> <span class="nav-text">P67-2-07</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P67-2-13"><span class="nav-number">2.2.</span> <span class="nav-text">P67-2-13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P68-2-16"><span class="nav-number">2.3.</span> <span class="nav-text">P68-2-16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P110-3-20"><span class="nav-number">2.4.</span> <span class="nav-text">P110-3-20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P111-3-33"><span class="nav-number">2.5.</span> <span class="nav-text">P111-3-33</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P198-4-29"><span class="nav-number">2.6.</span> <span class="nav-text">P198-4-29</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P200-4-55"><span class="nav-number">2.7.</span> <span class="nav-text">P200-4-55</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P245-5-22"><span class="nav-number">2.8.</span> <span class="nav-text">P245-5-22</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P245-5-23"><span class="nav-number">2.9.</span> <span class="nav-text">P245-5-23</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P246-5-38"><span class="nav-number">2.10.</span> <span class="nav-text">P246-5-38</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P247-5-39"><span class="nav-number">2.11.</span> <span class="nav-text">P247-5-39</span></a></li></ol></li></ol></div>
             
 
           </div>
