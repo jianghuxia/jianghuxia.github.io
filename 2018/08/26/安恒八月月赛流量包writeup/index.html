@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据包分析," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="安恒8月月赛多了个流量包分析，很好，铁三之后，很久没训练了，去玩玩呗。玩到比赛结束，不算很难，但说个实在话，分配的关卡有点不合理（给了两个vpn的包，只考一题，无语）。哦，对了，内附流量包下载链接。">
+<meta name="keywords" content="数据包分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安恒八月月赛流量包writeup">
+<meta property="og:url" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="安恒8月月赛多了个流量包分析，很好，铁三之后，很久没训练了，去玩玩呗。玩到比赛结束，不算很难，但说个实在话，分配的关卡有点不合理（给了两个vpn的包，只考一题，无语）。哦，对了，内附流量包下载链接。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535270426213.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535269950328.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535270767458.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535271016370.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535271740511.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535272375077.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535272592573.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535272925397.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535282630426.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535275180645.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535166614685.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535166653144.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535276945723.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535166858893.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535162265285.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535162305942.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535163233365.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535163224381.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535163810679.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535167066024.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535267557510.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535268095509.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535268433463.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535269130976.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535267206637.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535178357297.png">
+<meta property="og:updated_time" content="2018-08-26T12:04:53.724Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安恒八月月赛流量包writeup">
+<meta name="twitter:description" content="安恒8月月赛多了个流量包分析，很好，铁三之后，很久没训练了，去玩玩呗。玩到比赛结束，不算很难，但说个实在话，分配的关卡有点不合理（给了两个vpn的包，只考一题，无语）。哦，对了，内附流量包下载链接。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/1535270426213.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/"/>
+
+
+
+
+
+  <title>安恒八月月赛流量包writeup | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2018/08/26/安恒八月月赛流量包writeup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">安恒八月月赛流量包writeup</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-26T19:36:31+08:00">
+                2018-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>安恒8月月赛多了个流量包分析，很好，铁三之后，很久没训练了，去玩玩呗。玩到比赛结束，不算很难，但说个实在话，分配的关卡有点不合理（给了两个vpn的包，只考一题，无语）。哦，对了，内附流量包下载链接。</p>
+<a id="more"></a>
+<p>先给个数据包下载地址：</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535270426213.png" alt="1535270426213"></p>
+<h4 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h4><p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535269950328.png" alt="1535269950328"></p>
+<h4 id="总关卡"><a href="#总关卡" class="headerlink" title="总关卡"></a>总关卡</h4><ol>
+<li><code>某公司内网网络被黑客渗透，请分析流量，给出黑客使用的扫描器:</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，得到黑客扫描到的登陆后台是(相对路径即可):</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，得到黑客使用了什么账号密码登陆了web后台(形式:</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，得到黑客上传的webshell文件名是，内容是什么,提交webshell内容的base编码:</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，黑客在robots.txt中找到的flag是什么:</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，黑客找到的数据库密码是多少:</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，黑客在数据库中找到的hash_code是什么:</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，黑客破解了账号ijnu@test.com得到的密码是什么:edc123!@#</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，被黑客攻击的web服务器，网卡配置是是什么，提交网卡内网ip:</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，黑客使用了什么账号登陆了mail系统（形式: username/password）:</code></li>
+<li><code>某公司内网网络被黑客渗透，请分析流量，黑客获得的vpn,ip是多少:</code></li>
+</ol>
+<h4 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h4><h5 id="1、黑客使用的扫描器：awvs"><a href="#1、黑客使用的扫描器：awvs" class="headerlink" title="1、黑客使用的扫描器：awvs"></a>1、黑客使用的扫描器：awvs</h5><p>这题猜的，之后分析了下，不难，也算是送分题，进去翻翻流量包，浏览一下就有了，很多下面这种格式</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535270767458.png" alt="1535270767458"></p>
+<h5 id="2、黑客扫描到的登陆后台是（相对路径即可）：-admin-login-php-rec-login"><a href="#2、黑客扫描到的登陆后台是（相对路径即可）：-admin-login-php-rec-login" class="headerlink" title="2、黑客扫描到的登陆后台是（相对路径即可）：/admin/login.php?rec=login"></a>2、黑客扫描到的登陆后台是（相对路径即可）：/admin/login.php?rec=login</h5><p>这题，更是送分题，打开数据包，过滤下<code>http</code>，<code>86</code>分组请求的网站目录即是答案</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535271016370.png" alt="1535271016370"></p>
+<h5 id="3、黑客使用了什么账号密码登陆了web后台（形式-username-password）：admin-admin-pass123"><a href="#3、黑客使用了什么账号密码登陆了web后台（形式-username-password）：admin-admin-pass123" class="headerlink" title="3、黑客使用了什么账号密码登陆了web后台（形式: username/password）：admin/admin!@#pass123"></a>3、黑客使用了什么账号密码登陆了web后台（形式: username/password）：admin/admin!@#pass123</h5><p>这里开始，就有点坑了，因为刚开始开头就有一个<code>302</code>的重定向包，看了下，好像也没错，的确也是登录成功了</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535271740511.png" alt="1535271740511"></p>
+<p>后面发现，不止有黑客的<code>ip</code>，还有其他的<code>ip</code>。通过大量<code>404</code>请求，判断是黑客在扫目录，确认了下黑客<code>ip</code>为<code>192.168.94.59</code>，<code>http.response.code==302&amp;&amp;ip.addr==192.168.94.59</code>过滤下，发现<code>302</code>的包不是很多，标记一下，找下就好啦<img src="/2018/08/26/安恒八月月赛流量包writeup/1535272375077.png" alt="1535272375077">在最后一个<code>response.code</code>等于<code>302</code>的包找到了。所以，”人事”这个不是黑客登的，”<code>admin</code>“才是（大意了，果然，三个月没玩数据包生疏了）</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535272592573.png" alt="1535272592573"></p>
+<h5 id="4、黑客上传的webshell文件名是，内容是什么-提交webshell内容的base编码：PD9waHAgQGV2YWwoJF9QT1NUWzEyMzRdKTs-Pg"><a href="#4、黑客上传的webshell文件名是，内容是什么-提交webshell内容的base编码：PD9waHAgQGV2YWwoJF9QT1NUWzEyMzRdKTs-Pg" class="headerlink" title="4、黑客上传的webshell文件名是，内容是什么,提交webshell内容的base编码：PD9waHAgQGV2YWwoJF9QT1NUWzEyMzRdKTs/Pg=="></a>4、黑客上传的webshell文件名是，内容是什么,提交webshell内容的base编码：PD9waHAgQGV2YWwoJF9QT1NUWzEyMzRdKTs/Pg==</h5><p>这题，贼鸡儿坑。这题是放到最后才蒙出来的。浏览<code>webone.pcap</code>数据包的末尾，发现<code>a.php</code>有猫咪，但是死活找不到它是如何上传的，最后，无可奈何，既然有<code>1234</code>为传递值，构造了个一句话木马：&lt;?php @eval($_POST[1234]);?&gt; ，然后提交<code>base64</code>编码，过了！过了！……..</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535272925397.png" alt="1535272925397"></p>
+<p>赛后仔细找了找，找到了 ，但是非常奇怪，为什么这个出现在<code>tcp</code>流里面，我在<code>http</code>流里面压根没找到这个<code>html</code>，过滤语句<code>tcp contains &quot;&lt;?php @eval&quot;</code>（如果以后<code>http</code>不行，那就试试<code>tcp</code>，可能是<code>tcp</code>重传的原因，导致<code>http</code>中没追踪到）</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535282630426.png" alt="1535282630426"></p>
+<p>下面是手动筛选<code>tcp</code>流的方式</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535275180645.png" alt="1535275180645"></p>
+<h5 id="5、黑客在robots-txt中找到的flag是什么：87b7cb79481f317bde90c116cf36084b"><a href="#5、黑客在robots-txt中找到的flag是什么：87b7cb79481f317bde90c116cf36084b" class="headerlink" title="5、黑客在robots.txt中找到的flag是什么：87b7cb79481f317bde90c116cf36084b"></a>5、黑客在robots.txt中找到的flag是什么：87b7cb79481f317bde90c116cf36084b</h5><p>浏览<code>webone.pcap</code>数据包的末尾，查看众多<code>a.php</code>的执行命令的响应即可找到答案。</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535166614685.png" alt="1535166614685"></p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535166653144.png" alt="1535166653144"></p>
+<h5 id="6、黑客找到的数据库密码是多少：e667jUPvJjXHvEUv"><a href="#6、黑客找到的数据库密码是多少：e667jUPvJjXHvEUv" class="headerlink" title="6、黑客找到的数据库密码是多少：e667jUPvJjXHvEUv"></a>6、黑客找到的数据库密码是多少：e667jUPvJjXHvEUv</h5><p>依旧浏览<code>webone.pcap</code>数据包的末尾，查看下响应的包，即可找到答案</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535276945723.png" alt="1535276945723"></p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535166858893.png" alt="1535166858893"></p>
+<h5 id="7、黑客在数据库中找到的hash-code是什么：d1c029893df40cb0f47bcf8f1c3c17ac"><a href="#7、黑客在数据库中找到的hash-code是什么：d1c029893df40cb0f47bcf8f1c3c17ac" class="headerlink" title="7、黑客在数据库中找到的hash_code是什么：d1c029893df40cb0f47bcf8f1c3c17ac"></a>7、黑客在数据库中找到的hash_code是什么：d1c029893df40cb0f47bcf8f1c3c17ac</h5><p>接着打开<code>webtwo.pcap</code>数据包，查看下前面几个<code>mysql</code>请求和响应，即可找到答案</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535162265285.png" alt="1535162265285"></p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535162305942.png" alt="1535162305942"></p>
+<h5 id="8、-黑客破解了账号ijnu-test-com得到的密码是什么：edc123"><a href="#8、-黑客破解了账号ijnu-test-com得到的密码是什么：edc123" class="headerlink" title="8、:黑客破解了账号ijnu@test.com得到的密码是什么：edc123!@"></a>8、:黑客破解了账号<a href="mailto:ijnu@test.com" target="_blank" rel="noopener">ijnu@test.com</a>得到的密码是什么：edc123!@</h5><p>这里有了点小技巧，直接将这个邮箱化为相应的字符串<code>16</code>进制值，直接查找</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535163233365.png" alt="1535163233365"></p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535163224381.png" alt="1535163224381"></p>
+<p>然后MD5解密下，得到答案</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535163810679.png" alt="1535163810679"></p>
+<h5 id="9、被黑客攻击的web服务器，网卡配置是是什么，提交网卡内网ip：10-3-3-100"><a href="#9、被黑客攻击的web服务器，网卡配置是是什么，提交网卡内网ip：10-3-3-100" class="headerlink" title="9、被黑客攻击的web服务器，网卡配置是是什么，提交网卡内网ip：10.3.3.100"></a>9、被黑客攻击的web服务器，网卡配置是是什么，提交网卡内网ip：10.3.3.100</h5><p>这里有回到了<code>webone.pcap</code>数据包，依旧浏览<code>webone.pcap</code>数据包的末尾，查看下响应的包，即可找到答案</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535167066024.png" alt="1535167066024"></p>
+<h5 id="10、黑客使用了什么账号登陆了mail系统（形式-username-password）：admin-admin-pass123"><a href="#10、黑客使用了什么账号登陆了mail系统（形式-username-password）：admin-admin-pass123" class="headerlink" title="10、黑客使用了什么账号登陆了mail系统（形式: username/password）：admin/admin!@#pass123"></a>10、黑客使用了什么账号登陆了mail系统（形式: username/password）：admin/admin!@#pass123</h5><p>这题需要看<code>mailtwo.pcap</code>和<code>mailtwo1.pcap</code>两个数据包。</p>
+<p>首先在<code>mailtwo.pcap</code>中过滤<code>http</code>，序号<code>3</code>的<code>Cookie</code>中就发现 <code>login_name=wenwenni</code>字段，并且是<code>action=logout</code>。<img src="/2018/08/26/安恒八月月赛流量包writeup/1535267557510.png" alt="1535267557510"></p>
+<p>继续跟进，发现下一个序号是<code>28</code>分组，又到了登陆界面的<code>35</code>分组，在其中发现了密码的加密函数：</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535268095509.png" alt="1535268095509"></p>
+<p>取出来发现是<code>AES</code>的<code>CBC</code>加密，填充格式为<code>ZeroPadding</code>，密钥为字符串<code>1234567812345678</code>的<code>hash</code>值，偏移量为<code>1234567812345678</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> key_hash = CryptoJS.MD5(<span class="string">'1234567812345678'</span>);</span><br><span class="line"><span class="keyword">var</span> key = CryptoJS.enc.Utf8.parse(key_hash);</span><br><span class="line"><span class="keyword">var</span> iv  = CryptoJS.enc.Utf8.parse(<span class="string">'1234567812345678'</span>);</span><br><span class="line"> form.password.value = CryptoJS.AES.encrypt(form.password.value, key, &#123; <span class="attr">iv</span>: iv,<span class="attr">mode</span>:CryptoJS.mode.CBC,<span class="attr">padding</span>:CryptoJS.pad.ZeroPadding&#125;);</span><br></pre></td></tr></table></figure>
+<p>因刚退出，所以是根据<code>cookie</code>中的信息登陆的，在下一请求<code>42</code>分组对应的<code>45</code>分组中出现<code>{&quot;success&quot;:true}</code>，表示登陆成功。</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535268433463.png" alt="1535268433463"></p>
+<p>既然如此，我们使用<code>(http contains &quot;{\&quot;success\&quot;:true}&quot; or http.request.method==&quot;POST&quot;) and ip.addr==192.168.94.59</code>过滤一下，显示出<code>post</code>请求及成功的返回结果，l浏览一下发现是在爆破，并且到<code>mailtwo.pcap</code>的最后也未爆破成功。相同的过滤条件上在<code>mailtwo1.pcap</code>上试试，发现几条数据，从后往前看，发现<code>18152</code>是登陆成功的返回结果，那对应的<code>17126</code>则就是正确的加密后的密码。</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535269130976.png" alt="1535269130976"></p>
+<p>那么<a href="http://tool.chacuo.net/cryptaes" target="_blank" rel="noopener">解密网址</a>进行<code>aes</code>解密即可得到<code>admin</code>账号的密码。此题最终答案即为：<code>admin/admin!@#PASS123</code></p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535267206637.png" alt="1535267206637"></p>
+<p>此题，据说还有一种方法：社工。但是个人认为并不合理，此题答案跟第三题答案碰巧一样罢了，因为两个关卡的源服务器<code>ip</code>并不一样。</p>
+<h5 id="11、黑客获得的vpn-ip是多少：10-3-4-3"><a href="#11、黑客获得的vpn-ip是多少：10-3-4-3" class="headerlink" title="11、黑客获得的vpn,ip是多少：10.3.4.3"></a>11、黑客获得的vpn,ip是多少：10.3.4.3</h5><p>这题其实只需要<code>vpn</code>的第一个包就行了，百度学习一波<code>vpn</code>包相关协议，收益匪浅（吐槽下，安恒的直播课真的需要讲点干货，别为了解题而解题啊，让人家直接去一个一个试内网的<code>ip</code>，这不是很好吧）</p>
+<p><img src="/2018/08/26/安恒八月月赛流量包writeup/1535178357297.png" alt="1535178357297"></p>
+<p>这里留两个链接供参考学习：</p>
+<p><a href="https://www.baidu.com/link?url=QVvirQIPDHeCtUdC5_WC7hvjfnA2B3osyBn19gYG1nPWz3dkI1d0t493kbK0PAcA&amp;wd=&amp;eqid=e2d03cd9000225ee000000065b827dae" target="_blank" rel="noopener">探究<em>vpn数据包</em>传输过程</a></p>
+<p><a href="https://www.baidu.com/link?url=F-oAhsOYdXkfQKF2AhaabmiAtz9m1XZM_R1a5H0f81SmBQ83bf-VWGQyAz3OAEE19PlkJHjU7DTLDtXEnOa0NuTDaKp_gpw6_ltcSucvJKy&amp;wd=&amp;eqid=9398983a0002bc91000000065b827e1a" target="_blank" rel="noopener">PPTP 理解以及报文的<em>分析</em></a></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>数据包分析还是很有意思的，个人计划着来一波数据协议的实验分析，可能会有点复杂，但是其中的乐趣也是无穷，有兴趣的小伙伴请联系我，一起学习！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据包分析/" rel="tag"># 数据包分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/25/福建省gk安全大赛writeup/" rel="next" title="福建省gk安全大赛writeup">
+                <i class="fa fa-chevron-left"></i> 福建省gk安全大赛writeup
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/31/一次网络流量分析引起的分析/" rel="prev" title="一次网络流量分析引发的思考">
+                一次网络流量分析引发的思考 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目背景"><span class="nav-number">1.</span> <span class="nav-text">题目背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总关卡"><span class="nav-number">2.</span> <span class="nav-text">总关卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题过程"><span class="nav-number">3.</span> <span class="nav-text">解题过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、黑客使用的扫描器：awvs"><span class="nav-number">3.1.</span> <span class="nav-text">1、黑客使用的扫描器：awvs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、黑客扫描到的登陆后台是（相对路径即可）：-admin-login-php-rec-login"><span class="nav-number">3.2.</span> <span class="nav-text">2、黑客扫描到的登陆后台是（相对路径即可）：/admin/login.php?rec=login</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、黑客使用了什么账号密码登陆了web后台（形式-username-password）：admin-admin-pass123"><span class="nav-number">3.3.</span> <span class="nav-text">3、黑客使用了什么账号密码登陆了web后台（形式: username/password）：admin/admin!@#pass123</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、黑客上传的webshell文件名是，内容是什么-提交webshell内容的base编码：PD9waHAgQGV2YWwoJF9QT1NUWzEyMzRdKTs-Pg"><span class="nav-number">3.4.</span> <span class="nav-text">4、黑客上传的webshell文件名是，内容是什么,提交webshell内容的base编码：PD9waHAgQGV2YWwoJF9QT1NUWzEyMzRdKTs/Pg==</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、黑客在robots-txt中找到的flag是什么：87b7cb79481f317bde90c116cf36084b"><span class="nav-number">3.5.</span> <span class="nav-text">5、黑客在robots.txt中找到的flag是什么：87b7cb79481f317bde90c116cf36084b</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、黑客找到的数据库密码是多少：e667jUPvJjXHvEUv"><span class="nav-number">3.6.</span> <span class="nav-text">6、黑客找到的数据库密码是多少：e667jUPvJjXHvEUv</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7、黑客在数据库中找到的hash-code是什么：d1c029893df40cb0f47bcf8f1c3c17ac"><span class="nav-number">3.7.</span> <span class="nav-text">7、黑客在数据库中找到的hash_code是什么：d1c029893df40cb0f47bcf8f1c3c17ac</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8、-黑客破解了账号ijnu-test-com得到的密码是什么：edc123"><span class="nav-number">3.8.</span> <span class="nav-text">8、:黑客破解了账号ijnu@test.com得到的密码是什么：edc123!@</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9、被黑客攻击的web服务器，网卡配置是是什么，提交网卡内网ip：10-3-3-100"><span class="nav-number">3.9.</span> <span class="nav-text">9、被黑客攻击的web服务器，网卡配置是是什么，提交网卡内网ip：10.3.3.100</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10、黑客使用了什么账号登陆了mail系统（形式-username-password）：admin-admin-pass123"><span class="nav-number">3.10.</span> <span class="nav-text">10、黑客使用了什么账号登陆了mail系统（形式: username/password）：admin/admin!@#pass123</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11、黑客获得的vpn-ip是多少：10-3-4-3"><span class="nav-number">3.11.</span> <span class="nav-text">11、黑客获得的vpn,ip是多少：10.3.4.3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":160},"mobile":{"show":true}});</script></body>
+</html>

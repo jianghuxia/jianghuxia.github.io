@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="经过两个星期左右的学习，深入了一番IEEE 802.11，终于把护网杯那题0解的无线流量题目做出来了，下面分析一番，稍作扩展。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="护网杯-old Attack题解">
+<meta property="og:url" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="经过两个星期左右的学习，深入了一番IEEE 802.11，终于把护网杯那题0解的无线流量题目做出来了，下面分析一番，稍作扩展。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540960969833.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540995564167.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540961199789.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540961390093.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540699047641.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540699096822.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1541035369849.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540998207844.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540736974189.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540735875613.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540690130188.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1541035795841.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1541036018414.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1541036551342.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1541037713427.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1541038302107.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1541047943236.png">
+<meta property="og:updated_time" content="2018-11-09T07:24:07.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="护网杯-old Attack题解">
+<meta name="twitter:description" content="经过两个星期左右的学习，深入了一番IEEE 802.11，终于把护网杯那题0解的无线流量题目做出来了，下面分析一番，稍作扩展。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/1540960969833.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/"/>
+
+
+
+
+
+  <title>护网杯-old Attack题解 | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2018/11/09/护网杯-old-Attack题解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">护网杯-old Attack题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T15:20:50+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>经过两个星期左右的学习，深入了一番<code>IEEE 802.11</code>，终于把护网杯那题<code>0</code>解的无线流量题目做出来了，下面分析一番，稍作扩展。</p>
+<a id="more"></a> 
+<h4 id="护网杯-Misc-old-Attack题解"><a href="#护网杯-Misc-old-Attack题解" class="headerlink" title="护网杯-Misc-old Attack题解"></a>护网杯-Misc-old Attack题解</h4><p>题目：<code>Old Attack</code><br><code>The title is hint。:)</code></p>
+<h5 id="题目提示"><a href="#题目提示" class="headerlink" title="题目提示"></a>题目提示</h5><p>提示先后给了三个：</p>
+<p><code>1、Evil AKM Fuzz?</code></p>
+<p><code>2、不规范的802.11 frame</code></p>
+<p><code>3、malformat RSN</code></p>
+<h5 id="题目附件"><a href="#题目附件" class="headerlink" title="题目附件"></a>题目附件</h5><p><img src="/2018/11/09/护网杯-old-Attack题解/1540960969833.png" alt="1540960969833"></p>
+<h5 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h5><p>先来分析下题目的第一个提示，<code>Evil AKM Fuzz?</code>，<code>AKM</code>是啥呢？这里我网上搜了下，<code>Authentication and Key Management</code>，中文译为<code>“认证和密钥管理”</code>，那按照题目提示的意思是<code>&quot;邪恶AKM攻击&quot;</code>，<code>sorry</code>，这个我真不知道，抱歉啊，学艺不精，找到一个网站介绍<a href="http://www.tech-faq.com/rsn-robust-secure-network.html" target="_blank" rel="noopener">rsn-robust-secure-network</a>，里面有提到<code>Authentication and Key Management</code>。不过，随着解题步骤的展开，好像发现了这个提示的意义，这个后面讲。</p>
+<p>再看看第二个提示，很明显，提示我们可能需要着重分析数据包中不规范的<code>802.11 frame</code>的数据分组。</p>
+<p>最后一个提示，<code>malformat RSN</code>，先介绍下<code>RSN</code> (<code>Robust Secure Network</code>) ，是通过<code>802.11</code>无线网络建立安全通信的协议，这个<code>RSN</code>在<code>802.11 frame</code>的数据分组哪个地方显示呢？翻看我的上一篇文章<a href="https://www.anquanke.com/post/id/162546" target="_blank" rel="noopener">一道无线流量题目引发的思考</a>其中的<strong>管理帧中Beacon的具体分析</strong>，里面有个<code>Tag: RSN Information</code> ，然后自己去翻数据分组看看呗。</p>
+<p>知道了这些，我们大概有这么个思路，分析<code>dict.pcapng</code>，找到能够解密<code>huwang.cap</code>握手包的秘钥，这个秘钥对于<code>wireshark</code>解密握手包而言，有三种格式，一种是针对<code>wep</code>的<code>wep</code>格式，另外两种是针对<code>WPA</code>的<code>wpa-pwd</code>和<code>wpa-psk</code>格式。详见下图</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540995564167.png" alt="1540995564167"></p>
+<p>关于上述三种秘钥的填入的<code>Key</code>格式如下：</p>
+<p><code>wep</code>：<code>key</code>的格式是十六进制<code>ASCII</code>码的<code>wifi</code>密码，比如此时<code>wifi</code>密码为<code>123456</code>，那么输入的<code>key</code>应该是<code>31:32:33:34:35</code>。</p>
+<p><code>wpa-pwd</code>:<code>key</code>的格式为“密码:BSSID”，如：路由器名称为<code>T35t</code>，密码为<code>12345678</code>，那么输入的<code>key</code>应该是<code>12345678:T35t</code>。</p>
+<p><code>wpa-psk</code>:通过<code>wireshark</code>提供的<a href="https://www.wireshark.org/tools/wpa-psk.html" target="_blank" rel="noopener">转化网址</a>，只需输入<code>ssid</code>和密码就能将其转化为<code>PSK</code>值，将这个<code>psk</code>值即是填入的<code>key</code>值（这个详细操作也可以查看我的上一篇文章<a href="https://www.anquanke.com/post/id/162546" target="_blank" rel="noopener">一道无线流量题目引发的思考</a>，里面也提到另外一种通过<code>airdecap-ng</code>工具解密的方法）。</p>
+<p>额，这里不妨先透露个题解的步骤，此题就是通过最后一种格式<code>wpa-psk</code>对<code>huwang.cap</code>进行解密的，而在这里，知道<code>psk</code>值格式是固定的<code>64</code>位是其中解题的关键。</p>
+<h5 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h5><h6 id="非预期解法"><a href="#非预期解法" class="headerlink" title="非预期解法"></a>非预期解法</h6><p>打开数据包<code>dict.pcapng</code>，简单分析，会发现存在大量的<code>Beacon</code>数据分组，都为畸形数据分组，并且<code>SSID</code>为大量非常见字符。</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540961199789.png" alt="1540961199789"></p>
+<p>往下随意滑动，至中部，会发现依旧为畸形数据分组，但<code>SSID</code>变为了长度均为<code>64</code>位的字符串。（到这里，可能有师傅已经明白解题的关键步骤了）</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540961390093.png" alt="1540961390093"></p>
+<p>比赛做到这里，卡住了，因为那时不知道如何过滤不同类型帧的语句。比赛结束后，尝试了许久，实在没想通接下去的思路。就试着过滤各种<code>802.11</code>类型帧的数据包。然后，奇迹来了。当我试着执行过滤语句<code>wlan.fc.type_subtype == 0x0005</code>过滤管理帧中类型为<code>Probe Response</code>的数据分组时，发现了下面两个分组，这引起了我的注意。</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540699047641.png" alt="1540699047641"></p>
+<p>过滤之后，可以看到这两个畸形帧<code>SSID</code>的值均为<code>e392618fbd761a9467e64f2aaebeb0c40cfad70d1ab323dbe0741bf3fdc475a4</code>。（正好这个时候，出题老哥接受了我的好友申请，我就把自己到这步的思路跟老哥说，老哥有点惊讶”对，就是这个，你是怎么找到的?” “额，直接执行过滤语句<code>wlan.fc.type_subtype == 0x0005</code>找到的”）。</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540699096822.png" alt="1540699096822"></p>
+<p>随后我认真的分析了下这两个数据分组，发现并不完全符合题目中两个提示的要求，这是两个<code>不规范的802.11 frame</code>，但是并不存在<code>malformat RSN</code>的数据呀。这里刚开始以为提示错了，因为按照下图所显示的，只是存在<code>ssid</code>的<code>tag</code>标签<code>Group为Malformed</code>，后面跟着的是正常的<code>Tag:RSN Information</code>的标签。（后来返回去思考，发现是自己错了，这个后面再详细解释）。额，下面这个图有个描述有错，“被”应该改为“并”。</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1541035369849.png" alt="1541035369849"></p>
+<p>但是这两个畸形帧中<code>SSID</code>的长度为<code>64</code>，注意是<code>64</code>！，并且整个数据包里只有这两条<code>Probe Response</code>此类型 5447565467帧的数据分组，你说可不可疑=</p>
+<p>如果懂得<code>wpa-psk</code>解密的<code>key</code>的固定格式为<code>64</code>位，那么自然而然，就会想着把这个长度<code>64</code>位的字符串尝试地去进行握手包<code>huwang.cap</code>的解密，但是那个时候并不清楚这些。也就是为什么上面讲到“<strong>知道<code>psk</code>值格式是固定的<code>64</code>位是其中的关键</strong>”。（当时的我以为还是在<code>dict.pcapng</code>中找到密码，然后使用<code>aircrack-ng</code>爆破<code>huwang.cap</code>的密码，再使用验证正确的密码去解密握手包，再接着分析，所以在这里，你可能不敢相信，我把这<code>64</code>位的字符串，按每隔八位拆分，去尝试爆破出正确的密码，那时太天真了）</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540998207844.png" alt="1540998207844"></p>
+<p>顺着刚刚的思路，打开<code>wireshark</code>，依次按照步骤操作：编辑 -&gt; 首选项 -&gt; <code>Protocols</code> -&gt; <code>IEEE 802.11</code> ，点击<code>Edit</code>，选填<code>wpa-psk</code>，输入刚刚得到的<code>PSK</code>值（那个<code>64</code>位的字符串），进行解密。（说来你可能不敢相信，那是一个慵懒的早上，我躺在床上情不自禁地想着那串<code>64</code>位长度的字符串到底是怎样能解开握手包时。突然意识到这个<code>64</code>字符串有可能是通过<code>wpa-psk</code>解密时所需要的<code>key</code>值，越想越可能，没想到还真是。这种感觉贼虚服，不知道老哥们有没有这种感觉，只可意会，不可言传。）</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540736974189.png" alt="1540736974189"></p>
+<p>再次分析<code>huwang.cap</code>，发现上层数据均已显现出来。分析<code>http</code>，发现一个<code>/djuds8RS/1.txt</code>的访问路径</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540735875613.png" alt="1540735875613"></p>
+<p>尝试访问，打开<code>http://www.wiattack.net/djuds8RS/1.txt</code>，得到<code>flag</code></p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1540690130188.png" alt="1540690130188"></p>
+<h6 id="非预期原因"><a href="#非预期原因" class="headerlink" title="非预期原因"></a>非预期原因</h6><p>关于此题，可能由于环境部署的难度原因，出题老哥忘记做<code>Probe Response</code>此类型帧的混淆了，使得执行过滤语句<code>wlan.fc.type_subtype == 0x0005</code>就可以过滤出类型为<code>Probe Response</code>，且最为可疑<code>malformat RSN</code>数据分组中存在的畸形字长为<code>64</code>位的字符串，然后使用<code>wpa-psk</code>解密方式解密握手包<code>huwang.cap</code>，再分析解密后显现出的<code>http</code>流，即可得到最终的答案。</p>
+<h6 id="预期解法"><a href="#预期解法" class="headerlink" title="预期解法"></a>预期解法</h6><p>准确地讲，题目虽然做出来了，但是这种解法也算是非预期解法。反过来去思考出题的思路，个人猜想出一些可能的预期解法，如下：</p>
+<p>根据提示2，我们先过滤出<strong>不规范的802.11 frame</strong>，过滤语句<code>_ws.expert.group == &quot;Malformed&quot;</code>，这个在数据包里的过滤后的结果显示是这样的</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1541035795841.png" alt="1541035795841"></p>
+<p>根据提示3，它需要的是<code>malformat RSN</code>的数据分组，那我们先过滤出存在<code>RSN</code>的数据分组，因为如果不存在RSN信息的数据分组，我们也就不需要去判断是不是<code>malformat</code>了。但过滤语句怎么写呢？</p>
+<p>因为<code>Tag：RSN Information</code>中<code>Tag Number</code>为48，所以构造过滤语句<code>wlan.tag.number == 48</code></p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1541036018414.png" alt="1541036018414"></p>
+<p>结合提示<code>2</code>和<code>3</code>的过滤语句最后构造为<code>_ws.expert.group == &quot;Malformed&quot;&amp;&amp;wlan.tag.number == 48</code>,下图为过滤结果，过滤出来全都是含有<code>Tag：RSN Information</code>和<code>malformat</code>的帧。</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1541036551342.png" alt="1541036551342"></p>
+<p>但是提示<code>3</code>说的是<code>malformat RSN</code>，所以我们需要知道<code>Tag：RSN Information</code>为不规范的<code>malformat RSN</code>数据分组。稍微仔细点观察，翻到过滤后的数据分组末端，就会发现我们所想看到的<code>malformat RSN</code>分组。</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1541037713427.png" alt="1541037713427"></p>
+<p>上图就是分组序号<code>112936</code>得信息，但是解密的<code>wpa-psk</code>的值并不是这个分组长度<code>64</code>位的<code>ssid</code>值，但是它提供了这个异常分组的源<code>mac</code>地址和目的<code>mac</code>地址，尝试过滤下，页面如下</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1541038302107.png" alt="1541038302107"></p>
+<p>不知你有没有看到那个<code>Tag: RSN Information</code>中包含的子树所显示的<code>Auth Key Management (AKM) Suite Count: 65535</code>，当我看到这里的时候，好像明白了提示一的作用(￣▽￣)／。</p>
+<p>而后面的解法，就跟之前提到的非预期解法一样啦。大家就自己分析去试试吧。其中的许多知识点，比如为啥<code>wpa-psk</code>值一定为<code>64</code>位等等，放了两个链接，大家随意啊。</p>
+<p><a href="https://www.cnblogs.com/rjdeng/archive/2016/07/01/5633642.html" target="_blank" rel="noopener">无线网络密码WPA/WPA2算法介绍（适合新手阅读 ）</a></p>
+<p><a href="http://www.tech-faq.com/rsn-robust-secure-network.html" target="_blank" rel="noopener">rsn-robust-secure-network</a></p>
+<h5 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h5><p>仔细分析流量包，你会发现，其中的<code>Type/Subtype: Beacon frame (0x0008)</code>类型数据分组是做了大量混淆工作的，而说起这种混淆技术，运用的是哪种方法实现的那就够得谈了，这不仅涉及到题目的原理，也涉及到测试攻击的不同手段，下次讲咯。下面先放出本题所模拟<code>Beacon</code>大量请求的截图（本测试为个人设备演示，<code>T35t</code>为测试<code>AP</code>）：</p>
+<p><img src="/2018/11/09/护网杯-old-Attack题解/1541047943236.png" alt="1541047943236"></p>
+<p>最后，好好学习，天天向上。ヾ(๑╹◡╹)ﾉ”</p>
+<p>ps:</p>
+<p>本文由安全客原创发布  </p>
+<p>转载，请参考<a href="https://www.anquanke.com/note/repost" target="_blank" rel="noopener">转载声明</a>，注明出处： <a href="https://www.anquanke.com/post/id/163596" target="_blank" rel="noopener">https://www.anquanke.com/post/id/163596</a>  </p>
+<p>安全客 - 有思想的安全新媒体</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/25/一道无线流量题目引发的思考/" rel="next" title="一道无线流量题目引发的思考">
+                <i class="fa fa-chevron-left"></i> 一道无线流量题目引发的思考
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/06/一些烦恼/" rel="prev" title="一些烦恼">
+                一些烦恼 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#护网杯-Misc-old-Attack题解"><span class="nav-number">1.</span> <span class="nav-text">护网杯-Misc-old Attack题解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目提示"><span class="nav-number">1.1.</span> <span class="nav-text">题目提示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#题目附件"><span class="nav-number">1.2.</span> <span class="nav-text">题目附件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析思路"><span class="nav-number">1.3.</span> <span class="nav-text">分析思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解题步骤"><span class="nav-number">1.4.</span> <span class="nav-text">解题步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#非预期解法"><span class="nav-number">1.4.1.</span> <span class="nav-text">非预期解法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#非预期原因"><span class="nav-number">1.4.2.</span> <span class="nav-text">非预期原因</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#预期解法"><span class="nav-number">1.4.3.</span> <span class="nav-text">预期解法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#题目总结"><span class="nav-number">1.5.</span> <span class="nav-text">题目总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":160},"mobile":{"show":true}});</script></body>
+</html>

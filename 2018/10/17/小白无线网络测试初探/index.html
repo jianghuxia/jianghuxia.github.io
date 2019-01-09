@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="wifi," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="随着技术的发展，无线网络wifi遍布每个角落，殊不知隐藏其中的风云涌动。">
+<meta name="keywords" content="wifi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无线网络安全测试初探">
+<meta property="og:url" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="随着技术的发展，无线网络wifi遍布每个角落，殊不知隐藏其中的风云涌动。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539766546221.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539769981074.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539772396878.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539772788037.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539606051094.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539606171774.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539606394503.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539606434916.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539689803585.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539606748048.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539607665822.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539607498731.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539607906628.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539608374358.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539609090135.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539609764786.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539609304195.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539609717980.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539610127880.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539700073811.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539700191232.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539700462910.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539748612030.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539701713227.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539748464553.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539784367010.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539784299745.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539784690422.png">
+<meta property="og:updated_time" content="2018-10-23T10:08:28.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无线网络安全测试初探">
+<meta name="twitter:description" content="随着技术的发展，无线网络wifi遍布每个角落，殊不知隐藏其中的风云涌动。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/1539766546221.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/"/>
+
+
+
+
+
+  <title>无线网络安全测试初探 | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2018/10/17/小白无线网络测试初探/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">无线网络安全测试初探</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-17T22:22:35+08:00">
+                2018-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>随着技术的发展，无线网络<code>wifi</code>遍布每个角落，殊不知隐藏其中的风云涌动。</p>
+<a id="more"></a> 
+<p>这学期上了计算机网络，但是学过了其中的浅浅知识，有点无聊，正好看到<code>IEEE 802.11</code>，加上最近护网杯出了一题与无线<code>AP</code>流量包的分析题目，赛终依旧<code>0</code>解。遂自行学习一波知识，从原理入手，动手实验，归纳一番。</p>
+<h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><code>AP</code>：<code>Access Point</code>,中文名”无线访问接入点“，在本篇文章中，无线路由器也指<code>AP</code>。<code>AP</code>的功能主要使无线设备能够快速轻易地与无线网络连接，是无线设备与有线局域网络的桥梁。</p>
+<p><code>IEEE 802.11</code>协议：说起无线网络，那么就不得不提到<code>IEEE 802.11</code>标准，该协议主要用于解决终端之间的无线接入，包括<code>wifi</code>，蓝牙等等。所以，学习无线网络的相关知识，翻阅<code>IEEE 802.11</code>文档是必须的。</p>
+<p><code>Aircrack-ng</code>：一个与<code>IEEE 802.11</code>标准的无线网络分析有关的安全软件。</p>
+<p><code>SSID</code>：<code>Service Set Identifier</code> ，中文名为服务集标识。在本篇中，运用<code>Aircrack-ng</code>的界面中，有出现<code>BSSID</code>和<code>ESSID</code>，在其中<code>BSSID</code>指的是<code>AP</code>的<code>MAC</code>地址，<code>ESSID</code>为<code>AP</code>的名称。</p>
+<h4 id="加密模式"><a href="#加密模式" class="headerlink" title="加密模式"></a>加密模式</h4><h5 id="WPS加密（Wi-FI-Protected-Setup）"><a href="#WPS加密（Wi-FI-Protected-Setup）" class="headerlink" title="WPS加密（Wi-FI Protected Setup）"></a><code>WPS</code>加密（Wi-FI Protected Setup）</h5><p>在早期的<code>wifi</code>中，人们发现<code>wifi</code>的便利性，相应地，为了维护个人或集体的数据隐私，也添加了无线网络加密认证。但由于早期的认证步骤过于繁杂，干脆不做任何加密安全的设定，从而引发许多安全问题，于是WPS加密模式应运而生。通过该模式，用户只需在每次连接无线路由器上的<code>WPS</code>按键（<code>Push Button Condiguration</code>，按钮模式）或者输入此时路由器的<code>PIN</code>码（<code>Pin Input Configuration</code>,个人识别码模式），就能将新设备加入无线网络中。</p>
+<p>如果你听说过爆破<code>PIN码</code>，继而得到<code>wifi</code>密码这种操作也正是个人识别码模式的缺陷，或者说是<code>WPS</code>的漏洞。<code>PIN</code>码是由8位纯数字组成的，第8位为校验位，而这一位是可以通过前7位计算的。在验证PIN码时，会先检测前四位，如果验证成功，则反馈一条信息。而通过这点，爆破前四位，由反馈的信息验证，即可得到正确的前四位，剩余的四位中，因为最后一位是通过<code>PIN</code>码前7位算出的，只需再爆破后四位中的前三位，我们就可以爆破得到<code>AP</code>的<code>PIN</code>码。</p>
+<p><code>WPS</code>也叫作<code>QSS</code>，一般在路由器的“QSS安全设置”页面即可找到。（并不是所有的无线路由器都支持<code>WPS</code>）</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539766546221.png" alt="1539766546221"></p>
+<p>另外，大多数路由器默认的<code>QSS</code>是关闭的，需要手动开启。</p>
+<h5 id="WEP加密（Wired-Equivalent-Privacy-有效等效保密协议）"><a href="#WEP加密（Wired-Equivalent-Privacy-有效等效保密协议）" class="headerlink" title="WEP加密（Wired Equivalent Privacy,有效等效保密协议）"></a><code>WEP</code>加密（Wired Equivalent Privacy,有效等效保密协议）</h5><p>说起<code>WEP</code>，大家并不陌生，在八年前那个时候，<code>wifi</code>的兴起，“蹭网“的热情，想必都经历过。虽然，<code>WEP</code>已经逐渐被<code>WPA-PSK/WPA2-PSK</code>模式取代，但是打开你的手机无线网络，相信在众多的<code>wifi</code>中，你还是能发现那么一两个<code>WEP</code>的<code>wifi</code>。</p>
+<p><code>WEP</code>工作原理是通过使用<code>RC4</code>（Rivest Cipher）串流技术加密，并使用<code>CRC32</code>（循环冗余校验）校验和保证资料的正确性。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539769981074.png" alt="1539769981074"></p>
+<p>如上图，<code>WEP</code>使用<code>RC4</code>的算法产生伪随机序列流，将其与要传输的明文进行<code>xor</code>运算，再利用<code>CRC</code>算法生成ICV<code>完整性校验值</code>，再将刚刚的<code>xor</code>内容和<code>ICV</code>组合在一起，完成传输。其中，<code>RC4</code>的秘钥由初始化向量<code>IV</code>（24位）和用户秘钥<code>SK</code>组成。当然，解密过程即是加密过程的逆推，首先检验CRC的值，进行完整性校验，提取出IV值，和对应的用户私钥<code>SK</code>通过<code>RC4</code>计算出伪随机序列号，进行<code>xor</code>运算，计算出<code>ICV&#39;</code>值。再通过对比原先的<code>ICV</code>值，判断数据正确性。</p>
+<p>可以发现上述的过程中，如果攻击者获得了两段由相同的RC4密钥流序列加密后得到的密文，只需<code>xor</code>下，得到的也就是两段明文的<code>xor</code>内容，那么密钥就会失效。其次，初始化向量IV对于整个<code>RC4</code>的加密过程中，起到关键作用。先甩个国外的文档<a href="http://www.opus1.com/www/whitepapers/whatswrongwithwep.pdf" target="_blank" rel="noopener">whatswrongwithwep.pdf</a>，其中描述了IV重用问题引起的<code>WEP</code>容易被破解的关键原因。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539772396878.png" alt="1539772396878"></p>
+<p>如果加密时使用的IV值相同，那么对于使用相同的数据帧加密密钥是不安全的。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539772788037.png" alt="1539772788037"></p>
+<p>再者之前提到过<code>WEP</code>的初始化向量<code>IV</code>为<code>24</code>位，每个传输的数据帧任意选择其中一个<code>IV</code>值进行加密。也就是说IV的选择范围只有<code>224</code>。假设<code>IV</code>初始值设为<code>0</code>，每传送一个数据帧，<code>IV</code>值增加<code>1</code>，这样在传输<code>224</code>个数据帧后就会遇到<code>IV</code>重用问题。而导致<code>WEP</code>容易被破解的原因，正是因为这个原因，对于通讯繁忙的<code>AP</code>，很可能在短期内导致<code>IV</code>的重复使用。</p>
+<p>再者，由于<code>IV</code>是明文传送的，因此攻击者能获得两个或多个使用相同密钥的数据帧，就可以使用静态分析来恢复明文。 下面测试的破解<code>WEP</code>过程中，<code>ArpRequest</code>注入攻击原理是就是通过读取交互设备之间的<code>ARP</code>请求报文，并伪造报文再次重发出去，从而刺激<code>AP</code>产生更多的数据包，以供抓取更多的<code>IVS</code>数据包，加快破解速度。</p>
+<p>而对于<code>wep</code>引发的安全问题，人们也采取了以下措施：</p>
+<p>1、使用<code>WPA-PSK/WPA2-PSK</code>模式</p>
+<p>2、设置无线网络<code>MAC</code>地址过滤</p>
+<h5 id="WPA-PSK-WPA2-PSK加密（Wi-Fi-Protected-Access）"><a href="#WPA-PSK-WPA2-PSK加密（Wi-Fi-Protected-Access）" class="headerlink" title="WPA-PSK/WPA2-PSK加密（Wi-Fi Protected Access）"></a><code>WPA-PSK/WPA2-PSK</code>加密（Wi-Fi Protected Access）</h5><p>说到这里，有个疑问，为什么<code>WPA-PSK/WPA2-PSK</code>加密合在一起讲呢？其实大同小异，你可以这样认为，<code>WPA</code>是为了弥补<code>WEP</code>缺陷所研究的加密模式，<code>WPA2</code>则是<code>WPA</code>的升级版本。关于<code>WPA-PSK/WPA2-PSK</code>网上有许多不错的学习链接，不再赘述，这里放两个<a href="https://blog.csdn.net/arick2013/article/details/48375751" target="_blank" rel="noopener">学习链接1</a>、<a href="https://www.cnblogs.com/chinasun021/archive/2013/01/18/2866343.html" target="_blank" rel="noopener">学习链接2</a>。</p>
+<p>在阅读相应的文档，你会发现，<code>WPA</code>引用了<code>IEEE802.1x</code>的身份认证标准：<a href="https://www.wikiwand.com/zh-hans/%E6%89%A9%E5%B1%95%E8%AE%A4%E8%AF%81%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">EAP</a>（Extensible Authentication Protocol）。其包括<a href="https://www.wikiwand.com/en/Temporal_Key_Integrity_Protocol" target="_blank" rel="noopener">TKIP</a>（临时密钥完整性协议）和<a href="https://www.wikiwand.com/en/Message_Integrity_Check" target="_blank" rel="noopener">MIC</a>（消息完整性检查）。<code>WEP</code>使用<code>64</code>位或<code>128</code>位加密密钥，必须在无线接入点和设备上手动输入，并且不会更改。<code>TKIP</code>使用每个数据包密钥，这意味着它为每个数据包动态生成一个新的128位密钥，从而防止类似攻击<code>WEP</code>的攻击方式。而<code>MIC</code>，旨在防止攻击者更改和重新发送数据包，取代了之前<code>WEP</code>标准使用的<a href="https://www.wikiwand.com/en/Cyclic_redundancy_check" target="_blank" rel="noopener">CRC</a>（循环冗余校验）。</p>
+<p><code>WPA2</code>较<code>WPA</code>采用了更加强大的<code>AES-CCMP</code>取代<code>WPA</code>中的<code>TKIP/MIC</code>,<code>AES-CCMP</code>(AES Counter Mode CBC-MAC Protocol) 结合了两种复杂的加密技术（计数器模式和<code>CBC-MAC</code>），从而在移动客户端和接入点之间提供强大的安全协议。之所以使用<code>AES</code>，一是<code>AES</code>加密算法安全性比<code>TKIP</code>更高，而且在使用<code>TKIP</code>算法时，路由器的吞吐量会下降，进而影响到路由器的性能。</p>
+<p>另外不得不提，今年一月份，<code>Wi-Fi</code>联盟发布了WPA3，相比较<code>WPA2</code>，又多了一些安全性的改性，有兴趣可以深入研究一番哦。</p>
+<h4 id="环境设置"><a href="#环境设置" class="headerlink" title="环境设置"></a>环境设置</h4><h5 id="测试配置"><a href="#测试配置" class="headerlink" title="测试配置"></a>测试配置</h5><p>数台品牌不同的安卓手机，数台<code>PC</code>以及默认驱动为<code>rt7601u</code>型号为<code>Ralink</code>的无线网卡，<code>TP</code>路由器。</p>
+<h5 id="外置网卡配置"><a href="#外置网卡配置" class="headerlink" title="外置网卡配置"></a>外置网卡配置</h5><p>接下来使用<code>iwconfig -a</code>的命令可以查看所有无线网卡的信息，默认的外置网卡名为<code>wlan0</code>。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539606051094.png" alt="1539606051094"></p>
+<p>使用<code>iwconfig</code>命令，可以查看<code>wlan0</code>网卡的详细信息。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539606171774.png" alt="1539606171774"></p>
+<p>但是发现该<code>wlan0</code>网卡并没有处于嗅探状态<code>monitor</code>监听模式，所以接下来需要激活网卡至<code>monitor</code>监听模式。使用<code>Aircrack-ng</code>中的<code>airmon-ng</code>工具激活，执行命令：<code>airmon-ng start wlan0</code>。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539606394503.png" alt="1539606394503"></p>
+<p>已将<code>wlan0</code>更改为<code>wlan0mon</code>，且处于<code>monitor</code>监听模式，再次执行命令<code>ifconfig</code>可以看到</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539606434916.png" alt="1539606434916"></p>
+<p>再次执行命令<code>iwconfig</code>验证是否处于<code>monitor</code>监听模式。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539689803585.png" alt="1539689803585"></p>
+<p>可以看到网卡<code>wlan0mon</code>已经处于嗅探状态<code>monitor</code>监听模式，设置嗅探成功。</p>
+<p>当然此时再次查看<code>wireshark</code>的抓包界面，也可以看到<code>mon0</code>。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539606748048.png" alt="1539606748048"></p>
+<p>接下来进行一些相关的测试。</p>
+<h4 id="测试目标"><a href="#测试目标" class="headerlink" title="测试目标"></a>测试目标</h4><h5 id="测试环境一：WPA-PSK-WPA2-PSK模式"><a href="#测试环境一：WPA-PSK-WPA2-PSK模式" class="headerlink" title="测试环境一：WPA-PSK/WPA2-PSK模式"></a>测试环境一：WPA-PSK/WPA2-PSK模式</h5><p>该模式下路由配置如下，名称为<code>T35t</code></p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539607665822.png" alt="1539607665822"></p>
+<p>密码为<code>t35ttest</code></p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539607498731.png" alt="1539607498731"></p>
+<h6 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h6><p>执行命令<code># airodump-ng wlan0mon</code>查看周围无线设备，发现测试目标<code>T35t</code>（<code>T35t</code>为该路由器<code>ESSID</code>号），频道<code>11</code>以及其他信息。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539607906628.png" alt="1539607906628"></p>
+<p>过滤语句<code>airodump-ng wlan0mon --bssid 30:FC:68:CA:13:DF -c 11</code>只查看跟该设备相关的无线信号。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539608374358.png" alt="1539608374358"></p>
+<p>可以看到存在设备<code>mac</code>地址为<code>00:00:00:00:00:00</code>（就是那串模糊的，懂不·—·）的设备正在连接该路由器</p>
+<p>嗯，接下来使用命令<code>airodump-ng wlan0mon --bssid 30:FC:68:CA:13:DF -c 11 -w capture_wap</code>将该信号抓取保存为前缀名为<code>capture_wap</code>的文件，执行该条命令界面运行如下：</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539609090135.png" alt="1539609090135"></p>
+<p>打开新的命令行界面（注意：之前的命令行界面不要关闭），然后执行命令<code>aireplay-ng -0 1 -a 30:FC:68:CA:13:DF -c 00:00:00:00:00:00 wlan0mon</code></p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539609764786.png" alt="1539609764786"></p>
+<p>执行成功后，正常情况下，稍等几秒，原先界面右上角即会出现<code>WPA handshake: 30:FC:68:CA:13:DF</code>，意味着成功抓到握手包，接下来只需字典爆破握手包即可。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539609304195.png" alt="1539609304195"></p>
+<p>执行命令<code>aircrack-ng capture_wap-01.cap</code>，查看捕获握手包数据信息。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539609717980.png" alt="1539609717980"></p>
+<p>执行命令<code>aircrack-ng capture_wap-01.cap -w dictiontry.txt</code>，爆破字典为<code>dictiontry.txt</code>文件。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539610127880.png" alt="1539610127880"></p>
+<p>成功找到密码<code>t35ttest</code>。</p>
+<h6 id="测试坑点一："><a href="#测试坑点一：" class="headerlink" title="测试坑点一："></a>测试坑点一：</h6><p>执行命令<code>airodump-ng wlan0mon</code>查看周围无线设备时，如果发现界面右上角存在 <code>fixed channel mon0: -1</code>字样，那么，建议换成<code>kali</code>虚拟机重新测试吧，原因是因为操作系统内核不兼容。之前尝试<code>ubuntu16.04</code>抓握手包，半天抓不到，网上去找原因，才知道是这里出了问题。</p>
+<h6 id="测试坑点二："><a href="#测试坑点二：" class="headerlink" title="测试坑点二："></a>测试坑点二：</h6><p>在进行<code>aireplay-ng -0 1 -a 30:FC:68:CA:13:DF -c 00:00:00:00:00:00 wlan0mon</code>这条命令时，发现了一些问题。首先，该命令是执行<code>Deauth</code>攻击加速破解过程的命令，原理是通过发送<code>Deauth</code>的数据包，将已连接至无线路由器的合法客户端强制断开，此时，客户端就会重新自动重新连接无线路由器，也就是在这个过程中，有机会获得<code>WPA-PSK</code>握手验证的完整数据包。而这条命令中<code>-0</code>参数表示采用<code>Deauth</code>攻击模式，后面紧跟着攻击次数<code>1</code>次，<code>-a</code>参数后跟AP的MAC地址，<code>-c</code>参数后跟客户端的<code>MAC</code>地址，此命令也就表示为，采用<code>Deauth</code>攻击模式，将MAC地址为<code>00:00:00:00:00:00</code>客户端与MAC地址为<code>30:FC:68:CA:13:DF</code>AP之间的通信强制断开<code>1</code>次。其次，在经过几次测试中发现，除各型号安卓机型外，苹果手机在收到<code>Deauth</code>攻击后，重新连接<code>AP</code>的时段中，抓不到相应的握手包，而其他设备，均可抓到握手包。这里排除其他原因，单纯地看,苹果手机好像略高一畴。<code>^……^</code>！</p>
+<h5 id="测试环境二：WEP模式"><a href="#测试环境二：WEP模式" class="headerlink" title="测试环境二：WEP模式"></a>测试环境二：WEP模式</h5><p>配置的<code>AP</code>如下，设置<code>WEP</code>模式下的秘钥为<code>12345</code></p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539700073811.png" alt="1539700073811"></p>
+<h6 id="实验步骤-1"><a href="#实验步骤-1" class="headerlink" title="实验步骤"></a>实验步骤</h6><p>同样执行<code>airodump-ng wlan0mon</code>探测周围的设备</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539700191232.png" alt="1539700191232"></p>
+<p>由上图可知当前目标AP的工作频道为<code>11</code>，相应地，过滤出当前<code>AP</code>可以清晰看到与当前<code>AP</code>进行连接的其他设备。</p>
+<p>执行命令<code>airodump-ng wlan0mon --bssid 30:FC:68:CA:13:DF -c 11</code></p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539700462910.png" alt="1539700462910"></p>
+<p>上图可以查看详细的交互设备MAC，模糊处的MAC地址为<code>00:00:00:00:00:00</code>。</p>
+<p>接下来抓取<code>IVS</code>数据报文，执行命令<code>airodump-ng --ivs -w capture_wep -c 11 wlan0mon --bssid 30:FC:68:CA:13:DF</code>，该条命令表示只抓取<code>bssid</code>为<code>30:FC:68:CA:13:DF</code>的<code>IVS</code>数据报文，并将其保存至前缀名为<code>capture_wep</code>的文件中。</p>
+<p>执行完上条命令后，新开一个命令行界面，执行命令<code>aireplay-ng -3 -b 30:FC:68:CA:13:DF -h 00:00:00:00:00:00 wlan0mon</code>，该命令参数<code>-3</code> 表示采用<code>ArpRequest</code>注入攻击模式，<code>-b</code>后紧跟<code>AP</code>的<code>MAC</code>地址，<code>-h</code>后紧跟客户端<code>MAC</code>地址。<code>ArpRequest</code>注入攻击原理是通过读取交互设备之间的ARP请求报文，并伪造报文再次重发出去，从而刺激<code>AP</code>产生更多的数据包，以供抓取更多的<code>IVS</code>数据包，加快破解速度。在执行该条命令后，查看之前的界面可以发现<code>Data</code>列的数据一直在增加。</p>
+<p>然后再新开一个界面，执行命令<code>aircrack-ng capture_wep-01.ivs</code>，<code>Aircrack-ng</code>就会自动进行破解。</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539748612030.png" alt="1539748612030"></p>
+<p>成功破解密码<code>12345</code>，耗时大概两分多钟。什么，密码设置的太简单了，那接下来设置个比较难的呗：<code>#fl?\2a&amp;*6^g{</code></p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539701713227.png" alt="1539701713227"></p>
+<p>按照上面的命令，依旧破解下来，也只是多花了几分钟的时间，这还是除去虚拟机的配置，<code>hhh~</code></p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539748464553.png" alt="1539748464553"></p>
+<p>所以如果还是<code>WEP</code>的，赶紧换<code>WPA2</code>吧，亡羊补牢，哪怕还没亡羊。</p>
+<h5 id="测试环境三：WPS模式"><a href="#测试环境三：WPS模式" class="headerlink" title="测试环境三：WPS模式"></a>测试环境三：WPS模式</h5><p>无线路由器PIN码设置为<code>54808782</code></p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539784367010.png" alt="1539784367010"></p>
+<h6 id="实验步骤-2"><a href="#实验步骤-2" class="headerlink" title="实验步骤"></a>实验步骤</h6><p>该模式下，可以使用<code>Reaver</code>工具强制爆破<code>PIN</code>码，通过<code>PIN</code>码得到<code>wifi</code>密码。</p>
+<p>同样先使用<code>airmon-ng start wlan0</code>进行网卡嗅探</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539784299745.png" alt="1539784299745"></p>
+<p>查看到目标<code>AP</code>的<code>SSID</code>即可开始测试，这里依旧与之前的MAC地址相同：<code>30:FC:68:CA:13:DF</code></p>
+<p>执行命令<code>reaver -i wlan0mon -b 30:FC:68:CA:13:DF -p 54808782</code>，稍等一会，即会出现以下界面</p>
+<p><img src="/2018/10/17/小白无线网络测试初探/1539784690422.png" alt="1539784690422"></p>
+<p>可以看到已经破解成功。当然，这是在已知<code>PIN</code>码情况下，进行的测试。在不知<code>PIN</code>码的情况下只能爆破，基本上是个几天几夜，对应的命令为<code>reaver -i wlan0mon -b 30:FC:68:CA:13:DF -vv</code>。</p>
+<p>虽然许多路由器默认关闭<code>WPS</code>，但还是建议大家认真检查下，如果开了<code>QQS</code>，顺手把它关了吧。反正也就是举手之劳，省掉一个安全隐患，何乐不为？</p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>以上的种种测试，均是自行配置设备，再自行测试，学术不精，见谅。实践出真知，了解攻击原理，有助于更好部署防御措施。“害群之马者坏人也，非兵也”，自行斟酌，三思后行。</p>
+<p><strong>ps:</strong></p>
+<p><code>本文由安全客原创发布</code>  </p>
+<p><code>转载，请参考</code><a href="https://www.anquanke.com/note/repost" target="_blank" rel="noopener">转载声明</a><code>，注明出处：</code> <a href="https://www.anquanke.com/post/id/162209" target="_blank" rel="noopener">https://www.anquanke.com/post/id/162209</a>  </p>
+<p><code>安全客 - 有思想的安全新媒体</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/wifi/" rel="tag"># wifi</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/27/首届信安之路巅峰挑战赛writeup详解/" rel="next" title="首届信安之路巅峰挑战赛writeup详解">
+                <i class="fa fa-chevron-left"></i> 首届信安之路巅峰挑战赛writeup详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/25/一道无线流量题目引发的思考/" rel="prev" title="一道无线流量题目引发的思考">
+                一道无线流量题目引发的思考 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加密模式"><span class="nav-number">2.</span> <span class="nav-text">加密模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#WPS加密（Wi-FI-Protected-Setup）"><span class="nav-number">2.1.</span> <span class="nav-text">WPS加密（Wi-FI Protected Setup）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#WEP加密（Wired-Equivalent-Privacy-有效等效保密协议）"><span class="nav-number">2.2.</span> <span class="nav-text">WEP加密（Wired Equivalent Privacy,有效等效保密协议）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#WPA-PSK-WPA2-PSK加密（Wi-Fi-Protected-Access）"><span class="nav-number">2.3.</span> <span class="nav-text">WPA-PSK/WPA2-PSK加密（Wi-Fi Protected Access）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境设置"><span class="nav-number">3.</span> <span class="nav-text">环境设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#测试配置"><span class="nav-number">3.1.</span> <span class="nav-text">测试配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#外置网卡配置"><span class="nav-number">3.2.</span> <span class="nav-text">外置网卡配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试目标"><span class="nav-number">4.</span> <span class="nav-text">测试目标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#测试环境一：WPA-PSK-WPA2-PSK模式"><span class="nav-number">4.1.</span> <span class="nav-text">测试环境一：WPA-PSK/WPA2-PSK模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实验步骤"><span class="nav-number">4.1.1.</span> <span class="nav-text">实验步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#测试坑点一："><span class="nav-number">4.1.2.</span> <span class="nav-text">测试坑点一：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#测试坑点二："><span class="nav-number">4.1.3.</span> <span class="nav-text">测试坑点二：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#测试环境二：WEP模式"><span class="nav-number">4.2.</span> <span class="nav-text">测试环境二：WEP模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实验步骤-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">实验步骤</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#测试环境三：WPS模式"><span class="nav-number">4.3.</span> <span class="nav-text">测试环境三：WPS模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实验步骤-2"><span class="nav-number">4.3.1.</span> <span class="nav-text">实验步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":160},"mobile":{"show":true}});</script></body>
+</html>

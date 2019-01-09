@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ctf," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="实在是太无聊了，找了找比赛打，Codefest2018这个感觉跟以往的ctf比赛不同，感觉更偏向代码能力的考查，以下是这次自己做出来的题目writeup，菜鸡一枚。">
+<meta name="keywords" content="ctf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codefest2018 CTF 部分题目writeup">
+<meta property="og:url" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="实在是太无聊了，找了找比赛打，Codefest2018这个感觉跟以往的ctf比赛不同，感觉更偏向代码能力的考查，以下是这次自己做出来的题目writeup，菜鸡一枚。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535766037090.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535766076578.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535879235703.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535879374237.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535877269304.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535877528777.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535892298309.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535879938784.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535880232974.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535769690535.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535769505500.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535882244230.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535882176697.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535882473635.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535882547718.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535882938272.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535880958735.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535773565813.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535880779671.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535893121359.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535893522278.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535894260379.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535894689021.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535897369171.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535895884842.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535895863184.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535896502425.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535896553352.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535897514713.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535897143197.png">
+<meta property="og:updated_time" content="2018-09-02T16:16:31.746Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codefest2018 CTF 部分题目writeup">
+<meta name="twitter:description" content="实在是太无聊了，找了找比赛打，Codefest2018这个感觉跟以往的ctf比赛不同，感觉更偏向代码能力的考查，以下是这次自己做出来的题目writeup，菜鸡一枚。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/1535766037090.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/"/>
+
+
+
+
+
+  <title>Codefest2018 CTF 部分题目writeup | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2018/09/03/Codefest2018-CTF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Codefest2018 CTF 部分题目writeup</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-03T00:11:04+08:00">
+                2018-09-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>实在是太无聊了，找了找比赛打，Codefest2018这个感觉跟以往的ctf比赛不同，感觉更偏向代码能力的考查，以下是这次自己做出来的题目writeup，菜鸡一枚。</p>
+<a id="more"></a> 
+<h4 id="Freebies"><a href="#Freebies" class="headerlink" title="Freebies"></a>Freebies</h4><p><strong>problem</strong></p>
+<p>This one’s simple. Join the <a href="https://www.hackerrank.com/external_redirect?to=https://join.slack.com/t/codefest-ctf-18/shared_invite/enQtNDI2MjY1NDcyNDA2LTdiNTczZWUxMjJkZWUwMmQ5MTIxNzMzNDMwMjU5ZTU5MWFlYzU1MjY0MTE2NWI4ZTEyMWFkMTNlYzg3MTAxMTQ" target="_blank" rel="noopener">Slack channel</a> to get the flag.</p>
+<p>这题算是签到题，但也是寻找了好一番，就不放答案了</p>
+<h4 id="Fortune-Cookie"><a href="#Fortune-Cookie" class="headerlink" title="Fortune Cookie"></a>Fortune Cookie</h4><p><strong>problem</strong></p>
+<p>H4k3r has heard that there is a secret hidden behind this <a href="https://www.hackerrank.com/external_redirect?to=http://34.216.132.109:8084/" target="_blank" rel="noopener">website</a>, but he is confused as to how to get access to it. Can you help him</p>
+<p>这题，呃，很简单，该下cookies(说着简单，最后试了半天才发现是admin，不是Admin)</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535766037090.png" alt="1535766037090"></p>
+<p><code>Who are you?=admin</code>即可</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535766076578.png" alt="1535766076578"></p>
+<h4 id="Typing-Master"><a href="#Typing-Master" class="headerlink" title="Typing Master"></a>Typing Master</h4><p><strong>problem</strong></p>
+<p>If you think you have it in you, connect now to 34.216.132.109 9093 and prove your mettle.</p>
+<p>You will be presented with a simple typing task which is meant to check your typing speed.</p>
+<p>For example, <em>Can you type ‘Z’ 10 times followed by ‘u’ 6 times, followed by the sum of their ASCII values?</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZZZZZZZZZZuuuuuu207</span><br></pre></td></tr></table></figure>
+<p><strong>Input Format</strong></p>
+<p><strong>Regarding input to the server</strong> - The question was designed keeping netcat in mind. Some users who are using other tools/language (eg, Python, PuTTY, TELNET) to connect to the server please note that they do not terminate the strings like netcat does. If you choose not to use netcat, the message you send to our server should terminate with a trailing newline (‘\n’) and nothing else.</p>
+<p>nc下,先看看大概是啥样子的</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535879235703.png" alt="1535879235703"></p>
+<p>发现每次访问，要求的都不一样，甚至返回的字符串也不一样，想了想，觉得还是一个脚本的事，需要正则一下即可</p>
+<p>脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> re </span><br><span class="line"></span><br><span class="line">conn=remote(<span class="string">'34.216.132.109'</span>,<span class="number">9093</span>)</span><br><span class="line">text=conn.recv()</span><br><span class="line"><span class="keyword">print</span> text</span><br><span class="line"></span><br><span class="line">result = re.findall(<span class="string">r"'(\w)' (\d*)"</span>, text)</span><br><span class="line"><span class="comment">#print result</span></span><br><span class="line"><span class="comment">#print result[0][0]</span></span><br><span class="line"><span class="comment">#print result[0][1]</span></span><br><span class="line"></span><br><span class="line">str1=(result[<span class="number">0</span>][<span class="number">0</span>] * int(result[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line">str2=(result[<span class="number">1</span>][<span class="number">0</span>] * int(result[<span class="number">1</span>][<span class="number">1</span>]))</span><br><span class="line">str3=(str(ord(result[<span class="number">0</span>][<span class="number">0</span>]) +  ord(result[<span class="number">1</span>][<span class="number">0</span>])))</span><br><span class="line">S = <span class="string">''</span>.join(str1+str2+str3)</span><br><span class="line"><span class="keyword">print</span> S</span><br><span class="line"></span><br><span class="line">conn.sendline(S)</span><br><span class="line"><span class="keyword">print</span> conn.recv()</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535879374237.png" alt="1535879374237"></p>
+<p>最终答案：<code>CodefestCTF{1_s33_y0u_4r3_a_m4n_0f_sp33d}</code></p>
+<h4 id="Web-BooK"><a href="#Web-BooK" class="headerlink" title="Web BooK"></a>Web BooK</h4><p><strong>problem</strong></p>
+<p>It is expected to complete reading a book/novel to pass the course, but the students being clever avoid reading the whole book by going through the summary only.  Santosh(their course teacher) comes up with a new idea, he creates a magic book (you can only go to next page, that is: you can’t go to next page without reading the previous one and so on, and you can only start from the beginning).  It is know that the flag is hidden somewhere in the book, so the only way to pass the course is to read the whole book, find the flag. The book has 1000 pages so better be fast. And if you are lucky, you may even find the key on the very first page itself.  <a href="https://www.hackerrank.com/external_redirect?to=http://34.216.132.109:8083/fp/" target="_blank" rel="noopener">link to Web_BooK</a></p>
+<p>打开网站，发现如下页面，点击next发现，都是没有规则的url</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535877269304.png" alt="1535877269304"></p>
+<p>没办法，只能简单爬虫脚本写下，源码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://34.216.132.109:8083'</span></span><br><span class="line">page = <span class="string">'/fp/'</span></span><br><span class="line">s = requests.Session()</span><br><span class="line"></span><br><span class="line">counter = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">True</span>):</span><br><span class="line">    counter += <span class="number">1</span></span><br><span class="line">    r = s.get(url + page)</span><br><span class="line">    page_text = r.text</span><br><span class="line">    <span class="keyword">print</span> page_text</span><br><span class="line">    page = re.findall(<span class="string">'action="(.*?)"'</span>, page_text)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">print</span> page, counter</span><br></pre></td></tr></table></figure>
+<p>运行下</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535877528777.png" alt="1535877528777"></p>
+<h4 id="Access-Denied"><a href="#Access-Denied" class="headerlink" title="Access Denied?"></a>Access Denied?</h4><p><strong>problem</strong></p>
+<p>A school IT staff manages access to secure files by the method of access code. You are required to give your name and the access code, and the program will give out secret information.</p>
+<p>It checks whether you already have an access code, generates new random one along with a new user ID alloted to the user, if that user is not found locally on the system. The access codes are known to have random expiration time (don’t know what goes on in their minds!), so don’t be surprised if you generated an access code just seconds ago and next time the same access code doesn’t work.</p>
+<p>Johnny decided to go into the IT room and copy the program into his pendrive. You can find it <a href="https://www.hackerrank.com/external_redirect?to=https://drive.google.com/open?id=1KGoBbSNViJS8aZsh1Jjp8XbESv0E-Z4t" target="_blank" rel="noopener">here</a>.</p>
+<p>Can you get the secret information out from the program? The service runs on 34.216.132.109 on port 9094.</p>
+<p><strong>Constraints</strong></p>
+<p>User ID / UID will be a positive integer</p>
+<p>这题给了个school.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> user_functions</span><br><span class="line"></span><br><span class="line">user = raw_input(<span class="string">"Enter your name: "</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> user_functions.exists(user):</span><br><span class="line">	<span class="comment"># generate a code</span></span><br><span class="line"></span><br><span class="line">	count_ = user_functions.generateID(user)%<span class="number">1000</span>	<span class="comment">#User ID/ UID in the table is always positive</span></span><br><span class="line"></span><br><span class="line">	generator = <span class="string">"xorshift"</span></span><br><span class="line">	random.seed(generator)</span><br><span class="line">	count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> ch <span class="keyword">in</span> user:</span><br><span class="line">		ra = random.randint(<span class="number">1</span>, ord(ch))</span><br><span class="line">		rb = (ord(ch) * random.randint(<span class="number">1</span>, len(user))) ^ random.randint(<span class="number">1</span>, ord(ch))</span><br><span class="line"></span><br><span class="line">		count += (ra + rb)/<span class="number">2</span></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	code = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,count+count_):</span><br><span class="line">		code = (code + random.randint(<span class="number">1</span>, i) ) % <span class="number">1000000</span></span><br><span class="line"></span><br><span class="line">	final = random.randint(<span class="number">1</span>,<span class="number">9</span>) * <span class="number">1000000</span> + code</span><br><span class="line"></span><br><span class="line">	<span class="comment">#store it in the database</span></span><br><span class="line">	user_functions.store(user, final)</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment">#if user already exists, fetch access code</span></span><br><span class="line">	final = user_functions.get_code(user)</span><br><span class="line"></span><br><span class="line">code = raw_input(<span class="string">"Enter your access code: "</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> code.isdigit():</span><br><span class="line">		<span class="keyword">if</span> (int(code) == final):</span><br><span class="line">			<span class="keyword">print</span> <span class="string">"The flag is "</span> + user_functions.get_flag(user)</span><br><span class="line">			exit()</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="keyword">print</span> <span class="string">"Incorrect access code"</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">print</span> <span class="string">"The code must be an integer"</span></span><br><span class="line"></span><br><span class="line">	code = (raw_input(<span class="string">"\nPlease enter the code: "</span>))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">print</span> <span class="string">"\n###############################################"</span></span><br></pre></td></tr></table></figure>
+<p>乍一看好像挺复杂的，其实不然，只需要爆破即可，简单分析下</p>
+<p>起始变量<code>count</code> 是由我们输入的<code>user</code>确定的。如果我们每次测试时都提供相同的<code>user</code>，那么最终<code>count</code>变量也都是不变的；而<code>count_</code>变量嘛，虽然不知道到底是什么嘛，但是模<code>1000</code>得到的结果只可能是<code>[0,999]</code>；而<code>code</code>呢？由于<code>code</code>种子<code>xorshift</code>生成的，我们可以根据<code>count_</code>遍历<code>code</code>。只需要稍微改改给的school.py我们就可以暴力跑出答案。</p>
+<p>核心代码其实也就是下面这个：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">1000</span>):</span><br><span class="line">    count_ = i</span><br><span class="line"></span><br><span class="line">    <span class="comment"># the seed is always the same</span></span><br><span class="line">    generator = <span class="string">"xorshift"</span></span><br><span class="line">    random.seed(generator)</span><br><span class="line">    count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> user:</span><br><span class="line">        ra = random.randint(<span class="number">1</span>, ord(ch))</span><br><span class="line">        rb = (ord(ch) * random.randint(<span class="number">1</span>, len(user))) ^ random.randint(<span class="number">1</span>, ord(ch))</span><br><span class="line">        count += (ra + rb)/<span class="number">2</span></span><br><span class="line">    code = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,count+count_):</span><br><span class="line">        code = (code + random.randint(<span class="number">1</span>, i) ) % <span class="number">1000000</span></span><br><span class="line">    final = random.randint(<span class="number">1</span>,<span class="number">9</span>) * <span class="number">1000000</span> + code</span><br></pre></td></tr></table></figure>
+<p>完整代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">list_code = []</span><br><span class="line">user = <span class="string">'jianghu'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">1000</span>):</span><br><span class="line">    count_ = i</span><br><span class="line"></span><br><span class="line">    generator = <span class="string">"xorshift"</span></span><br><span class="line">    random.seed(generator)</span><br><span class="line">    count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> user:</span><br><span class="line">        ra = random.randint(<span class="number">1</span>, ord(ch))</span><br><span class="line">        rb = (ord(ch) * random.randint(<span class="number">1</span>, len(user))) ^ random.randint(<span class="number">1</span>, ord(ch))</span><br><span class="line"></span><br><span class="line">        count += (ra + rb)/<span class="number">2</span></span><br><span class="line"></span><br><span class="line">    code = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,count+count_):</span><br><span class="line">        code = (code + random.randint(<span class="number">1</span>, i) ) % <span class="number">1000000</span></span><br><span class="line"></span><br><span class="line">    final = random.randint(<span class="number">1</span>,<span class="number">9</span>) * <span class="number">1000000</span> + code</span><br><span class="line">    list_code.append(final)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> list_code</span><br><span class="line"></span><br><span class="line">con = remote(<span class="string">'34.216.132.109'</span>,<span class="number">9094</span>)</span><br><span class="line">con.recvuntil(<span class="string">'Enter your name: '</span>)</span><br><span class="line">con.sendline(user)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list_code:</span><br><span class="line">    text = con.recv()</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'flag'</span> <span class="keyword">not</span> <span class="keyword">in</span> text:</span><br><span class="line">        con.sendline(str(i))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> text,i</span><br><span class="line">        sys.exit()</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535892298309.png" alt="1535892298309"></p>
+<p>最终答案：<code>CodefestCTF{1_s33_y0u_4r3_a_m4n_0f_r4nd0mn3ss}</code></p>
+<h4 id="It’s-Magic"><a href="#It’s-Magic" class="headerlink" title="It’s Magic"></a>It’s Magic</h4><p><strong>problem</strong></p>
+<p>Repair given corrupted file to get the flag.  <a href="https://www.hackerrank.com/external_redirect?to=https://drive.google.com/file/d/10O4w6rtsUiCspM94qdXqvHeTj-4O0RfX/view?usp=sharing" target="_blank" rel="noopener">download file here</a></p>
+<p>下载完毕后，拖到winhex里，拖到尾部发现<code>FFD9</code>，尝试改文件头，发现无效</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535879938784.png" alt="1535879938784"></p>
+<p>遂尝试网上搜索在线修复受损图片，找到一个<a href="https://online.officerecovery.com/cn/fix-damaged-photo-file-online/" target="_blank" rel="noopener">工具网站</a></p>
+<p>修复完成后，打开即有flag</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535880232974.png" alt="1535880232974"></p>
+<p>最终答案：<code>CodefestCTF{mAgic_byTes}</code></p>
+<h4 id="Hidden-Agenda"><a href="#Hidden-Agenda" class="headerlink" title="Hidden Agenda"></a>Hidden Agenda</h4><p><strong>problem</strong></p>
+<p>Just before getting caught in Russia, MI-6 agent John Stegwal sent a mail to MI-6 containing two <a href="https://www.hackerrank.com/external_redirect?to=https://drive.google.com/drive/folders/1GHCN9eIRPtlMA0xGxnr44nY0boo-6DOx?usp=sharing" target="_blank" rel="noopener">visually similar images</a>. It is possible that the images contain information on how to access his findings. Can you find the message he sent?</p>
+<p>给了两个<code>jpg</code>文件：<code>image1.jpg</code>与<code>image2.jpg</code>。</p>
+<p>先用<code>StegSolve</code>将<code>image1.jpg</code>与<code>image2.jpg</code>来次<code>xor</code>，发现有个二维码的痕迹，保存为<code>solved.bmp</code></p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535769690535.png" alt="1535769690535"></p>
+<p>将<code>solved.bmp</code>与<code>image1.jpg</code>再来一次MUL，得到一个可扫的清晰二维码</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535769505500.png" alt="1535769505500"></p>
+<p>扫出来是个网址<code>https://drive.google.com/file/d/13chbULOlKaOM_jI8_RaxECZ0xzJUg7Y4/view</code>，打开后，有张图片，下载下来，打开后可以看到清晰的<code>flag{</code>字样，然后，没然后了，这张图片只有<code>flag{</code>（那时候看到flag，开心极了，贼坑）</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535882244230.png" alt="1535882244230"></p>
+<p>没事，我吃柠檬。谷歌了下，找了找有关<code>jpg</code>图片隐写，找到了个<code>jsteg</code>，哟，试试</p>
+<p>先试试<code>image1.jpg</code>，试出东西来了</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535882176697.png" alt="1535882176697"></p>
+<p>得到了个<code>flg.exe</code>，<code>winhex</code>看下，没看懂是啥</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535882473635.png" alt="1535882473635"></p>
+<p><code>file</code>下，发现是个<code>MP3</code></p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535882547718.png" alt="1535882547718"></p>
+<p>改后缀名，听了听，这是鸟叫声？<code>exm</code>?拖到<code>Adobe Audition CC2017</code>试试，查看了下频谱图</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535882938272.png" alt="1535882938272"></p>
+<p>得到最终答案：<code>CodefestCTF{0b5cur17y &gt; 53cur17y}</code></p>
+<h4 id="Thunder"><a href="#Thunder" class="headerlink" title="Thunder"></a>Thunder</h4><p>此题给了个流量包<code>thunder.pcap</code>，包不大，分析发现好几个<code>flag.jpg</code>，但是都是不完整的。</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535880958735.png" alt="1535880958735">尝试根据<code>jpg</code>文件的文件格式来拼图。先导出<code>http</code>对象，删除重复的。此题有个坑点，不可以按照分组序号的大小来拼，必须按照<code>TCP</code>流所显示的时间依小到大排序，然后拼好即可。</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535773565813.png" alt="1535773565813"></p>
+<p>人懒，写了个<code>bat</code>脚本<code>1.bat</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type flag*.jpg&gt;&gt;all.jpg</span><br></pre></td></tr></table></figure>
+<p>以下是<code>all.jpg</code></p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535880779671.png" alt="1535880779671"></p>
+<p>得到最终答案：<code>CodefestCTF{AP_is_amazing}</code></p>
+<h4 id="Polyglot"><a href="#Polyglot" class="headerlink" title="Polyglot"></a>Polyglot</h4><p><strong>problem</strong></p>
+<p>Chetu writes code with weird whitespace, and nobody knows why. He uses his own <a href="https://www.hackerrank.com/external_redirect?to=https://drive.google.com/open?id=12pZCXtDxvGqZUEzaZ-I_3Md-bPizUILT" target="_blank" rel="noopener">C interpreter</a>, which is probably the only thing that can handle his absurd code. He insists its more secure this way. Since no one ever believes him, he demonstrated his technique on <a href="https://www.hackerrank.com/external_redirect?to=https://drive.google.com/open?id=17ORWMNSOodeEarjuYDXHswlC_6t_kH_A" target="_blank" rel="noopener">this vulnerable code</a>.  Can you get the flag?</p>
+<p>这题贼有意思，贼好玩。题目给了两个文件，但是做这题，我只用了<code>c</code>代码的文件，另外一个<code>elf</code>都没看。</p>
+<p>首先我们看看<code>c</code>代码：</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535893121359.png" alt="1535893121359"></p>
+<p>会发现，这些数字排序，怎么都是空那么多格子的呢？奇怪，但是突然想起了写<code>python</code>脚本时，会因为空格和<code>tab</code>混淆而报错，下意识看看这些空白字符是由什么构成的。<code>Notepad++</code>有个功能</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535893522278.png" alt="1535893522278"></p>
+<p>果然，这些空白字符是由不同的空格字符和制表符组成。尝试先用脚本读读</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535894260379.png" alt="1535894260379"></p>
+<p>果然，猜想是正确的，那么现在需要提取下这些空白的字符。想到了正则表达式，其中<code>\s</code>表示只要出现空白就匹配。但是匹配完后有什么用了？随即想到有没可能是<code>0</code>,<code>1</code>替换，到时候来个二进制转换<code>ASCII</code>可见字符。尝试一波，先匹配试试，然后<code>‘\t’</code>替换成<code>1</code>，<code>‘ ’</code>替换成<code>0</code>，得到了想要的答案</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535894689021.png" alt="1535894689021"></p>
+<p>最终答案：<code>CodefestCTF{sP4c3S AnD\tAb5}</code></p>
+<h4 id="Intercept"><a href="#Intercept" class="headerlink" title="Intercept"></a>Intercept</h4><p><strong>problem</strong></p>
+<p>Garry encrypted a message with his public key and mailed it to Monika. Sure Garry is an idiot. The intercepted mail is given below as seen from Monika’s side. Decrypt the message to get the key.  <a href="https://www.hackerrank.com/external_redirect?to=https://drive.google.com/file/d/1T9mCsfp-QZFnas6scLSUx7cg9yYmT8hH/view?usp=sharing" target="_blank" rel="noopener">interceptedMail.eml</a></p>
+<p>下载文件后，发现<code>eml</code>中存在<code>zip</code>，<code>base64</code>解码下</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535897369171.png" alt="1535897369171"></p>
+<p>有两个文件，<code>flag.enc</code>是密文，但是私钥哪去了呢？其实在下面那个文件里。</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535895884842.png" alt="1535895884842"></p>
+<p>其中<code>Public_Key_Encryption_.docx</code>实际上是是个压缩包，<code>winhex</code>下看到了<code>PK</code>的头</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535895863184.png" alt="1535895863184"></p>
+<p>改后缀名，解压。寻找一番没找到私钥。最后才发现，在解压文件中<code>word\media\</code>，存在三张图片</p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535896502425.png" alt="1535896502425"></p>
+<p>其中的<code>image1.png</code>的尾部存在私钥<img src="/2018/09/03/Codefest2018-CTF/1535896553352.png" alt="1535896553352"></p>
+<p>那么，提取出来，保存为<code>private.pem</code></p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535897514713.png" alt="1535897514713"></p>
+<p>额，<code>openssl</code>解密下，执行命令<code>openssl rsautl -decrypt -in flag.enc -inkey private.pem -out flag.txt</code></p>
+<p><img src="/2018/09/03/Codefest2018-CTF/1535897143197.png" alt="1535897143197"></p>
+<p>最终答案：<code>CodefestCTF{kristeinStewart_is_5EXY}</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ctf/" rel="tag"># ctf</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/31/一次网络流量分析引起的分析/" rel="next" title="一次网络流量分析引发的思考">
+                <i class="fa fa-chevron-left"></i> 一次网络流量分析引发的思考
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/10/noxCTF2018-web解析/" rel="prev" title="noxCTF2018 web解析">
+                noxCTF2018 web解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Freebies"><span class="nav-number">1.</span> <span class="nav-text">Freebies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fortune-Cookie"><span class="nav-number">2.</span> <span class="nav-text">Fortune Cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Typing-Master"><span class="nav-number">3.</span> <span class="nav-text">Typing Master</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-BooK"><span class="nav-number">4.</span> <span class="nav-text">Web BooK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Access-Denied"><span class="nav-number">5.</span> <span class="nav-text">Access Denied?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#It’s-Magic"><span class="nav-number">6.</span> <span class="nav-text">It’s Magic</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hidden-Agenda"><span class="nav-number">7.</span> <span class="nav-text">Hidden Agenda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Thunder"><span class="nav-number">8.</span> <span class="nav-text">Thunder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Polyglot"><span class="nav-number">9.</span> <span class="nav-text">Polyglot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intercept"><span class="nav-number">10.</span> <span class="nav-text">Intercept</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":160},"mobile":{"show":true}});</script></body>
+</html>

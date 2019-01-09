@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="wifi," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="学习一番IEEE 802.11后，从原理性角度分析一道无线流量的CTF题目。">
+<meta name="keywords" content="wifi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一道无线流量题目引发的思考">
+<meta property="og:url" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="学习一番IEEE 802.11后，从原理性角度分析一道无线流量的CTF题目。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540112190240.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540132034379.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540173014585.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540175874395.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540176058686.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540176332046.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540177912309.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540178936411.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540180703551.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540181032687.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540181063404.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540180902963.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540195478057.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540181190099.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540194252910.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540215449129.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540216568389.png">
+<meta property="og:updated_time" content="2018-10-26T04:12:21.064Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一道无线流量题目引发的思考">
+<meta name="twitter:description" content="学习一番IEEE 802.11后，从原理性角度分析一道无线流量的CTF题目。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/1540112190240.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/"/>
+
+
+
+
+
+  <title>一道无线流量题目引发的思考 | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2018/10/25/一道无线流量题目引发的思考/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一道无线流量题目引发的思考</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T15:56:38+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习一番<code>IEEE 802.11</code>后，从原理性角度分析一道无线流量的CTF题目。</p>
+<a id="more"></a> 
+<p>在文章的开头处，先贴个<a href="http://10.254.1.201:9999/www.willhackforsushi.com/papers/80211_Pocket_Reference_Guide.pdf" target="_blank" rel="noopener">wireshark分析802.11协议的pdf链接</a>，可根据该文档所描述的内容快速过滤相应的数据包，这也是本文讲述如何使用<code>wireshark</code>学习分析<code>IEEE802.11</code>的帮助文档。不懂就翻翻咯~。本篇以一道<code>ciscn2018</code>的题目为引，从原理性分析学习<code>IEEE802.11</code>。</p>
+<h4 id="帧的基本类型"><a href="#帧的基本类型" class="headerlink" title="帧的基本类型"></a>帧的基本类型</h4><p>关于帧的基本类型，基本上大家也都知道三种类型（贴个<a href="http://drops.xmd5.com/static/drops/wireless-15128.html" target="_blank" rel="noopener">基础知识链接</a>，不大理解的先看其中无线网络基础知识部分），这里重点讲述下管理帧。</p>
+<h5 id="Management-frame（管理帧）"><a href="#Management-frame（管理帧）" class="headerlink" title="Management frame（管理帧）"></a>Management frame（管理帧）</h5><p>该帧的所显示的数据包一般用于各个设备之间建立第二层的连接，提供认证和连接服务。</p>
+<p>该帧又细分为下面<code>14</code>种类型，每种类型所对应的中文注释以及过滤语句均已呈现。</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540112190240.png" alt="1540112190240"></p>
+<p>而在管理帧中，值得重要一提的是<code>Beacon</code>，俗称<strong>信标</strong>，<code>Beacon</code>就像广播一般，向周边的其他设备声明某<code>AP</code>的类型及配置信息。下面会详细分析该帧。</p>
+<h5 id="Control-frames（控制帧）"><a href="#Control-frames（控制帧）" class="headerlink" title="Control frames（控制帧）"></a>Control frames（控制帧）</h5><p>协助数据帧的传递，控制数据帧和管理帧的发送。</p>
+<h5 id="Data-frame-数据帧"><a href="#Data-frame-数据帧" class="headerlink" title="Data frame (数据帧)"></a>Data frame (数据帧)</h5><p>包含真正的传输数据，最重要的是它可以将数据从无线网络转发到有线网络。在<code>wireshark</code>中，如果<code>AP</code>是使用的是<code>WEP</code>或者<code>WAP</code>加密,<code>Data frame</code>类型包，经过<code>wireshark</code>自带的解密功能<code>wep</code>、<code>wpa-pwd</code>、<code>wpa-psk</code>任意一种方法解密后，该类型数据包就会解析为更高层次的数据包，比如<code>http</code>数据包，在等会讲述的例题中，便与此相关。</p>
+<h4 id="管理帧中Beacon的具体分析"><a href="#管理帧中Beacon的具体分析" class="headerlink" title="管理帧中Beacon的具体分析"></a>管理帧中Beacon的具体分析</h4><p>关于管理帧的具体分析，这里直接挑选<code>Beacon</code>来讲解。</p>
+<p>为什么需要重点讲述<code>Beacon</code>呢？<code>Beacon</code>作为一个广播数据包，是一个<code>AP</code>向所有无线设备通知存在一个可用的<code>AP</code>，涵盖了一个<code>AP</code>大量的配置参数信息。另外，在<code>IEEE802.11</code>下，不同管理帧的具体内容和用途虽然不一样，但其他都与<code>Beacon</code>相似。下面即是一个<code>Beacon</code>的例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">Frame 1: 279 bytes on wire (2232 bits), 279 bytes captured (2232 bits) on interface 0</span><br><span class="line">Radiotap Header v0, Length 24</span><br><span class="line">802.11 radio information</span><br><span class="line">IEEE 802.11 Beacon frame, Flags: ........	-beacon广播包</span><br><span class="line">    Type/Subtype: Beacon frame (0x0008)		-可使用wlan.fc.type_subtype == 0x0008过滤</span><br><span class="line">    Frame Control Field: 0x8000				</span><br><span class="line">        .... ..00 = Version: 0				</span><br><span class="line">        .... 00.. = Type: Management frame (0)	-帧类型为管理帧</span><br><span class="line">        1000 .... = Subtype: 8					</span><br><span class="line">        Flags: 0x00</span><br><span class="line">    .000 0000 0000 0000 = Duration: 0 microseconds</span><br><span class="line">    Receiver address: Broadcast (ff:ff:ff:ff:ff:ff)</span><br><span class="line">    Destination address: Broadcast (ff:ff:ff:ff:ff:ff)</span><br><span class="line">    Transmitter address: Tp-LinkT_ca:13:df (30:<span class="built_in">fc</span>:68:ca:13:df) 			-传输mac地址</span><br><span class="line">    Source address: Tp-LinkT_ca:13:df (30:<span class="built_in">fc</span>:68:ca:13:df)			-源地址</span><br><span class="line">    BSS Id: Tp-LinkT_ca:13:df (30:<span class="built_in">fc</span>:68:ca:13:df)				-bssid</span><br><span class="line">    .... .... .... 0000 = Fragment number: 0</span><br><span class="line">    0110 1110 1011 .... = Sequence number: 11</span><br><span class="line">IEEE 802.11 wireless LAN				-IEEE 802.11帧信息</span><br><span class="line">    Fixed parameters (12 bytes)				-固定参数</span><br><span class="line">        Timestamp: 0x000000017752d876			-发送数据包的时间戳</span><br><span class="line">        Beacon Interval: 0.102400 [Seconds]		-beacon数据包的重传间隔</span><br><span class="line">        Capabilities Information: 0x0431		-Wap的硬件容量信息</span><br><span class="line">    Tagged parameters (219 bytes)			-标记参数</span><br><span class="line">        Tag: SSID parameter <span class="built_in">set</span>: T35t			-ssid（网络名称）	</span><br><span class="line">        Tag: Supported Rates 1(B), 2(B), 5.5(B), 11(B), 6, 9, 12, 18, [Mbit/sec]</span><br><span class="line">        Tag: DS Parameter <span class="built_in">set</span>: Current Channel: 1				-Wap广播信道</span><br><span class="line">        Tag: Traffic Indication Map (TIM): DTIM 0 of 0 bitmap			-传输指示映射</span><br><span class="line">        Tag: ERP Information										</span><br><span class="line">        Tag: Extended Supported Rates 24, 36, 48, 54, [Mbit/sec]		-扩展支持速率</span><br><span class="line">        Tag: HT Capabilities (802.11n D1.10)					-超线程性能</span><br><span class="line">        Tag: HT Information (802.11n D1.10)					-超线程信息</span><br><span class="line">        Tag: RSN Information							-安全网络信息</span><br><span class="line">        Tag: Vendor Specific: Microsoft Corp.: WPA Information Element		-供应商及WPA信息</span><br><span class="line">            Tag Number: Vendor Specific (221)					-供应商编号</span><br><span class="line">            Tag length: 22							-长度</span><br><span class="line">            OUI: 00:50:f2 (Microsoft Corp.)					-安装程序</span><br><span class="line">            Vendor Specific OUI Type: 1	</span><br><span class="line">            Type: WPA Information Element (0x01)				-类型</span><br><span class="line">            WPA Version: 1							-WPA版本为1</span><br><span class="line">            Multicast Cipher Suite: 00:50:f2 (Microsoft Corp.) AES (CCM)	-多播密码插件</span><br><span class="line">            Unicast Cipher Suite Count: 1				   	-单播密码套件数</span><br><span class="line">            Unicast Cipher Suite List 00:50:f2 (Microsoft Corp.) AES (CCM)  -单播密码套件列表</span><br><span class="line">            Auth Key Management (AKM) Suite Count: 1	   -认证密钥管理套件数</span><br><span class="line">            Auth Key Management (AKM) List 00:50:f2 (Microsoft Corp.) PSK   -认证密钥管理列表</span><br><span class="line">        Tag: Vendor Specific: Microsoft Corp.: WMM/WME: Parameter Element	</span><br><span class="line">        Tag: Vendor Specific: TP-LINK TECHNOLOGIES CO.,LTD.					</span><br><span class="line">        Tag: Vendor Specific: Microsoft Corp.: WPS</span><br></pre></td></tr></table></figure>
+<h4 id="原理性题解：2018ciscn-misc-寻找入侵者"><a href="#原理性题解：2018ciscn-misc-寻找入侵者" class="headerlink" title="原理性题解：2018ciscn-misc-寻找入侵者"></a>原理性题解：2018ciscn-misc-寻找入侵者</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p><code>黑客使用无线钓鱼攻击一个SSID为“CyberPeace”的热点，但是我们的蜜罐系统捕获了他的数据包，并且已经得知他的握手包密码就是他的网卡地址。可是根据我们最新获得的情况，他又发送重连请求的Malformat Frame试图崩溃我们的无线路由器。请从attack包中找到密码，并解开他的数据包,找到那条畸形数据。</code></p>
+<p>题目所给附件：</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540132034379.png" alt="1540132034379"></p>
+<h5 id="思路解析"><a href="#思路解析" class="headerlink" title="思路解析"></a>思路解析</h5><p><code>attack.pcapng</code>记录着蜜罐系统所抓取的所有数据包，而<code>hanshake.cap</code>则是蜜罐系统抓取的黑客的握手包。本题的思路也就是通过分析<code>attack.pcapng</code>，寻找到黑客<code>mac</code>地址，然后通过<code>aircrack-ng</code>工具验证<code>hanshake.cap</code>握手包的密码，并且使用这个密码解密<code>hanshake.cap</code>的数据。通过分析解密后的<code>hanshake.cap</code>的<code>http</code>数据，找到另外一个<code>key.pcap</code>的在线下载链接，然后分析<code>key.pcap</code>，找到其中的畸形数据，也就是最终的答案。</p>
+<h5 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h5><p><code>wireshark</code>打开<code>attack.pcapng</code>数据包，依照题意<strong>“黑客使用无线钓鱼攻击一个SSID为‘CyberPeace’的热点”</strong>，我们可以先过滤<code>SSID</code>名为<code>CyberPeace</code>的<code>Beacon</code>的信标分组(一般通过<code>Beacon</code>就可以分析出<code>AP</code>的基本信息)，过滤语句<code>wlan.fc.type_subtype == 0x0008&amp;&amp;wlan.ssid==CyberPeace</code>，如下图</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540173014585.png" alt="1540173014585"></p>
+<h6 id="坑点一：使用时钟偏差检测AP的真伪"><a href="#坑点一：使用时钟偏差检测AP的真伪" class="headerlink" title="坑点一：使用时钟偏差检测AP的真伪"></a>坑点一：使用时钟偏差检测<code>AP</code>的真伪</h6><p>过滤之后，发现数据分组依旧多的一匹，思考了半天，网上翻阅资料一堆，隔天才找到<a href="http://drops.xmd5.com/static/drops/wireless-15128.html" target="_blank" rel="noopener">相关的资料</a>，其中有此描述</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540175874395.png" alt="1540175874395"></p>
+<p>也就是根据 <code>IEEE802.11</code>协议中的<code>TSF</code>（<code>Time Synchronization Function</code>，定时同步功能），通过收集<code>AP</code>的<code>Beacon</code>（信标帧）或者<code>Probe response</code>（探头响应消息）来计算AP的时钟偏差，通过与特征库中储存的偏差值比较，判断此<code>AP</code>是否为无线钓鱼<code>AP</code>。</p>
+<p>那么问题来了，<code>wireshark</code>怎么查看时间戳在哪呢？额，我们随便挑个<code>Beacon</code>的分组看看，时间戳在<code>IEEE 802.11 wireless LAN</code>的分支下（上面），如下图：</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540176058686.png" alt="1540176058686"></p>
+<p>接着，我们继续往下观察各分组的<code>Timestamp</code>的值，一直到<code>2153</code>分组，终于观察到不同的地方</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540176332046.png" alt="1540176332046"></p>
+<p>第<code>2153</code>分组中<code>Timestamp</code>的值为<code>0x0000000000000000</code>，与其他<code>AP</code>中<code>Beacon</code>的<code>Timestamp</code>值不同，而此时的<code>AP</code>对应<code>mac</code>地址的值为<code>88:25:93:c1:c8:eb</code>（上图显示为<code>TP-LinkT_c1:c8:eb</code>）。再查看此<code>mac</code>地址其他<code>Beacon</code>的分组包，比如序号分组为<code>2192</code>、<code>2237</code>、<code>2306</code>（<code>SN</code>的值依次为2，3，4）中的<code>Timestamp</code>的值，你会发现<code>Timestamp</code>的值均为<code>0x0000000000000000</code>。</p>
+<p>或者更直观一点，执行过滤语句：</p>
+<p><code>wlan.fc.type_subtype == 0x0008&amp;&amp;wlan.ssid==CyberPeace&amp;&amp;wlan.fixed.timestamp == 0x00</code>，观察下图，会发现均值<code>mac</code>地址的值为<code>88:25:93:c1:c8:eb</code>的<code>Beacon</code>，且<code>Timestamp</code>均为<code>0x0000000000000000</code>。（分析结束后，发现直接执行过滤语句<code>wlan.fixed.timestamp ==0x00</code>，也可以得到相同的结果）</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540177912309.png" alt="1540177912309"></p>
+<p>故根据以上分析，再依照题意<strong>“并且已经得知他的握手包密码就是他的网卡地址”</strong>，我们可以确定黑客的网卡地址为<code>88:25:93:c1:c8:eb</code>，<code>hanshake.cap</code>的握手密码也应是<code>88:25:93:c1:c8:eb</code>，将这个密码写入文件<code>d1.txt</code>中，然后通过<code>aircrack-ng</code>工具验证下密码的正确与否，执行命令<code>aircrack-ng hanshake.cap -w d1.txt</code>。</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540178936411.png" alt="1540178936411"></p>
+<p>如上图结果所示，验证成功。接下来就是解开<code>hanshake.cap</code>这个<code>wpa</code>握手包里的数据了。</p>
+<h6 id="坑点二：已知wifi密码如何正确解密cap数据包"><a href="#坑点二：已知wifi密码如何正确解密cap数据包" class="headerlink" title="坑点二：已知wifi密码如何正确解密cap数据包"></a>坑点二：已知<code>wifi</code>密码如何正确解密<code>cap</code>数据包</h6><p>这里主要有两种方法（当然还有其他的方法，比如使用<code>Cain</code>解密），一种通过<code>wireshark</code>提供的<a href="https://www.wireshark.org/tools/wpa-psk.html" target="_blank" rel="noopener">转化网址</a>，只需输入<code>ssid</code>和密码就能将其转化为<code>PSK</code>值。</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540180703551.png" alt="1540180703551"></p>
+<p>然后打开<code>wireshark</code>，依次按照步骤操作：编辑  -&gt;  首选项  -&gt;  <code>Protocols</code> -&gt;  <code>IEEE 802.11</code> ，点击<code>Edit</code></p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540181032687.png" alt="1540181032687"></p>
+<p>然后选填<code>wpa-psk</code>，输入刚刚转化得到的<code>PSK</code>值，进行解密</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540181063404.png" alt="1540181063404"></p>
+<p>尝试过<code>wpa-pwd</code>，发现格式错误，解密无效</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540180902963.png" alt="1540180902963"></p>
+<p>另一种方法是通过<code>airdecap-ng</code>工具解密，执行命令<code>airdecap-ng -p 88:25:93:c1:c8:eb -e Honey hanshake.cap</code></p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540195478057.png" alt="1540195478057"></p>
+<p>打开解密后的流量包，会发现解析出了其他协议的数据分组</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540181190099.png" alt="1540181190099"></p>
+<p>仔细分析后，发现执行<code>http.request.method==GET</code>语句过滤后，存在个<code>key.rar</code>压缩包的下载网址</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540194252910.png" alt="1540194252910"></p>
+<p>因为这个文件当时是通过分析出来的，然后通过在线网址直接下载的。但之前链接已经失效（自己之前的没存(╥╯^╰╥)），不过还好，左问右问，还有老哥存着<code>key.rar</code>，要了一份，在这里特别感谢<a href="https://www.jianshu.com/u/121bf0f6b3d2" target="_blank" rel="noopener">阿烨</a>老哥，谢谢。</p>
+<p>打开压缩包，解压得到个<code>key.pcap</code>，<code>wireshark</code>打开分析，这里先将正常的预期做法，包括踩坑步骤讲述下：</p>
+<p>打开数据包后，再仔细看看题目，其中讲到<strong>“他又发送重连请求的Malformat Frame试图崩溃我们的无线路由器”</strong>，故我们先执行过滤语句<code>wlan.addr==88:25:93:c1:c8:eb</code>过滤出黑客网卡发出的所有包。</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540215449129.png" alt="1540215449129"></p>
+<p>可以看到所有的过滤后所有的分组都是<code>Type/Subtype: Association Request (0x0000)</code>，上面讲过 <code>Association Request</code>中文释义”关联请求“，顾名思义，而黑客通过<code>Association Request</code>发送了大量的<code>Malformat</code>，企图崩溃无线路由器。而在最后一条分组中找到了答案，也就是那条<strong>“畸形数据”</strong>。</p>
+<p><img src="/2018/10/25/一道无线流量题目引发的思考/1540216568389.png" alt="1540216568389"></p>
+<p>最终答案：<code>CISCN{Z9DY20jZIyjzY5vs0UQZVUg86eMYlNMzH}</code></p>
+<p>在其中的数据包中，我们发现黑客是使用了大量的<code>Association Request</code>发送了大量的<code>Malformat</code>攻击路由器，这其实是无线<code>AP</code>中<code>dos</code>攻击中一种<code>Association Flood Attack</code>（关联洪水攻击），简称<code>Asso攻击</code>。关于几种攻击方式，计划着之后来篇动手实践<code>fuzz</code>玩<code>AP</code>的总结(✪ω✪)。</p>
+<h5 id="关于此题的思考"><a href="#关于此题的思考" class="headerlink" title="关于此题的思考"></a>关于此题的思考</h5><p>关于此题，看了许多资料，想了想这题的出题原理，在安全客上顺带找到一篇<a href="https://www.anquanke.com/post/id/84689" target="_blank" rel="noopener">【技术分享】基于802.11Fuzz技术的研究</a>，发现就是原出题作者写的，在此先膜下。<code>orz~</code>。</p>
+<p>此题，那时比赛后看了许多<code>writeup</code>，基本上黑客<code>mac</code>地址都是<code>wireshark</code>提取出来，然后爆破的，而最后的畸形数据也是<code>strings key.pcap</code>出来的。自己那时也是差不多的做法，正好最近学习了一波<code>IEEE 802.11</code>，那就从原理角度梳理下这题，发现学到的东西也是不少啊。如果有其他的做法，欢迎师傅们一起讨论。</p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>不得不说，最近学习<code>IEEE 802.11</code>协议有一种快乐的感觉，虽然其中很多东西需要自己不断的搜索资料，阅读书籍，但是学习之后，再结合实验，发现学到的东西真的挺多的，那种充实感、成就感相信大家都有过，共勉吧，好好学习，天天向上。</p>
+<p>ps:</p>
+<p>本文由安全客原创发布  </p>
+<p>转载，请参考<a href="https://www.anquanke.com/note/repost" target="_blank" rel="noopener">转载声明</a>，注明出处： <a href="https://www.anquanke.com/post/id/162546" target="_blank" rel="noopener">https://www.anquanke.com/post/id/162546</a>  </p>
+<p>安全客 - 有思想的安全新媒体</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/wifi/" rel="tag"># wifi</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/17/小白无线网络测试初探/" rel="next" title="无线网络安全测试初探">
+                <i class="fa fa-chevron-left"></i> 无线网络安全测试初探
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/09/护网杯-old-Attack题解/" rel="prev" title="护网杯-old Attack题解">
+                护网杯-old Attack题解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#帧的基本类型"><span class="nav-number">1.</span> <span class="nav-text">帧的基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Management-frame（管理帧）"><span class="nav-number">1.1.</span> <span class="nav-text">Management frame（管理帧）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Control-frames（控制帧）"><span class="nav-number">1.2.</span> <span class="nav-text">Control frames（控制帧）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Data-frame-数据帧"><span class="nav-number">1.3.</span> <span class="nav-text">Data frame (数据帧)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理帧中Beacon的具体分析"><span class="nav-number">2.</span> <span class="nav-text">管理帧中Beacon的具体分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原理性题解：2018ciscn-misc-寻找入侵者"><span class="nav-number">3.</span> <span class="nav-text">原理性题解：2018ciscn-misc-寻找入侵者</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#思路解析"><span class="nav-number">3.2.</span> <span class="nav-text">思路解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解题步骤"><span class="nav-number">3.3.</span> <span class="nav-text">解题步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#坑点一：使用时钟偏差检测AP的真伪"><span class="nav-number">3.3.1.</span> <span class="nav-text">坑点一：使用时钟偏差检测AP的真伪</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#坑点二：已知wifi密码如何正确解密cap数据包"><span class="nav-number">3.3.2.</span> <span class="nav-text">坑点二：已知wifi密码如何正确解密cap数据包</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于此题的思考"><span class="nav-number">3.4.</span> <span class="nav-text">关于此题的思考</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":160},"mobile":{"show":true}});</script></body>
+</html>
