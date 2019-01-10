@@ -98,7 +98,9 @@
 <meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547045867057.png">
 <meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547045821425.png">
 <meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547045687376.png">
-<meta property="og:updated_time" content="2019-01-09T14:59:23.441Z">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547124004907.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/01/09/计算机网络期末复习/1547125514495.png">
+<meta property="og:updated_time" content="2019-01-10T13:14:14.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络期末复习">
 <meta name="twitter:description" content="期末复习，一起愉快地复习吧！待更新~">
@@ -327,7 +329,8 @@
       
         <p>期末复习，一起愉快地复习吧！待更新~</p>
 <a id="more"></a>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p>FDM(frequency division multiplexing) 频分复用</p>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p>OSPF（Open Shortest Pass First,开放最短路径优先协议）</p>
+<p>FDM(frequency division multiplexing) 频分复用</p>
 <p>TDM(Time Division Multiplexing) 时分多路复用</p>
 <p>STDM(Statistic Time Division Multiplexing)统计时分复用</p>
 <p>WDM(Wave Division Multiplexing) 波分复用</p>
@@ -364,7 +367,27 @@
 <h3 id="P198-4-29"><a href="#P198-4-29" class="headerlink" title="P198-4-29"></a><code>P198-4-29</code></h3><p><img src="/2019/01/09/计算机网络期末复习/1547045867057.png" alt="1547045867057"></p>
 <p><img src="/2019/01/09/计算机网络期末复习/1547045821425.png" alt="1547045821425"></p>
 <h3 id="P200-4-55"><a href="#P200-4-55" class="headerlink" title="P200-4-55"></a><code>P200-4-55</code></h3><p><img src="/2019/01/09/计算机网络期末复习/1547045687376.png" alt="1547045687376"></p>
-<h3 id="P245-5-22"><a href="#P245-5-22" class="headerlink" title="P245-5-22"></a><code>P245-5-22</code></h3><h3 id="P245-5-23"><a href="#P245-5-23" class="headerlink" title="P245-5-23"></a><code>P245-5-23</code></h3><h3 id="P246-5-38"><a href="#P246-5-38" class="headerlink" title="P246-5-38"></a><code>P246-5-38</code></h3><h3 id="P247-5-39"><a href="#P247-5-39" class="headerlink" title="P247-5-39"></a><code>P247-5-39</code></h3>
+<p>第一问相对简单，第二问做法将<code>145.13.160.78</code>与四个子网的掩码分别做<code>and</code>运算（这里四个子网掩码都是<code>255.255.192.0</code>），得到<code>and</code>后的网络号，即为该网络号所属子网配置的路由转发的。</p>
+<h3 id="P245-5-22"><a href="#P245-5-22" class="headerlink" title="P245-5-22"></a><code>P245-5-22</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">主机A向主机B发送一个很长的文件,其长度为L字节。</span><br><span class="line">5—22 主机A向主机B发送一个很长的文件，其长度为L字节。假定TCP使用的MSS有1460字节。</span><br><span class="line">（1） 在TCP的序号不重复使用的条件下，L的最大值是多少？</span><br><span class="line">（2） 假定使用上面计算出文件长度，而运输层、网络层和数据链路层所使用的首部开销共66字节，链路的数据率为10Mb/s，试求这个文件所需的最短发送时间。</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/09/计算机网络期末复习/1547124004907.png" alt="1547124004907"></p>
+<h3 id="P245-5-23"><a href="#P245-5-23" class="headerlink" title="P245-5-23"></a><code>P245-5-23</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">主机A向主机B连续发送了两个TCP报文段，其序号分别是70和100。</span><br><span class="line"></span><br><span class="line">试问：</span><br><span class="line"></span><br><span class="line"> (1)第一个报文段携带了多少字节的数据？ </span><br><span class="line"></span><br><span class="line">(2)主机B收到第一个报文段后发回的确认中的确认号应当是多少？ </span><br><span class="line"></span><br><span class="line">(3)主机B收到第二个报文段后发回的确认中的确认号是180，试问A发送的第二个报文段中的数据有多少字节？ </span><br><span class="line"></span><br><span class="line">(4)如果A发送的第一个报文段丢失了，但第二个报文段到达了B。B在第二个报文段到达后向A发送确认。试问这个确认号应为多少？</span><br></pre></td></tr></table></figure>
+<p>确认号是期望收到对方的下一个报文段的数据的第一个字节的序号，也就是期望收到的下一个报文段首部序号字段的值。若确认号=N，则表明：到序号N-1为止的所有数据都已正确收到。(1)第一个报文段携带的数据包括从70字节到第99字节，共携带了30个字节。(2)确认号为100。(3)由于确认号为180，说明到第179号为止的数据都已收到，A发送的第二个报文段中的数据有179-100+1=80字节。(4)由于没有收到A发送的第一个报文段，第二个报文段到达B时将会被丢弃，因此此时收到的报文段的最后一个序号为69。当在第二个报文段到达后一向A发送确认，这个确认号应为70，表示到序号69为止的数据都已收到。</p>
+<h3 id="P246-5-38"><a href="#P246-5-38" class="headerlink" title="P246-5-38"></a><code>P246-5-38</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设TCP的ssthresh（慢开始门限）的初始值为8（单位为报文段）。当拥塞窗口上升到12时网络发生了超时，TCP使用慢开始和拥塞避免。试分别求出第1次到第15次传输的各拥塞窗口大小。你能说明拥塞窗口每一次变化的原因吗？</span><br></pre></td></tr></table></figure>
+<p>（1）慢开始：在主机刚刚开始发送报文段时，可先将拥塞窗口<code>cwnd</code>设置为一个最大报文段<code>MSS</code>的数值。作用：在每收到一个对新的报文段的确认后，将拥塞窗口增加至多一个<code>MSS</code>的数值。用这样的方法逐步增大发送端的拥塞窗口<code>cwnd</code>，可以使分组注入到网络的速率更加合理。</p>
+<p>（2）拥塞避免：当拥塞窗口值大于慢开始门限时，停止使用慢开始算法而改用拥塞避免算法。作用：拥塞避免算法使发送端的拥塞窗口每经过一个往返时延<code>RTT</code>就增加一个<code>MSS</code>的大小。</p>
+<p>（3）当<code>cwnd&lt;ssthresh</code>时，拥塞窗口按指数规律增长；当<code>cwnd&gt;ssthresh</code>时，拥塞窗口按线性规律增长；</p>
+<p>当发生超时时，<code>ssthresh</code>的值更新为发送窗口数值的一半。</p>
+<p>第一轮次拥塞窗口的大小为<code>1</code>，第<code>15</code>轮次的拥塞窗口为<code>9</code>，根据慢开始算法当在第<code>4</code>个时间轮次上升到<code>8</code>时（此时拥塞窗口为<code>8</code>）改为执行拥塞避免算法（加法增大），由已知得当到第<code>8</code>个轮次的时候拥塞窗口为<code>12</code>。此时网络发生了超时，更新后的<code>ssthresh</code>值变为<code>6</code>（发送窗口<code>12</code>的一半）拥塞窗口再重新设置为<code>1</code>，并执行慢开始算法第<code>9</code>个轮次为<code>1</code>，到第<code>12</code>个轮次窗口数变为<code>6</code>开始加法增大到第<code>15</code>个轮次时拥塞窗口为<code>9</code>。</p>
+<h3 id="P247-5-39"><a href="#P247-5-39" class="headerlink" title="P247-5-39"></a><code>P247-5-39</code></h3><p>TCP的拥塞窗口cwnd大小与传输轮次n的关系如下所示：</p>
+<p><img src="/2019/01/09/计算机网络期末复习/1547125514495.png" alt="1547125514495"></p>
+<p>(1)试画出如图所示的拥塞窗口与传输轮次的关系曲线。 </p>
+<p>(2)指明<code>TCP</code>工作在慢开始阶段的时间间隔。</p>
+<p>(3)指明<code>TCP</code>工作在拥塞避免阶段的时间间隔。 </p>
+<p>(4)在第<code>16</code>轮次和第<code>22</code>轮次之后发送方是通过收到三个重复的确认还是通过超时检测到丢失了报文段？</p>
+<p>(5)在第<code>1</code>轮次、第<code>18</code>轮次和第<code>24</code>轮次发送时，门限<code>ssthresh</code>分别被设置为多大？ </p>
+<p>(6)在第几轮次发送出第<code>70</code>个报文段？</p>
+<p>(7)假定在第<code>26</code>轮次之后收到了三个重复的确认，因而检测出了报文段的丢失，那么拥塞窗口<code>cwnd</code>和门限<code>ssthresh</code>应设置为多大？</p>
+
       
     </div>
     
