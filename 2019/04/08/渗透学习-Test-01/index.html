@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="渗透学习," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="渗透学习_Test_01，环境朋友给的，自己本地搭的，仅供学习参考">
+<meta name="keywords" content="渗透学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="渗透学习_Test_01">
+<meta property="og:url" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="渗透学习_Test_01，环境朋友给的，自己本地搭的，仅供学习参考">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562910258274.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562910441310.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562911063229.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562919263050.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562911273124.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562911764871.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562913114060.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562913149419.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562919386785.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562918865070.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562920878265.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562921308399.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562921146637.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562921761396.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562921909515.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562922581312.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562936434677.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562939003905.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562938942904.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562938863899.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562938214594.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562939805546.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562939936399.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562939980377.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562973741290.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562974458333.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562974119114.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562984496727.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562984750943.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562984895977.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562985120146.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562985553981.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562985478513.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562985637978.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562985914712.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562985689221.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562985746099.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562986176627.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562986623791.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562911837551.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562911964864.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562987220865.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562987674992.png">
+<meta property="og:updated_time" content="2019-09-02T09:07:14.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="渗透学习_Test_01">
+<meta name="twitter:description" content="渗透学习_Test_01，环境朋友给的，自己本地搭的，仅供学习参考">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/1562910258274.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/"/>
+
+
+
+
+
+  <title>渗透学习_Test_01 | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex="-1" count="10"  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2019/04/08/渗透学习-Test-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">渗透学习_Test_01</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T13:36:03+08:00">
+                2019-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>渗透学习_Test_01，环境朋友给的，自己本地搭的，仅供学习参考</p>
+<a id="more"></a> 
+<h3 id="Test-01"><a href="#Test-01" class="headerlink" title="Test_01"></a>Test_01</h3><p>访问测试主机，修改host文件（C:\WINDOWS\system32\drivers\etc\hosts）添加一条新数据<code>192.168.110.130 010001-fd85sjfl.wlz.com</code></p>
+<p>tracert命令根据域名，查看网络路由</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562910258274.png" alt="1562910258274"></p>
+<p><code>namp</code>扫描测试主机，<code>nmap -T4 -A -v -Pn 010001-fd85sjfl.wlz.com</code>,发现存在<code>80</code>服务端口（8080端口服务为自己误开端口<code>apache</code>服务）和<code>445</code>端口</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562910441310.png" alt="1562910441310"></p>
+<p>### </p>
+<p>访问该测试靶机域名<code>http://010001-fd85sjfl.wlz.com</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562911063229.png" alt="1562911063229"></p>
+<h4 id="扫描网站路径"><a href="#扫描网站路径" class="headerlink" title="扫描网站路径"></a>扫描网站路径</h4><p><img src="/2019/04/08/渗透学习-Test-01/1562919263050.png" alt="1562919263050"></p>
+<p>其中<code>http://010001-fd85sjfl.wlz.com/admin/login.asp</code>为后台登陆网站</p>
+<h4 id="sql注入–关卡一：获取网站管理员admin的密码"><a href="#sql注入–关卡一：获取网站管理员admin的密码" class="headerlink" title="sql注入–关卡一：获取网站管理员admin的密码"></a>sql注入–关卡一：获取网站管理员<code>admin</code>的密码</h4><p>随即稍稍浏览,发现可能存在sql注入页面<code>http://010001-fd85sjfl.wlz.com/docc/product_detail.asp?id=220</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562911273124.png" alt="1562911273124"></p>
+<p>Microsoft JET Database Engine：是Microsoft Jet 数据库引擎，是 Access 数据库系统的一部分</p>
+<p>手工注入尝试 <code>and 1=1</code>、 <code>and 1=2</code>  ，发现页面回显不同，且报错信息显示</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562911764871.png" alt="1562911764871"></p>
+<p>注入步骤：</p>
+<p><code>http://010001-fd85sjfl.wlz.com/docc/product_detail.asp?id=220 order by 19</code>回显正常</p>
+<p><code>http://010001-fd85sjfl.wlz.com/docc/product_detail.asp?id=220 order by 20</code>回显错误</p>
+<p>由此判断列数为20</p>
+<p>其次，Access的系统表是msysobjects,且在web环境下没有访问权限，而sql sever的系统表是sysobjects,</p>
+<p>在WEB环境下有访问权限。对于以下两条语句：</p>
+<p> and (select count(*) from sysobjects)&gt;0</p>
+<p> and (select count(*) from msysobjects)&gt;0</p>
+<p>若数据库是sql sever，则第一条测试，网页回显正常，第二条则网页回显异常；若是Access则两条都会异常。而对于本次测试靶机，两条均回显异常，可判断为Access为其数据库，如下两图。</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562913114060.png" alt="1562913114060"></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562913149419.png" alt="1562913149419"></p>
+<p>使用啊D注入工具，爆破出<code>admin</code>表的敏感数据</p>
+<p><strong>账号<code>admin</code>密码<code>mp150</code>，关卡一：获取网站管理员<code>admin</code>的密码即完成。</strong></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562919386785.png" alt="1562919386785"></p>
+<p>其中”检测表段”，使用爆破字典方式，根据回显正常与否判断是否猜表成功，如下</p>
+<p><code>http://010001-fd85sjfl.wlz.com/docc/product_detail.asp?id=220 and exists (select * from [admin])</code></p>
+<p>同理，”检测字段“也是使用爆破方式，根据回显正常与否判断是否猜表成功，如下</p>
+<p><code>http://010001-fd85sjfl.wlz.com/docc/product_detail.asp
+?id=220 and exists (select [admin_name] from [admin])</code></p>
+<p>最后，”检测内容“，为逐位拆解过程，数据包已存在该文档，方便后面分析。</p>
+<p><code>http://010001-fd85sjfl.wlz.com/docc/product_detail.asp?id=220 and (select Count(1) from [admin] where 1=1) between 0 and 99999999</code></p>
+<p><code>http://010001-fd85sjfl.wlz.com/docc/product_detail.asp?id=220 and (select Count(1) from [admin] where 1=1) between 0 and 4</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562918865070.png" alt="1562918865070"></p>
+<p>附上学习链接</p>
+<p><a href="https://www.cnblogs.com/szm666888/p/4928437.html" target="_blank" rel="noopener">access注入（新手菜鸟随笔）</a></p>
+<h4 id="EWebeditor漏洞利用–关卡二：获取网站根目录下含有“第二关”字样的文本文件的内容"><a href="#EWebeditor漏洞利用–关卡二：获取网站根目录下含有“第二关”字样的文本文件的内容" class="headerlink" title="EWebeditor漏洞利用–关卡二：获取网站根目录下含有“第二关”字样的文本文件的内容"></a>EWebeditor漏洞利用–关卡二：获取网站根目录下含有“第二关”字样的文本文件的内容</h4><p>使用账号<code>admin</code>密码<code>mp150</code>登录<code>http://010001-fd85sjfl.wlz.com/admin/login.asp</code>后台管理页面</p>
+<p>浏览几个功能，发现有个”产品功能“里面存在一个”添加“功能，点击为一个网页编辑器，如下图，使用谷歌浏览器可以点击右键”查看框架的源代码“</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562920878265.png" alt="1562920878265"></p>
+<p>注：火狐浏览器查看网页源代码无法查看框架源代码</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562921308399.png" alt="1562921308399"></p>
+<p>查看过程中发现<code>EWebeditor</code>路径<code>/admin/Components/ewebeditor/</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562921146637.png" alt="1562921146637"></p>
+<p>点击进入，随后微微更改<code>uri</code>为<code>admin/Components/ewebeditor/admin_login.asp</code>,成功访问后台，但尝试默认账号密码<code>admin/admin</code>以及其他弱口令登录均失败，尝试<code>burpsuite</code>爆破成功了。</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562921761396.png" alt="1562921761396"></p>
+<p>想起<code>eWebEditor</code>默认数据库为<code>eWebEditor.mdb</code></p>
+<p>遂尝试访问<code>/admin/Components/ewebeditor/db/eWebEditor.mdb</code>，发现可下载该数据库</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562921909515.png" alt="1562921909515"></p>
+<p>使用<code>辅臣数据库浏览器V1.0</code>分析</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562922581312.png" alt="1562922581312"></p>
+<p><code>MD5</code>解密<code>sys_UserName(7a57a5a743894a0e)</code>为<code>admin</code></p>
+<p><code>MD5</code>解密<code>sys_UserPass(4621d373cade4e83)</code>为<code>test</code></p>
+<p>登陆后台</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562936434677.png" alt="1562936434677"></p>
+<p>点击“样式管理”，选择样式名为<code>standard</code>，再选择“拷贝”</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562939003905.png" alt="1562939003905"></p>
+<p>紧接着修改图片类型，新增<code>|asa|asp|asax|asx</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562938942904.png" alt="1562938942904"></p>
+<p>提交之后，点击预览</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562938863899.png" alt="1562938863899"></p>
+<p>随后点击“设计”，上传一句话木马，后缀名为<code>asa</code>（虽然上面图片类型添加了asp，但是这边还是被过滤掉了）</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562938214594.png" alt="1562938214594"></p>
+<p>紧接着点击“代码”，查看刚刚上传的完整路径</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562939805546.png" alt="1562939805546"></p>
+<p>使用菜刀尝试连接</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562939936399.png" alt="1562939936399"></p>
+<p>连接成功</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562939980377.png" alt="1562939980377"></p>
+<p>完成<strong>关卡二：获取网站根目录下含有“第二关”字样的文本文件的内容</strong></p>
+<p><code>ad0234829205b9033196ba818f7a872b</code></p>
+<h4 id="Serv-U-ftp提权操作–关卡三：登陆远程终端在“我的计算机”上右键查看属性，获取“常规”选项卡下面的”注册到-my-test”下面的注册序列号，格式如x-y-z-m"><a href="#Serv-U-ftp提权操作–关卡三：登陆远程终端在“我的计算机”上右键查看属性，获取“常规”选项卡下面的”注册到-my-test”下面的注册序列号，格式如x-y-z-m" class="headerlink" title="Serv-U ftp提权操作–关卡三：登陆远程终端在“我的计算机”上右键查看属性，获取“常规”选项卡下面的”注册到:my-test”下面的注册序列号，格式如x-y-z-m"></a>Serv-U ftp提权操作–关卡三：登陆远程终端在“我的计算机”上右键查看属性，获取“常规”选项卡下面的”注册到:my-test”下面的注册序列号，格式如x-y-z-m</h4><p>毫无疑问，第三关需要我们进行提权操作了，但是如何提权呢？其实在刚开始扫端口的时候就发现存在FTP服务了，尝试<code>ftp 010001-fd85sjfl.wlz.com</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562973741290.png" alt="1562973741290"></p>
+<p>并且通过关卡二中方法上传大马，进行端口扫描，也发现了<code>43958</code>端口的开放，至于为啥<code>nmap</code>没扫出来43958，应该是做了一个访问策略控制。</p>
+<p>尝试直接进行<code>Serv-U</code>提权操作</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562974458333.png" alt="1562974458333"></p>
+<p>本以为成功了，半天远程登录登不上去（这个大马有毛病）</p>
+<p>后面看了解析，原来试大马查找Serv-U默认路径：<code>C:\Program Files\Serv-U\</code>中的<code>ServUDacmon.ini</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562974119114.png" alt="1562974119114"></p>
+<p>将<em><code>xt1B6287DD6EC58EB7DA0F1B8961C452C4</code></em>,解密的结果为<em><code>xtab1</code></em></p>
+<p>但是问题来了，可能脑袋昏了，我都上了小马，为啥大马还像上下马一样上呢，然后折腾了好久，最后才反应过来，日了狗了，艹，换成<code>aspx</code>的大马，可以执行<code>cmd</code>命令了，<code>asp</code>的大马执行不了，为啥？</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562984496727.png" alt="1562984496727"></p>
+<p>然后点击到 <code>SU Exp</code>，默认密码错误，提权失败</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562984750943.png" alt="1562984750943"></p>
+<p>将之前的<code>xtab1</code>填入密码框中，执行命令，还是不行，换成<code>ab1</code>成了（前两个字母<code>xt</code>去掉）</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562984895977.png" alt="1562984895977"></p>
+<p><code>cmd /c net user jianghu$ jianghu /add &amp; net localgroup administrators jianghu$ /add</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562985120146.png" alt="1562985120146"></p>
+<p>然后依旧试着远程登录，还是不行</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562985553981.png" alt="1562985553981"></p>
+<p>看下服务，应该是防火墙开着了</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562985478513.png" alt="1562985478513"></p>
+<p>普通的<code>cmd</code>执行下，还是不行</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562985637978.png" alt="1562985637978"></p>
+<p><code>SU Exp</code>提权下执行<code>cmd /c net stop PolicyAgent</code></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562985914712.png" alt="1562985914712"></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562985689221.png" alt="1562985689221"></p>
+<p>再次尝试，发现已经有登录框了</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562985746099.png" alt="1562985746099"></p>
+<p>输入密码，成功远程登录</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562986176627.png" alt="1562986176627"></p>
+<p>获取到系统注册序列号为<code>69813-640-2954314-45562</code></p>
+<p>额外一：</p>
+<p>其实在测试过程中，发现用户名后面加个$，netuser是看不到这个隐藏用户的，win2003按以下方式可以查看隐藏的用户</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562986623791.png" alt="1562986623791"></p>
+<p>额外二：</p>
+<p>or 1=2正常回显？？？</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562911837551.png" alt="1562911837551"></p>
+<p>or 1=1错误信息？？？</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562911964864.png" alt="1562911964864"></p>
+<p>然后后面看了这个，还是没懂</p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562987220865.png" alt="1562987220865"></p>
+<p><img src="/2019/04/08/渗透学习-Test-01/1562987674992.png" alt="1562987674992"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/渗透学习/" rel="tag"># 渗透学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/20/serialize与unserialize/" rel="next" title="serialize与unserialize">
+                <i class="fa fa-chevron-left"></i> serialize与unserialize
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/19/渗透学习-Test-02/" rel="prev" title="渗透学习_Test_02">
+                渗透学习_Test_02 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-01"><span class="nav-number">1.</span> <span class="nav-text">Test_01</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#扫描网站路径"><span class="nav-number">1.1.</span> <span class="nav-text">扫描网站路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sql注入–关卡一：获取网站管理员admin的密码"><span class="nav-number">1.2.</span> <span class="nav-text">sql注入–关卡一：获取网站管理员admin的密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EWebeditor漏洞利用–关卡二：获取网站根目录下含有“第二关”字样的文本文件的内容"><span class="nav-number">1.3.</span> <span class="nav-text">EWebeditor漏洞利用–关卡二：获取网站根目录下含有“第二关”字样的文本文件的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Serv-U-ftp提权操作–关卡三：登陆远程终端在“我的计算机”上右键查看属性，获取“常规”选项卡下面的”注册到-my-test”下面的注册序列号，格式如x-y-z-m"><span class="nav-number">1.4.</span> <span class="nav-text">Serv-U ftp提权操作–关卡三：登陆远程终端在“我的计算机”上右键查看属性，获取“常规”选项卡下面的”注册到:my-test”下面的注册序列号，格式如x-y-z-m</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

